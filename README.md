@@ -16,7 +16,7 @@
 An mobile application to provide resources to college students who have been victims of rape.
 An application to shed light on rape issues that occur in colleges and universities across America.
 
-### USER STORIES
+### MVP USER STORIES
 01. A user can see a list of local resources based on the location of the phone
 02. A user can get immediate help via RAINN hot-line resources, 911, or chat
 03. A user can make a post with a tag of the school the incident occurred
