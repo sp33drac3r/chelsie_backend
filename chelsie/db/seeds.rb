@@ -7,14 +7,14 @@
 #   Mayor.create(name: 'Emanuel', city: cities.first)
 require 'csv'
 
-@client = GooglePlaces::Client.new(ENV[GP_BROWSER_API_KEY])
+@client = GooglePlaces::Client.new(ENV["GP_BROWSER_API_KEY"])
 
-CSV.foreach(File.path(), :headers => true, :header_converters => :symbol, :converters => :all) do |row|
+CSV.foreach("db/cities.csv", :headers => true, :header_converters => :symbol, :converters => :all) do |row|
 
   @centers = @client.spots_by_query("Rape crisis center near " + row[:city] + " " + row[:state])
 
-    @centers[0]["results"].each do |center|
-      ServiceProvider.create(name: center["name"], address: center["formatted_address"], lat: center["geometry"]["location"]["lat"], lng: center["geometry"]["location"]["lng"], place_id: center["place_id"])
+    @centers.each do |center|
+      ServiceProvider.create(name: center["name"], address: center["formatted_address"], lat: center["lat"], lng: center["lng"], place_id: center["place_id"])
     end
 
 end
