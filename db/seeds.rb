@@ -7,14 +7,20 @@
 #   Mayor.create(name: 'Emanuel', city: cities.first)
 require 'csv'
 
-@client = GooglePlaces::Client.new(ENV["GP_BROWSER_API_KEY"])
+# @client = GooglePlaces::Client.new(ENV["GP_BROWSER_API_KEY"])
 
-CSV.foreach("db/cities.csv", :headers => true, :header_converters => :symbol, :converters => :all) do |row|
+# CSV.foreach("db/cities.csv", :headers => true, :header_converters => :symbol, :converters => :all) do |row|
 
-  @centers = @client.spots_by_query("Rape crisis center near " + row[:city] + " " + row[:state])
+#   @centers = @client.spots_by_query("Rape crisis center near " + row[:city] + " " + row[:state])
 
-    @centers.each do |center|
-      ServiceProvider.create(name: center["name"], address: center["formatted_address"], lat: center["lat"], lng: center["lng"], place_id: center["place_id"])
-    end
+#     @centers.each do |center|
+#       ServiceProvider.create(name: center["name"], address: center["formatted_address"], lat: center["lat"], lng: center["lng"], place_id: center["place_id"])
+#     end
+
+# end
+
+CSV.foreach("db/centers.csv", :headers => true, :header_converters => :symbol, :converters => :all) do |row|
+
+  ServiceProvider.create(name: row[:name], address: row[:address], lat: row[:lat], lng: row[:lng], place_id: row[:place_id])
 
 end

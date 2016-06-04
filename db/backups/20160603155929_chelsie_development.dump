@@ -10,14 +10,14 @@ SET check_function_bodies = false;
 SET client_min_messages = warning;
 
 --
--- Name: plpgsql; Type: EXTENSION; Schema: -; Owner: 
+-- Name: plpgsql; Type: EXTENSION; Schema: -; Owner:
 --
 
 CREATE EXTENSION IF NOT EXISTS plpgsql WITH SCHEMA pg_catalog;
 
 
 --
--- Name: EXTENSION plpgsql; Type: COMMENT; Schema: -; Owner: 
+-- Name: EXTENSION plpgsql; Type: COMMENT; Schema: -; Owner:
 --
 
 COMMENT ON EXTENSION plpgsql IS 'PL/pgSQL procedural language';
@@ -30,7 +30,7 @@ SET default_tablespace = '';
 SET default_with_oids = false;
 
 --
--- Name: schema_migrations; Type: TABLE; Schema: public; Owner: apprentice; Tablespace: 
+-- Name: schema_migrations; Type: TABLE; Schema: public; Owner: apprentice; Tablespace:
 --
 
 CREATE TABLE schema_migrations (
@@ -41,7 +41,7 @@ CREATE TABLE schema_migrations (
 ALTER TABLE schema_migrations OWNER TO apprentice;
 
 --
--- Name: service_providers; Type: TABLE; Schema: public; Owner: apprentice; Tablespace: 
+-- Name: service_providers; Type: TABLE; Schema: public; Owner: apprentice; Tablespace:
 --
 
 CREATE TABLE service_providers (
@@ -328,7 +328,7 @@ SELECT pg_catalog.setval('service_providers_id_seq', 217, true);
 
 
 --
--- Name: service_providers_pkey; Type: CONSTRAINT; Schema: public; Owner: apprentice; Tablespace: 
+-- Name: service_providers_pkey; Type: CONSTRAINT; Schema: public; Owner: apprentice; Tablespace:
 --
 
 ALTER TABLE ONLY service_providers
@@ -336,7 +336,7 @@ ALTER TABLE ONLY service_providers
 
 
 --
--- Name: unique_schema_migrations; Type: INDEX; Schema: public; Owner: apprentice; Tablespace: 
+-- Name: unique_schema_migrations; Type: INDEX; Schema: public; Owner: apprentice; Tablespace:
 --
 
 CREATE UNIQUE INDEX unique_schema_migrations ON schema_migrations USING btree (version);
