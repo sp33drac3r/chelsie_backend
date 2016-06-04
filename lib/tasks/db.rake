@@ -16,7 +16,7 @@ namespace :db do
     cmd = nil
     with_config do |app, host, db, user|
       file_name = Time.now.strftime("%Y%m%d%H%M%S") + "_" + db + '.dump'
-      cmd = "pg_dump chelsie_development > db/backups/#{file_name}"
+      cmd = "pg_dump -Fc chelsie_development > db/backups/#{file_name}"
     end
     puts cmd
     exec cmd
