@@ -17,8 +17,6 @@ p "***" * 30
 doc.xpath("//small").each {|small| p small.text}
 
 
-
-
 # # puts b.form(:name, "center_search").when_present.text
 
 # rainn_agent = Mechanize.new
