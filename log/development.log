@@ -1,10 +1,10 @@
   [1m[36m (840.9ms)[0m  [1mCREATE DATABASE "chelsie_development" ENCODING = 'unicode'[0m
-  [1m[35m (55.4ms)[0m  CREATE TABLE "schema_migrations" ("version" character varying NOT NULL) 
+  [1m[35m (55.4ms)[0m  CREATE TABLE "schema_migrations" ("version" character varying NOT NULL)
   [1m[36m (2.0ms)[0m  [1mCREATE UNIQUE INDEX  "unique_schema_migrations" ON "schema_migrations"  ("version")[0m
   [1m[35mActiveRecord::SchemaMigration Load (0.4ms)[0m  SELECT "schema_migrations".* FROM "schema_migrations"
 Migrating to CreateServiceProviders (20160603014136)
   [1m[36m (0.2ms)[0m  [1mBEGIN[0m
-  [1m[35m (21.5ms)[0m  CREATE TABLE "service_providers" ("id" serial primary key, "name" character varying NOT NULL, "address" character varying NOT NULL, "lat" decimal, "lng" decimal, "place_id" character varying, "created_at" timestamp NOT NULL, "updated_at" timestamp NOT NULL) 
+  [1m[35m (21.5ms)[0m  CREATE TABLE "service_providers" ("id" serial primary key, "name" character varying NOT NULL, "address" character varying NOT NULL, "lat" decimal, "lng" decimal, "place_id" character varying, "created_at" timestamp NOT NULL, "updated_at" timestamp NOT NULL)
   [1m[36mSQL (0.5ms)[0m  [1mINSERT INTO "schema_migrations" ("version") VALUES ($1)[0m  [["version", "20160603014136"]]
   [1m[35m (15.7ms)[0m  COMMIT
   [1m[36mActiveRecord::SchemaMigration Load (0.4ms)[0m  [1mSELECT "schema_migrations".* FROM "schema_migrations"[0m
@@ -3245,13 +3245,13 @@ ORDER BY c.conname
   [1m[36m (985.1ms)[0m  [1mCREATE DATABASE "chelsie_development" ENCODING = 'unicode'[0m
   [1m[35m (390.6ms)[0m  CREATE DATABASE "chelsie_test" ENCODING = 'unicode'
   [1m[36mSQL (0.4ms)[0m  [1mCREATE EXTENSION IF NOT EXISTS "plpgsql"[0m
-  [1m[35m (5.6ms)[0m  CREATE TABLE "service_providers" ("id" serial primary key, "name" character varying NOT NULL, "address" character varying NOT NULL, "lat" decimal, "lng" decimal, "place_id" character varying, "created_at" timestamp NOT NULL, "updated_at" timestamp NOT NULL) 
+  [1m[35m (5.6ms)[0m  CREATE TABLE "service_providers" ("id" serial primary key, "name" character varying NOT NULL, "address" character varying NOT NULL, "lat" decimal, "lng" decimal, "place_id" character varying, "created_at" timestamp NOT NULL, "updated_at" timestamp NOT NULL)
   [1m[36m (2.3ms)[0m  [1mCREATE TABLE "schema_migrations" ("version" character varying NOT NULL) [0m
   [1m[35m (1.8ms)[0m  CREATE UNIQUE INDEX  "unique_schema_migrations" ON "schema_migrations"  ("version")
   [1m[36m (0.4ms)[0m  [1mSELECT version FROM "schema_migrations"[0m
   [1m[35m (0.6ms)[0m  INSERT INTO "schema_migrations" (version) VALUES ('20160603014136')
   [1m[36mSQL (0.3ms)[0m  [1mCREATE EXTENSION IF NOT EXISTS "plpgsql"[0m
-  [1m[35m (5.9ms)[0m  CREATE TABLE "service_providers" ("id" serial primary key, "name" character varying NOT NULL, "address" character varying NOT NULL, "lat" decimal, "lng" decimal, "place_id" character varying, "created_at" timestamp NOT NULL, "updated_at" timestamp NOT NULL) 
+  [1m[35m (5.9ms)[0m  CREATE TABLE "service_providers" ("id" serial primary key, "name" character varying NOT NULL, "address" character varying NOT NULL, "lat" decimal, "lng" decimal, "place_id" character varying, "created_at" timestamp NOT NULL, "updated_at" timestamp NOT NULL)
   [1m[36m (2.0ms)[0m  [1mCREATE TABLE "schema_migrations" ("version" character varying NOT NULL) [0m
   [1m[35m (1.5ms)[0m  CREATE UNIQUE INDEX  "unique_schema_migrations" ON "schema_migrations"  ("version")
   [1m[36m (0.4ms)[0m  [1mSELECT version FROM "schema_migrations"[0m
@@ -7259,13 +7259,13 @@ ORDER BY c.conname
   [1m[36m (1121.2ms)[0m  [1mCREATE DATABASE "chelsie_development" ENCODING = 'unicode'[0m
   [1m[35m (304.0ms)[0m  CREATE DATABASE "chelsie_test" ENCODING = 'unicode'
   [1m[36mSQL (0.5ms)[0m  [1mCREATE EXTENSION IF NOT EXISTS "plpgsql"[0m
-  [1m[35m (230.6ms)[0m  CREATE TABLE "service_providers" ("id" serial primary key, "name" character varying NOT NULL, "address" character varying, "zip" character varying, "lat" decimal, "lng" decimal, "place_id" character varying, "telephone" character varying, "tty" character varying, "website" character varying, "services_offered" character varying, "populations_served" character varying, "created_at" timestamp NOT NULL, "updated_at" timestamp NOT NULL) 
+  [1m[35m (230.6ms)[0m  CREATE TABLE "service_providers" ("id" serial primary key, "name" character varying NOT NULL, "address" character varying, "zip" character varying, "lat" decimal, "lng" decimal, "place_id" character varying, "telephone" character varying, "tty" character varying, "website" character varying, "services_offered" character varying, "populations_served" character varying, "created_at" timestamp NOT NULL, "updated_at" timestamp NOT NULL)
   [1m[36m (17.7ms)[0m  [1mCREATE TABLE "schema_migrations" ("version" character varying NOT NULL) [0m
   [1m[35m (1.7ms)[0m  CREATE UNIQUE INDEX  "unique_schema_migrations" ON "schema_migrations"  ("version")
   [1m[36m (0.5ms)[0m  [1mSELECT version FROM "schema_migrations"[0m
   [1m[35m (0.7ms)[0m  INSERT INTO "schema_migrations" (version) VALUES ('20160603014136')
   [1m[36mSQL (0.3ms)[0m  [1mCREATE EXTENSION IF NOT EXISTS "plpgsql"[0m
-  [1m[35m (7.2ms)[0m  CREATE TABLE "service_providers" ("id" serial primary key, "name" character varying NOT NULL, "address" character varying, "zip" character varying, "lat" decimal, "lng" decimal, "place_id" character varying, "telephone" character varying, "tty" character varying, "website" character varying, "services_offered" character varying, "populations_served" character varying, "created_at" timestamp NOT NULL, "updated_at" timestamp NOT NULL) 
+  [1m[35m (7.2ms)[0m  CREATE TABLE "service_providers" ("id" serial primary key, "name" character varying NOT NULL, "address" character varying, "zip" character varying, "lat" decimal, "lng" decimal, "place_id" character varying, "telephone" character varying, "tty" character varying, "website" character varying, "services_offered" character varying, "populations_served" character varying, "created_at" timestamp NOT NULL, "updated_at" timestamp NOT NULL)
   [1m[36m (2.7ms)[0m  [1mCREATE TABLE "schema_migrations" ("version" character varying NOT NULL) [0m
   [1m[35m (46.4ms)[0m  CREATE UNIQUE INDEX  "unique_schema_migrations" ON "schema_migrations"  ("version")
   [1m[36m (0.5ms)[0m  [1mSELECT version FROM "schema_migrations"[0m
@@ -7276,13 +7276,13 @@ ORDER BY c.conname
   [1m[36m (322.6ms)[0m  [1mCREATE DATABASE "chelsie_development" ENCODING = 'unicode'[0m
   [1m[35m (453.2ms)[0m  CREATE DATABASE "chelsie_test" ENCODING = 'unicode'
   [1m[36mSQL (0.4ms)[0m  [1mCREATE EXTENSION IF NOT EXISTS "plpgsql"[0m
-  [1m[35m (24.1ms)[0m  CREATE TABLE "service_providers" ("id" serial primary key, "name" character varying NOT NULL, "address" character varying, "zip" character varying, "lat" decimal, "lng" decimal, "place_id" character varying, "telephone" character varying, "tty" character varying, "website" character varying, "services_offered" character varying, "populations_served" character varying, "created_at" timestamp NOT NULL, "updated_at" timestamp NOT NULL) 
+  [1m[35m (24.1ms)[0m  CREATE TABLE "service_providers" ("id" serial primary key, "name" character varying NOT NULL, "address" character varying, "zip" character varying, "lat" decimal, "lng" decimal, "place_id" character varying, "telephone" character varying, "tty" character varying, "website" character varying, "services_offered" character varying, "populations_served" character varying, "created_at" timestamp NOT NULL, "updated_at" timestamp NOT NULL)
   [1m[36m (2.6ms)[0m  [1mCREATE TABLE "schema_migrations" ("version" character varying NOT NULL) [0m
   [1m[35m (1.6ms)[0m  CREATE UNIQUE INDEX  "unique_schema_migrations" ON "schema_migrations"  ("version")
   [1m[36m (0.4ms)[0m  [1mSELECT version FROM "schema_migrations"[0m
   [1m[35m (0.7ms)[0m  INSERT INTO "schema_migrations" (version) VALUES ('20160603014136')
   [1m[36mSQL (0.3ms)[0m  [1mCREATE EXTENSION IF NOT EXISTS "plpgsql"[0m
-  [1m[35m (23.2ms)[0m  CREATE TABLE "service_providers" ("id" serial primary key, "name" character varying NOT NULL, "address" character varying, "zip" character varying, "lat" decimal, "lng" decimal, "place_id" character varying, "telephone" character varying, "tty" character varying, "website" character varying, "services_offered" character varying, "populations_served" character varying, "created_at" timestamp NOT NULL, "updated_at" timestamp NOT NULL) 
+  [1m[35m (23.2ms)[0m  CREATE TABLE "service_providers" ("id" serial primary key, "name" character varying NOT NULL, "address" character varying, "zip" character varying, "lat" decimal, "lng" decimal, "place_id" character varying, "telephone" character varying, "tty" character varying, "website" character varying, "services_offered" character varying, "populations_served" character varying, "created_at" timestamp NOT NULL, "updated_at" timestamp NOT NULL)
   [1m[36m (3.2ms)[0m  [1mCREATE TABLE "schema_migrations" ("version" character varying NOT NULL) [0m
   [1m[35m (2.5ms)[0m  CREATE UNIQUE INDEX  "unique_schema_migrations" ON "schema_migrations"  ("version")
   [1m[36m (0.6ms)[0m  [1mSELECT version FROM "schema_migrations"[0m
@@ -7685,27 +7685,27 @@ ORDER BY c.conname
   [1m[36mFlag Load (0.4ms)[0m  [1mSELECT "flags".* FROM "flags" WHERE "flags"."flaggable_id" = $1 AND "flags"."flaggable_type" = $2[0m  [["flaggable_id", 1], ["flaggable_type", "Post"]]
   [1m[36m (197.3ms)[0m  [1mDROP DATABASE IF EXISTS "chelsie_development"[0m
   [1m[36m (666.9ms)[0m  [1mCREATE DATABASE "chelsie_development" ENCODING = 'unicode'[0m
-  [1m[35m (48.2ms)[0m  CREATE TABLE "schema_migrations" ("version" character varying NOT NULL) 
+  [1m[35m (48.2ms)[0m  CREATE TABLE "schema_migrations" ("version" character varying NOT NULL)
   [1m[36m (2.0ms)[0m  [1mCREATE UNIQUE INDEX  "unique_schema_migrations" ON "schema_migrations"  ("version")[0m
   [1m[35mActiveRecord::SchemaMigration Load (0.6ms)[0m  SELECT "schema_migrations".* FROM "schema_migrations"
 Migrating to CreateServiceProviders (20160603014136)
   [1m[36m (0.4ms)[0m  [1mBEGIN[0m
-  [1m[35m (20.1ms)[0m  CREATE TABLE "service_providers" ("id" serial primary key, "name" character varying NOT NULL, "address" character varying, "zip" character varying, "lat" decimal, "lng" decimal, "place_id" character varying, "telephone" character varying, "tty" character varying, "website" character varying, "services_offered" character varying, "populations_served" character varying, "created_at" timestamp NOT NULL, "updated_at" timestamp NOT NULL) 
+  [1m[35m (20.1ms)[0m  CREATE TABLE "service_providers" ("id" serial primary key, "name" character varying NOT NULL, "address" character varying, "zip" character varying, "lat" decimal, "lng" decimal, "place_id" character varying, "telephone" character varying, "tty" character varying, "website" character varying, "services_offered" character varying, "populations_served" character varying, "created_at" timestamp NOT NULL, "updated_at" timestamp NOT NULL)
   [1m[36mSQL (0.6ms)[0m  [1mINSERT INTO "schema_migrations" ("version") VALUES ($1)[0m  [["version", "20160603014136"]]
   [1m[35m (15.8ms)[0m  COMMIT
 Migrating to CreateUsers (20160605173944)
   [1m[36m (0.5ms)[0m  [1mBEGIN[0m
-  [1m[35m (4.6ms)[0m  CREATE TABLE "users" ("id" serial primary key, "username" character varying NOT NULL, "email" character varying, "password_digest" character varying NOT NULL, "created_at" timestamp NOT NULL, "updated_at" timestamp NOT NULL) 
+  [1m[35m (4.6ms)[0m  CREATE TABLE "users" ("id" serial primary key, "username" character varying NOT NULL, "email" character varying, "password_digest" character varying NOT NULL, "created_at" timestamp NOT NULL, "updated_at" timestamp NOT NULL)
   [1m[36mSQL (0.3ms)[0m  [1mINSERT INTO "schema_migrations" ("version") VALUES ($1)[0m  [["version", "20160605173944"]]
   [1m[35m (0.7ms)[0m  COMMIT
 Migrating to CreateSchools (20160605174245)
   [1m[36m (0.3ms)[0m  [1mBEGIN[0m
-  [1m[35m (4.2ms)[0m  CREATE TABLE "schools" ("id" serial primary key, "name" character varying NOT NULL, "address" character varying, "lat" decimal, "lng" decimal, "created_at" timestamp NOT NULL, "updated_at" timestamp NOT NULL) 
+  [1m[35m (4.2ms)[0m  CREATE TABLE "schools" ("id" serial primary key, "name" character varying NOT NULL, "address" character varying, "lat" decimal, "lng" decimal, "created_at" timestamp NOT NULL, "updated_at" timestamp NOT NULL)
   [1m[36mSQL (0.2ms)[0m  [1mINSERT INTO "schema_migrations" ("version") VALUES ($1)[0m  [["version", "20160605174245"]]
   [1m[35m (0.6ms)[0m  COMMIT
 Migrating to CreatePosts (20160605174412)
   [1m[36m (0.3ms)[0m  [1mBEGIN[0m
-  [1m[35m (3.9ms)[0m  CREATE TABLE "posts" ("id" serial primary key, "title" character varying, "body" text, "user_id" integer, "school_id" integer, "created_at" timestamp NOT NULL, "updated_at" timestamp NOT NULL) 
+  [1m[35m (3.9ms)[0m  CREATE TABLE "posts" ("id" serial primary key, "title" character varying, "body" text, "user_id" integer, "school_id" integer, "created_at" timestamp NOT NULL, "updated_at" timestamp NOT NULL)
   [1m[36m (1.2ms)[0m  [1mCREATE  INDEX  "index_posts_on_user_id" ON "posts"  ("user_id")[0m
   [1m[35m (1.0ms)[0m  CREATE  INDEX  "index_posts_on_school_id" ON "posts"  ("school_id")
   [1m[36m (15.8ms)[0m  [1mALTER TABLE "posts" ADD CONSTRAINT "fk_rails_5b5ddfd518"
@@ -7720,7 +7720,7 @@ FOREIGN KEY ("school_id")
   [1m[35m (0.7ms)[0m  COMMIT
 Migrating to CreateComments (20160605174457)
   [1m[36m (0.4ms)[0m  [1mBEGIN[0m
-  [1m[35m (3.6ms)[0m  CREATE TABLE "comments" ("id" serial primary key, "body" character varying, "user_id" integer, "post_id" integer, "created_at" timestamp NOT NULL, "updated_at" timestamp NOT NULL) 
+  [1m[35m (3.6ms)[0m  CREATE TABLE "comments" ("id" serial primary key, "body" character varying, "user_id" integer, "post_id" integer, "created_at" timestamp NOT NULL, "updated_at" timestamp NOT NULL)
   [1m[36m (1.7ms)[0m  [1mCREATE  INDEX  "index_comments_on_user_id" ON "comments"  ("user_id")[0m
   [1m[35m (1.1ms)[0m  CREATE  INDEX  "index_comments_on_post_id" ON "comments"  ("post_id")
   [1m[36m (1.8ms)[0m  [1mALTER TABLE "comments" ADD CONSTRAINT "fk_rails_03de2dc08c"
@@ -7735,7 +7735,7 @@ FOREIGN KEY ("post_id")
   [1m[35m (0.7ms)[0m  COMMIT
 Migrating to CreateFlags (20160605183455)
   [1m[36m (0.3ms)[0m  [1mBEGIN[0m
-  [1m[35m (3.5ms)[0m  CREATE TABLE "flags" ("id" serial primary key, "user_id" integer, "flaggable_id" integer, "flaggable_type" character varying, "created_at" timestamp NOT NULL, "updated_at" timestamp NOT NULL) 
+  [1m[35m (3.5ms)[0m  CREATE TABLE "flags" ("id" serial primary key, "user_id" integer, "flaggable_id" integer, "flaggable_type" character varying, "created_at" timestamp NOT NULL, "updated_at" timestamp NOT NULL)
   [1m[36m (1.1ms)[0m  [1mCREATE  INDEX  "index_flags_on_user_id" ON "flags"  ("user_id")[0m
   [1m[35m (1.1ms)[0m  CREATE  INDEX  "index_flags_on_flaggable_type_and_flaggable_id" ON "flags"  ("flaggable_type", "flaggable_id")
   [1m[36m (1.4ms)[0m  [1mALTER TABLE "flags" ADD CONSTRAINT "fk_rails_d7842de637"
@@ -8318,3 +8318,6 @@ ORDER BY c.conname
   [1m[36mComment Load (0.4ms)[0m  [1mSELECT "comments".* FROM "comments" WHERE "comments"."post_id" = $1[0m  [["post_id", 14]]
   [1m[35mFlag Load (1.1ms)[0m  SELECT  "flags".* FROM "flags"  ORDER BY "flags"."id" DESC LIMIT 1
   [1m[36mFlag Load (0.8ms)[0m  [1mSELECT  "flags".* FROM "flags"  ORDER BY "flags"."id" DESC LIMIT 1[0m
+
+  [1m[36mPost Load (1.2ms)[0m  [1mSELECT  "posts".* FROM "posts"  ORDER BY "posts"."id" DESC LIMIT 1[0m
+  [1m[35mSchool Load (0.5ms)[0m  SELECT  "schools".* FROM "schools" WHERE "schools"."id" = $1 LIMIT 1  [["id", 5]]
