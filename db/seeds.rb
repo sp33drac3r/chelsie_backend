@@ -2,35 +2,35 @@ School.create(
   name: 'Ohio State University',
   address: "Columbus, OH 43210",
   lat: 40.0142,
-  lng: 83.0309
+  lng: -83.0309
 )
 
 School.create(
   name: 'Kenyon College',
   address: "103 College Rd, Gambier, OH 43022",
   lat: 40.3719,
-  lng: 82.3983
+  lng: -82.3983
 )
 
 School.create(
   name: 'University of Southern California',
   address: "Los Angeles, CA",
   lat: 34.0224,
-  lng: 118.2851
+  lng: -118.2851
 )
 
 School.create(
   name: 'Stanford University',
   address: "450 Serra Mall, Stanford, CA 94305",
   lat: 37.4275,
-  lng: 122.1697
+  lng: -122.1697
 )
 
 School.create(
   name: 'University of San Francisco',
   address: "4202 E Fowler Ave, Tampa, FL 33620",
   lat: 28.0587,
-  lng: 82.4139
+  lng: -82.4139
 )
 
 20.times do |i|
