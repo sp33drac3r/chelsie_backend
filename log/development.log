@@ -7683,3 +7683,1920 @@ ORDER BY c.conname
   [1m[36m (1.4ms)[0m  [1mCOMMIT[0m
   [1m[35mPost Load (0.9ms)[0m  SELECT  "posts".* FROM "posts"  ORDER BY "posts"."id" ASC LIMIT 1
   [1m[36mFlag Load (0.4ms)[0m  [1mSELECT "flags".* FROM "flags" WHERE "flags"."flaggable_id" = $1 AND "flags"."flaggable_type" = $2[0m  [["flaggable_id", 1], ["flaggable_type", "Post"]]
+
+
+Started GET "/" for ::1 at 2016-06-05 13:48:47 -0700
+  [1m[36mActiveRecord::SchemaMigration Load (0.7ms)[0m  [1mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+
+ActiveRecord::PendingMigrationError (
+
+Migrations are pending. To resolve this issue, run:
+
+	bin/rake db:migrate RAILS_ENV=development
+
+):
+  activerecord (4.2.5) lib/active_record/migration.rb:392:in `check_pending!'
+  activerecord (4.2.5) lib/active_record/migration.rb:373:in `call'
+  actionpack (4.2.5) lib/action_dispatch/middleware/callbacks.rb:29:in `block in call'
+  activesupport (4.2.5) lib/active_support/callbacks.rb:88:in `__run_callbacks__'
+  activesupport (4.2.5) lib/active_support/callbacks.rb:778:in `_run_call_callbacks'
+  activesupport (4.2.5) lib/active_support/callbacks.rb:81:in `run_callbacks'
+  actionpack (4.2.5) lib/action_dispatch/middleware/callbacks.rb:27:in `call'
+  actionpack (4.2.5) lib/action_dispatch/middleware/reloader.rb:73:in `call'
+  actionpack (4.2.5) lib/action_dispatch/middleware/remote_ip.rb:78:in `call'
+  actionpack (4.2.5) lib/action_dispatch/middleware/debug_exceptions.rb:17:in `call'
+  web-console (2.3.0) lib/web_console/middleware.rb:28:in `block in call'
+  web-console (2.3.0) lib/web_console/middleware.rb:18:in `catch'
+  web-console (2.3.0) lib/web_console/middleware.rb:18:in `call'
+  actionpack (4.2.5) lib/action_dispatch/middleware/show_exceptions.rb:30:in `call'
+  railties (4.2.5) lib/rails/rack/logger.rb:38:in `call_app'
+  railties (4.2.5) lib/rails/rack/logger.rb:20:in `block in call'
+  activesupport (4.2.5) lib/active_support/tagged_logging.rb:68:in `block in tagged'
+  activesupport (4.2.5) lib/active_support/tagged_logging.rb:26:in `tagged'
+  activesupport (4.2.5) lib/active_support/tagged_logging.rb:68:in `tagged'
+  railties (4.2.5) lib/rails/rack/logger.rb:20:in `call'
+  actionpack (4.2.5) lib/action_dispatch/middleware/request_id.rb:21:in `call'
+  rack (1.6.4) lib/rack/runtime.rb:18:in `call'
+  activesupport (4.2.5) lib/active_support/cache/strategy/local_cache_middleware.rb:28:in `call'
+  rack-cors (0.4.0) lib/rack/cors.rb:80:in `call'
+  rack (1.6.4) lib/rack/lock.rb:17:in `call'
+  actionpack (4.2.5) lib/action_dispatch/middleware/static.rb:116:in `call'
+  railties (4.2.5) lib/rails/engine.rb:518:in `call'
+  railties (4.2.5) lib/rails/application.rb:165:in `call'
+  rack (1.6.4) lib/rack/lock.rb:17:in `call'
+  rack (1.6.4) lib/rack/content_length.rb:15:in `call'
+  rack (1.6.4) lib/rack/handler/webrick.rb:88:in `service'
+  /Users/apprentice/.rbenv/versions/2.2.5/lib/ruby/2.2.0/webrick/httpserver.rb:138:in `service'
+  /Users/apprentice/.rbenv/versions/2.2.5/lib/ruby/2.2.0/webrick/httpserver.rb:94:in `run'
+  /Users/apprentice/.rbenv/versions/2.2.5/lib/ruby/2.2.0/webrick/server.rb:294:in `block in start_thread'
+
+
+  Rendered /Users/apprentice/.rbenv/versions/2.2.5/lib/ruby/gems/2.2.0/gems/actionpack-4.2.5/lib/action_dispatch/middleware/templates/rescues/_source.erb (3.6ms)
+  Rendered /Users/apprentice/.rbenv/versions/2.2.5/lib/ruby/gems/2.2.0/gems/actionpack-4.2.5/lib/action_dispatch/middleware/templates/rescues/_trace.html.erb (1.9ms)
+  Rendered /Users/apprentice/.rbenv/versions/2.2.5/lib/ruby/gems/2.2.0/gems/actionpack-4.2.5/lib/action_dispatch/middleware/templates/rescues/_request_and_response.html.erb (1.3ms)
+  Rendered /Users/apprentice/.rbenv/versions/2.2.5/lib/ruby/gems/2.2.0/gems/actionpack-4.2.5/lib/action_dispatch/middleware/templates/rescues/diagnostics.html.erb within rescues/layout (122.3ms)
+  Rendered /Users/apprentice/.rbenv/versions/2.2.5/lib/ruby/gems/2.2.0/gems/web-console-2.3.0/lib/web_console/templates/_markup.html.erb (0.5ms)
+  Rendered /Users/apprentice/.rbenv/versions/2.2.5/lib/ruby/gems/2.2.0/gems/web-console-2.3.0/lib/web_console/templates/_inner_console_markup.html.erb within layouts/inlined_string (0.4ms)
+  Rendered /Users/apprentice/.rbenv/versions/2.2.5/lib/ruby/gems/2.2.0/gems/web-console-2.3.0/lib/web_console/templates/_prompt_box_markup.html.erb within layouts/inlined_string (0.4ms)
+  Rendered /Users/apprentice/.rbenv/versions/2.2.5/lib/ruby/gems/2.2.0/gems/web-console-2.3.0/lib/web_console/templates/style.css.erb within layouts/inlined_string (0.4ms)
+  Rendered /Users/apprentice/.rbenv/versions/2.2.5/lib/ruby/gems/2.2.0/gems/web-console-2.3.0/lib/web_console/templates/console.js.erb within layouts/javascript (157.0ms)
+  Rendered /Users/apprentice/.rbenv/versions/2.2.5/lib/ruby/gems/2.2.0/gems/web-console-2.3.0/lib/web_console/templates/main.js.erb within layouts/javascript (0.5ms)
+  Rendered /Users/apprentice/.rbenv/versions/2.2.5/lib/ruby/gems/2.2.0/gems/web-console-2.3.0/lib/web_console/templates/error_page.js.erb within layouts/javascript (0.5ms)
+  Rendered /Users/apprentice/.rbenv/versions/2.2.5/lib/ruby/gems/2.2.0/gems/web-console-2.3.0/lib/web_console/templates/index.html.erb (262.9ms)
+  [1m[36mActiveRecord::SchemaMigration Load (0.7ms)[0m  [1mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+Migrating to CreateUsers (20160605173944)
+  [1m[35m (0.3ms)[0m  BEGIN
+  [1m[36m (5.7ms)[0m  [1mCREATE TABLE "users" ("id" serial primary key, "username" character varying NOT NULL, "email" character varying, "password_digest" character varying NOT NULL, "created_at" timestamp NOT NULL, "updated_at" timestamp NOT NULL) [0m
+  [1m[35mSQL (0.4ms)[0m  INSERT INTO "schema_migrations" ("version") VALUES ($1)  [["version", "20160605173944"]]
+  [1m[36m (1.1ms)[0m  [1mCOMMIT[0m
+Migrating to CreateSchools (20160605174245)
+  [1m[35m (0.3ms)[0m  BEGIN
+  [1m[36m (4.3ms)[0m  [1mCREATE TABLE "schools" ("id" serial primary key, "name" character varying NOT NULL, "address" character varying, "lat" decimal, "lng" decimal, "created_at" timestamp NOT NULL, "updated_at" timestamp NOT NULL) [0m
+  [1m[35mSQL (0.2ms)[0m  INSERT INTO "schema_migrations" ("version") VALUES ($1)  [["version", "20160605174245"]]
+  [1m[36m (0.6ms)[0m  [1mCOMMIT[0m
+Migrating to CreatePosts (20160605174412)
+  [1m[35m (0.3ms)[0m  BEGIN
+  [1m[36m (3.0ms)[0m  [1mCREATE TABLE "posts" ("id" serial primary key, "title" character varying, "body" text, "user_id" integer, "school_id" integer, "created_at" timestamp NOT NULL, "updated_at" timestamp NOT NULL) [0m
+  [1m[35m (1.1ms)[0m  CREATE  INDEX  "index_posts_on_user_id" ON "posts"  ("user_id")
+  [1m[36m (1.2ms)[0m  [1mCREATE  INDEX  "index_posts_on_school_id" ON "posts"  ("school_id")[0m
+  [1m[35m (1.8ms)[0m  ALTER TABLE "posts" ADD CONSTRAINT "fk_rails_5b5ddfd518"
+FOREIGN KEY ("user_id")
+  REFERENCES "users" ("id")
+
+  [1m[36m (1.2ms)[0m  [1mALTER TABLE "posts" ADD CONSTRAINT "fk_rails_c6f4066a54"
+FOREIGN KEY ("school_id")
+  REFERENCES "schools" ("id")
+[0m
+  [1m[35mSQL (0.3ms)[0m  INSERT INTO "schema_migrations" ("version") VALUES ($1)  [["version", "20160605174412"]]
+  [1m[36m (0.6ms)[0m  [1mCOMMIT[0m
+Migrating to CreateComments (20160605174457)
+  [1m[35m (0.4ms)[0m  BEGIN
+  [1m[36m (3.9ms)[0m  [1mCREATE TABLE "comments" ("id" serial primary key, "body" character varying, "user_id" integer, "post_id" integer, "created_at" timestamp NOT NULL, "updated_at" timestamp NOT NULL) [0m
+  [1m[35m (1.0ms)[0m  CREATE  INDEX  "index_comments_on_user_id" ON "comments"  ("user_id")
+  [1m[36m (1.4ms)[0m  [1mCREATE  INDEX  "index_comments_on_post_id" ON "comments"  ("post_id")[0m
+  [1m[35m (2.0ms)[0m  ALTER TABLE "comments" ADD CONSTRAINT "fk_rails_03de2dc08c"
+FOREIGN KEY ("user_id")
+  REFERENCES "users" ("id")
+
+  [1m[36m (1.5ms)[0m  [1mALTER TABLE "comments" ADD CONSTRAINT "fk_rails_2fd19c0db7"
+FOREIGN KEY ("post_id")
+  REFERENCES "posts" ("id")
+[0m
+  [1m[35mSQL (0.3ms)[0m  INSERT INTO "schema_migrations" ("version") VALUES ($1)  [["version", "20160605174457"]]
+  [1m[36m (0.8ms)[0m  [1mCOMMIT[0m
+Migrating to CreateFlags (20160605183455)
+  [1m[35m (0.3ms)[0m  BEGIN
+  [1m[36m (3.3ms)[0m  [1mCREATE TABLE "flags" ("id" serial primary key, "user_id" integer, "flaggable_id" integer, "flaggable_type" character varying, "created_at" timestamp NOT NULL, "updated_at" timestamp NOT NULL) [0m
+  [1m[35m (1.6ms)[0m  CREATE  INDEX  "index_flags_on_user_id" ON "flags"  ("user_id")
+  [1m[36m (1.1ms)[0m  [1mCREATE  INDEX  "index_flags_on_flaggable_type_and_flaggable_id" ON "flags"  ("flaggable_type", "flaggable_id")[0m
+  [1m[35m (1.4ms)[0m  ALTER TABLE "flags" ADD CONSTRAINT "fk_rails_d7842de637"
+FOREIGN KEY ("user_id")
+  REFERENCES "users" ("id")
+
+  [1m[36mSQL (0.3ms)[0m  [1mINSERT INTO "schema_migrations" ("version") VALUES ($1)[0m  [["version", "20160605183455"]]
+  [1m[35m (1.3ms)[0m  COMMIT
+  [1m[36mActiveRecord::SchemaMigration Load (0.4ms)[0m  [1mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+  [1m[35m (2.9ms)[0m  SELECT t2.oid::regclass::text AS to_table, a1.attname AS column, a2.attname AS primary_key, c.conname AS name, c.confupdtype AS on_update, c.confdeltype AS on_delete
+FROM pg_constraint c
+JOIN pg_class t1 ON c.conrelid = t1.oid
+JOIN pg_class t2 ON c.confrelid = t2.oid
+JOIN pg_attribute a1 ON a1.attnum = c.conkey[1] AND a1.attrelid = t1.oid
+JOIN pg_attribute a2 ON a2.attnum = c.confkey[1] AND a2.attrelid = t2.oid
+JOIN pg_namespace t3 ON c.connamespace = t3.oid
+WHERE c.contype = 'f'
+  AND t1.relname = 'comments'
+  AND t3.nspname = ANY (current_schemas(false))
+ORDER BY c.conname
+
+  [1m[36m (2.9ms)[0m  [1mSELECT t2.oid::regclass::text AS to_table, a1.attname AS column, a2.attname AS primary_key, c.conname AS name, c.confupdtype AS on_update, c.confdeltype AS on_delete
+FROM pg_constraint c
+JOIN pg_class t1 ON c.conrelid = t1.oid
+JOIN pg_class t2 ON c.confrelid = t2.oid
+JOIN pg_attribute a1 ON a1.attnum = c.conkey[1] AND a1.attrelid = t1.oid
+JOIN pg_attribute a2 ON a2.attnum = c.confkey[1] AND a2.attrelid = t2.oid
+JOIN pg_namespace t3 ON c.connamespace = t3.oid
+WHERE c.contype = 'f'
+  AND t1.relname = 'flags'
+  AND t3.nspname = ANY (current_schemas(false))
+ORDER BY c.conname
+[0m
+  [1m[35m (2.3ms)[0m  SELECT t2.oid::regclass::text AS to_table, a1.attname AS column, a2.attname AS primary_key, c.conname AS name, c.confupdtype AS on_update, c.confdeltype AS on_delete
+FROM pg_constraint c
+JOIN pg_class t1 ON c.conrelid = t1.oid
+JOIN pg_class t2 ON c.confrelid = t2.oid
+JOIN pg_attribute a1 ON a1.attnum = c.conkey[1] AND a1.attrelid = t1.oid
+JOIN pg_attribute a2 ON a2.attnum = c.confkey[1] AND a2.attrelid = t2.oid
+JOIN pg_namespace t3 ON c.connamespace = t3.oid
+WHERE c.contype = 'f'
+  AND t1.relname = 'posts'
+  AND t3.nspname = ANY (current_schemas(false))
+ORDER BY c.conname
+
+  [1m[36m (2.1ms)[0m  [1mSELECT t2.oid::regclass::text AS to_table, a1.attname AS column, a2.attname AS primary_key, c.conname AS name, c.confupdtype AS on_update, c.confdeltype AS on_delete
+FROM pg_constraint c
+JOIN pg_class t1 ON c.conrelid = t1.oid
+JOIN pg_class t2 ON c.confrelid = t2.oid
+JOIN pg_attribute a1 ON a1.attnum = c.conkey[1] AND a1.attrelid = t1.oid
+JOIN pg_attribute a2 ON a2.attnum = c.confkey[1] AND a2.attrelid = t2.oid
+JOIN pg_namespace t3 ON c.connamespace = t3.oid
+WHERE c.contype = 'f'
+  AND t1.relname = 'schools'
+  AND t3.nspname = ANY (current_schemas(false))
+ORDER BY c.conname
+[0m
+  [1m[35m (2.0ms)[0m  SELECT t2.oid::regclass::text AS to_table, a1.attname AS column, a2.attname AS primary_key, c.conname AS name, c.confupdtype AS on_update, c.confdeltype AS on_delete
+FROM pg_constraint c
+JOIN pg_class t1 ON c.conrelid = t1.oid
+JOIN pg_class t2 ON c.confrelid = t2.oid
+JOIN pg_attribute a1 ON a1.attnum = c.conkey[1] AND a1.attrelid = t1.oid
+JOIN pg_attribute a2 ON a2.attnum = c.confkey[1] AND a2.attrelid = t2.oid
+JOIN pg_namespace t3 ON c.connamespace = t3.oid
+WHERE c.contype = 'f'
+  AND t1.relname = 'service_providers'
+  AND t3.nspname = ANY (current_schemas(false))
+ORDER BY c.conname
+
+  [1m[36m (2.0ms)[0m  [1mSELECT t2.oid::regclass::text AS to_table, a1.attname AS column, a2.attname AS primary_key, c.conname AS name, c.confupdtype AS on_update, c.confdeltype AS on_delete
+FROM pg_constraint c
+JOIN pg_class t1 ON c.conrelid = t1.oid
+JOIN pg_class t2 ON c.confrelid = t2.oid
+JOIN pg_attribute a1 ON a1.attnum = c.conkey[1] AND a1.attrelid = t1.oid
+JOIN pg_attribute a2 ON a2.attnum = c.confkey[1] AND a2.attrelid = t2.oid
+JOIN pg_namespace t3 ON c.connamespace = t3.oid
+WHERE c.contype = 'f'
+  AND t1.relname = 'users'
+  AND t3.nspname = ANY (current_schemas(false))
+ORDER BY c.conname
+[0m
+
+
+Started GET "/" for ::1 at 2016-06-05 13:49:13 -0700
+  [1m[36mActiveRecord::SchemaMigration Load (0.6ms)[0m  [1mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+Processing by Rails::WelcomeController#index as HTML
+  Rendered /Users/apprentice/.rbenv/versions/2.2.5/lib/ruby/gems/2.2.0/gems/railties-4.2.5/lib/rails/templates/rails/welcome/index.html.erb (1.9ms)
+Completed 200 OK in 13ms (Views: 12.8ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/centers" for ::1 at 2016-06-05 13:49:22 -0700
+Processing by CentersController#index as HTML
+Completed 500 Internal Server Error in 2ms (ActiveRecord: 0.0ms)
+
+NameError (uninitialized constant CentersController::Center):
+  app/controllers/centers_controller.rb:3:in `index'
+
+
+  Rendered /Users/apprentice/.rbenv/versions/2.2.5/lib/ruby/gems/2.2.0/gems/actionpack-4.2.5/lib/action_dispatch/middleware/templates/rescues/_source.erb (5.1ms)
+  Rendered /Users/apprentice/.rbenv/versions/2.2.5/lib/ruby/gems/2.2.0/gems/actionpack-4.2.5/lib/action_dispatch/middleware/templates/rescues/_trace.html.erb (3.1ms)
+  Rendered /Users/apprentice/.rbenv/versions/2.2.5/lib/ruby/gems/2.2.0/gems/actionpack-4.2.5/lib/action_dispatch/middleware/templates/rescues/_request_and_response.html.erb (1.2ms)
+  Rendered /Users/apprentice/.rbenv/versions/2.2.5/lib/ruby/gems/2.2.0/gems/actionpack-4.2.5/lib/action_dispatch/middleware/templates/rescues/diagnostics.html.erb within rescues/layout (87.5ms)
+  Rendered /Users/apprentice/.rbenv/versions/2.2.5/lib/ruby/gems/2.2.0/gems/web-console-2.3.0/lib/web_console/templates/_markup.html.erb (0.5ms)
+  Rendered /Users/apprentice/.rbenv/versions/2.2.5/lib/ruby/gems/2.2.0/gems/web-console-2.3.0/lib/web_console/templates/_inner_console_markup.html.erb within layouts/inlined_string (0.5ms)
+  Rendered /Users/apprentice/.rbenv/versions/2.2.5/lib/ruby/gems/2.2.0/gems/web-console-2.3.0/lib/web_console/templates/_prompt_box_markup.html.erb within layouts/inlined_string (0.4ms)
+  Rendered /Users/apprentice/.rbenv/versions/2.2.5/lib/ruby/gems/2.2.0/gems/web-console-2.3.0/lib/web_console/templates/style.css.erb within layouts/inlined_string (0.6ms)
+  Rendered /Users/apprentice/.rbenv/versions/2.2.5/lib/ruby/gems/2.2.0/gems/web-console-2.3.0/lib/web_console/templates/console.js.erb within layouts/javascript (82.8ms)
+  Rendered /Users/apprentice/.rbenv/versions/2.2.5/lib/ruby/gems/2.2.0/gems/web-console-2.3.0/lib/web_console/templates/main.js.erb within layouts/javascript (0.4ms)
+  Rendered /Users/apprentice/.rbenv/versions/2.2.5/lib/ruby/gems/2.2.0/gems/web-console-2.3.0/lib/web_console/templates/error_page.js.erb within layouts/javascript (0.5ms)
+  Rendered /Users/apprentice/.rbenv/versions/2.2.5/lib/ruby/gems/2.2.0/gems/web-console-2.3.0/lib/web_console/templates/index.html.erb (185.3ms)
+  [1m[36m (3.9ms)[0m  [1mCREATE TABLE "schema_migrations" ("version" character varying NOT NULL) [0m
+  [1m[35m (1.5ms)[0m  CREATE UNIQUE INDEX  "unique_schema_migrations" ON "schema_migrations"  ("version")
+  [1m[36mActiveRecord::SchemaMigration Load (0.5ms)[0m  [1mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+Migrating to CreateServiceProviders (20160603014136)
+  [1m[35m (0.2ms)[0m  BEGIN
+  [1m[36m (3.9ms)[0m  [1mCREATE TABLE "service_providers" ("id" serial primary key, "name" character varying NOT NULL, "address" character varying, "zip" character varying, "lat" decimal, "lng" decimal, "place_id" character varying, "telephone" character varying, "tty" character varying, "website" character varying, "services_offered" character varying, "populations_served" character varying, "created_at" timestamp NOT NULL, "updated_at" timestamp NOT NULL) [0m
+  [1m[35mSQL (0.4ms)[0m  INSERT INTO "schema_migrations" ("version") VALUES ($1)  [["version", "20160603014136"]]
+  [1m[36m (0.7ms)[0m  [1mCOMMIT[0m
+Migrating to CreateUsers (20160605173944)
+  [1m[35m (0.3ms)[0m  BEGIN
+  [1m[36m (3.1ms)[0m  [1mCREATE TABLE "users" ("id" serial primary key, "username" character varying NOT NULL, "email" character varying, "password_digest" character varying NOT NULL, "created_at" timestamp NOT NULL, "updated_at" timestamp NOT NULL) [0m
+  [1m[35mSQL (0.3ms)[0m  INSERT INTO "schema_migrations" ("version") VALUES ($1)  [["version", "20160605173944"]]
+  [1m[36m (0.7ms)[0m  [1mCOMMIT[0m
+Migrating to CreateSchools (20160605174245)
+  [1m[35m (0.3ms)[0m  BEGIN
+  [1m[36m (4.0ms)[0m  [1mCREATE TABLE "schools" ("id" serial primary key, "name" character varying NOT NULL, "address" character varying, "lat" decimal, "lng" decimal, "created_at" timestamp NOT NULL, "updated_at" timestamp NOT NULL) [0m
+  [1m[35mSQL (0.3ms)[0m  INSERT INTO "schema_migrations" ("version") VALUES ($1)  [["version", "20160605174245"]]
+  [1m[36m (0.7ms)[0m  [1mCOMMIT[0m
+Migrating to CreatePosts (20160605174412)
+  [1m[35m (0.3ms)[0m  BEGIN
+  [1m[36m (3.0ms)[0m  [1mCREATE TABLE "posts" ("id" serial primary key, "title" character varying, "body" text, "user_id" integer, "school_id" integer, "created_at" timestamp NOT NULL, "updated_at" timestamp NOT NULL) [0m
+  [1m[35m (1.4ms)[0m  CREATE  INDEX  "index_posts_on_user_id" ON "posts"  ("user_id")
+  [1m[36m (1.0ms)[0m  [1mCREATE  INDEX  "index_posts_on_school_id" ON "posts"  ("school_id")[0m
+  [1m[35m (1.9ms)[0m  ALTER TABLE "posts" ADD CONSTRAINT "fk_rails_5b5ddfd518"
+FOREIGN KEY ("user_id")
+  REFERENCES "users" ("id")
+
+  [1m[36m (1.4ms)[0m  [1mALTER TABLE "posts" ADD CONSTRAINT "fk_rails_c6f4066a54"
+FOREIGN KEY ("school_id")
+  REFERENCES "schools" ("id")
+[0m
+  [1m[35mSQL (0.3ms)[0m  INSERT INTO "schema_migrations" ("version") VALUES ($1)  [["version", "20160605174412"]]
+  [1m[36m (0.7ms)[0m  [1mCOMMIT[0m
+Migrating to CreateComments (20160605174457)
+  [1m[35m (0.3ms)[0m  BEGIN
+  [1m[36m (3.9ms)[0m  [1mCREATE TABLE "comments" ("id" serial primary key, "body" character varying, "user_id" integer, "post_id" integer, "created_at" timestamp NOT NULL, "updated_at" timestamp NOT NULL) [0m
+  [1m[35m (1.3ms)[0m  CREATE  INDEX  "index_comments_on_user_id" ON "comments"  ("user_id")
+  [1m[36m (1.0ms)[0m  [1mCREATE  INDEX  "index_comments_on_post_id" ON "comments"  ("post_id")[0m
+  [1m[35m (1.7ms)[0m  ALTER TABLE "comments" ADD CONSTRAINT "fk_rails_03de2dc08c"
+FOREIGN KEY ("user_id")
+  REFERENCES "users" ("id")
+
+  [1m[36m (1.5ms)[0m  [1mALTER TABLE "comments" ADD CONSTRAINT "fk_rails_2fd19c0db7"
+FOREIGN KEY ("post_id")
+  REFERENCES "posts" ("id")
+[0m
+  [1m[35mSQL (0.3ms)[0m  INSERT INTO "schema_migrations" ("version") VALUES ($1)  [["version", "20160605174457"]]
+  [1m[36m (0.7ms)[0m  [1mCOMMIT[0m
+Migrating to CreateFlags (20160605183455)
+  [1m[35m (0.4ms)[0m  BEGIN
+  [1m[36m (3.8ms)[0m  [1mCREATE TABLE "flags" ("id" serial primary key, "user_id" integer, "flaggable_id" integer, "flaggable_type" character varying, "created_at" timestamp NOT NULL, "updated_at" timestamp NOT NULL) [0m
+  [1m[35m (1.1ms)[0m  CREATE  INDEX  "index_flags_on_user_id" ON "flags"  ("user_id")
+  [1m[36m (1.1ms)[0m  [1mCREATE  INDEX  "index_flags_on_flaggable_type_and_flaggable_id" ON "flags"  ("flaggable_type", "flaggable_id")[0m
+  [1m[35m (1.1ms)[0m  ALTER TABLE "flags" ADD CONSTRAINT "fk_rails_d7842de637"
+FOREIGN KEY ("user_id")
+  REFERENCES "users" ("id")
+
+  [1m[36mSQL (0.2ms)[0m  [1mINSERT INTO "schema_migrations" ("version") VALUES ($1)[0m  [["version", "20160605183455"]]
+  [1m[35m (1.2ms)[0m  COMMIT
+  [1m[36mActiveRecord::SchemaMigration Load (0.2ms)[0m  [1mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+  [1m[35m (3.3ms)[0m  SELECT t2.oid::regclass::text AS to_table, a1.attname AS column, a2.attname AS primary_key, c.conname AS name, c.confupdtype AS on_update, c.confdeltype AS on_delete
+FROM pg_constraint c
+JOIN pg_class t1 ON c.conrelid = t1.oid
+JOIN pg_class t2 ON c.confrelid = t2.oid
+JOIN pg_attribute a1 ON a1.attnum = c.conkey[1] AND a1.attrelid = t1.oid
+JOIN pg_attribute a2 ON a2.attnum = c.confkey[1] AND a2.attrelid = t2.oid
+JOIN pg_namespace t3 ON c.connamespace = t3.oid
+WHERE c.contype = 'f'
+  AND t1.relname = 'comments'
+  AND t3.nspname = ANY (current_schemas(false))
+ORDER BY c.conname
+
+  [1m[36m (2.1ms)[0m  [1mSELECT t2.oid::regclass::text AS to_table, a1.attname AS column, a2.attname AS primary_key, c.conname AS name, c.confupdtype AS on_update, c.confdeltype AS on_delete
+FROM pg_constraint c
+JOIN pg_class t1 ON c.conrelid = t1.oid
+JOIN pg_class t2 ON c.confrelid = t2.oid
+JOIN pg_attribute a1 ON a1.attnum = c.conkey[1] AND a1.attrelid = t1.oid
+JOIN pg_attribute a2 ON a2.attnum = c.confkey[1] AND a2.attrelid = t2.oid
+JOIN pg_namespace t3 ON c.connamespace = t3.oid
+WHERE c.contype = 'f'
+  AND t1.relname = 'flags'
+  AND t3.nspname = ANY (current_schemas(false))
+ORDER BY c.conname
+[0m
+  [1m[35m (2.0ms)[0m  SELECT t2.oid::regclass::text AS to_table, a1.attname AS column, a2.attname AS primary_key, c.conname AS name, c.confupdtype AS on_update, c.confdeltype AS on_delete
+FROM pg_constraint c
+JOIN pg_class t1 ON c.conrelid = t1.oid
+JOIN pg_class t2 ON c.confrelid = t2.oid
+JOIN pg_attribute a1 ON a1.attnum = c.conkey[1] AND a1.attrelid = t1.oid
+JOIN pg_attribute a2 ON a2.attnum = c.confkey[1] AND a2.attrelid = t2.oid
+JOIN pg_namespace t3 ON c.connamespace = t3.oid
+WHERE c.contype = 'f'
+  AND t1.relname = 'posts'
+  AND t3.nspname = ANY (current_schemas(false))
+ORDER BY c.conname
+
+  [1m[36m (2.0ms)[0m  [1mSELECT t2.oid::regclass::text AS to_table, a1.attname AS column, a2.attname AS primary_key, c.conname AS name, c.confupdtype AS on_update, c.confdeltype AS on_delete
+FROM pg_constraint c
+JOIN pg_class t1 ON c.conrelid = t1.oid
+JOIN pg_class t2 ON c.confrelid = t2.oid
+JOIN pg_attribute a1 ON a1.attnum = c.conkey[1] AND a1.attrelid = t1.oid
+JOIN pg_attribute a2 ON a2.attnum = c.confkey[1] AND a2.attrelid = t2.oid
+JOIN pg_namespace t3 ON c.connamespace = t3.oid
+WHERE c.contype = 'f'
+  AND t1.relname = 'schools'
+  AND t3.nspname = ANY (current_schemas(false))
+ORDER BY c.conname
+[0m
+  [1m[35m (2.0ms)[0m  SELECT t2.oid::regclass::text AS to_table, a1.attname AS column, a2.attname AS primary_key, c.conname AS name, c.confupdtype AS on_update, c.confdeltype AS on_delete
+FROM pg_constraint c
+JOIN pg_class t1 ON c.conrelid = t1.oid
+JOIN pg_class t2 ON c.confrelid = t2.oid
+JOIN pg_attribute a1 ON a1.attnum = c.conkey[1] AND a1.attrelid = t1.oid
+JOIN pg_attribute a2 ON a2.attnum = c.confkey[1] AND a2.attrelid = t2.oid
+JOIN pg_namespace t3 ON c.connamespace = t3.oid
+WHERE c.contype = 'f'
+  AND t1.relname = 'service_providers'
+  AND t3.nspname = ANY (current_schemas(false))
+ORDER BY c.conname
+
+  [1m[36m (3.8ms)[0m  [1mSELECT t2.oid::regclass::text AS to_table, a1.attname AS column, a2.attname AS primary_key, c.conname AS name, c.confupdtype AS on_update, c.confdeltype AS on_delete
+FROM pg_constraint c
+JOIN pg_class t1 ON c.conrelid = t1.oid
+JOIN pg_class t2 ON c.confrelid = t2.oid
+JOIN pg_attribute a1 ON a1.attnum = c.conkey[1] AND a1.attrelid = t1.oid
+JOIN pg_attribute a2 ON a2.attnum = c.confkey[1] AND a2.attrelid = t2.oid
+JOIN pg_namespace t3 ON c.connamespace = t3.oid
+WHERE c.contype = 'f'
+  AND t1.relname = 'users'
+  AND t3.nspname = ANY (current_schemas(false))
+ORDER BY c.conname
+[0m
+
+
+Started GET "/centers" for ::1 at 2016-06-05 13:52:48 -0700
+  [1m[36mActiveRecord::SchemaMigration Load (0.5ms)[0m  [1mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+
+ActiveRecord::PendingMigrationError (
+
+Migrations are pending. To resolve this issue, run:
+
+	bin/rake db:migrate RAILS_ENV=development
+
+):
+  activerecord (4.2.5) lib/active_record/migration.rb:392:in `check_pending!'
+  activerecord (4.2.5) lib/active_record/migration.rb:373:in `call'
+  actionpack (4.2.5) lib/action_dispatch/middleware/callbacks.rb:29:in `block in call'
+  activesupport (4.2.5) lib/active_support/callbacks.rb:88:in `__run_callbacks__'
+  activesupport (4.2.5) lib/active_support/callbacks.rb:778:in `_run_call_callbacks'
+  activesupport (4.2.5) lib/active_support/callbacks.rb:81:in `run_callbacks'
+  actionpack (4.2.5) lib/action_dispatch/middleware/callbacks.rb:27:in `call'
+  actionpack (4.2.5) lib/action_dispatch/middleware/reloader.rb:73:in `call'
+  actionpack (4.2.5) lib/action_dispatch/middleware/remote_ip.rb:78:in `call'
+  actionpack (4.2.5) lib/action_dispatch/middleware/debug_exceptions.rb:17:in `call'
+  web-console (2.3.0) lib/web_console/middleware.rb:28:in `block in call'
+  web-console (2.3.0) lib/web_console/middleware.rb:18:in `catch'
+  web-console (2.3.0) lib/web_console/middleware.rb:18:in `call'
+  actionpack (4.2.5) lib/action_dispatch/middleware/show_exceptions.rb:30:in `call'
+  railties (4.2.5) lib/rails/rack/logger.rb:38:in `call_app'
+  railties (4.2.5) lib/rails/rack/logger.rb:20:in `block in call'
+  activesupport (4.2.5) lib/active_support/tagged_logging.rb:68:in `block in tagged'
+  activesupport (4.2.5) lib/active_support/tagged_logging.rb:26:in `tagged'
+  activesupport (4.2.5) lib/active_support/tagged_logging.rb:68:in `tagged'
+  railties (4.2.5) lib/rails/rack/logger.rb:20:in `call'
+  actionpack (4.2.5) lib/action_dispatch/middleware/request_id.rb:21:in `call'
+  rack (1.6.4) lib/rack/runtime.rb:18:in `call'
+  activesupport (4.2.5) lib/active_support/cache/strategy/local_cache_middleware.rb:28:in `call'
+  rack-cors (0.4.0) lib/rack/cors.rb:80:in `call'
+  rack (1.6.4) lib/rack/lock.rb:17:in `call'
+  actionpack (4.2.5) lib/action_dispatch/middleware/static.rb:116:in `call'
+  railties (4.2.5) lib/rails/engine.rb:518:in `call'
+  railties (4.2.5) lib/rails/application.rb:165:in `call'
+  rack (1.6.4) lib/rack/lock.rb:17:in `call'
+  rack (1.6.4) lib/rack/content_length.rb:15:in `call'
+  rack (1.6.4) lib/rack/handler/webrick.rb:88:in `service'
+  /Users/apprentice/.rbenv/versions/2.2.5/lib/ruby/2.2.0/webrick/httpserver.rb:138:in `service'
+  /Users/apprentice/.rbenv/versions/2.2.5/lib/ruby/2.2.0/webrick/httpserver.rb:94:in `run'
+  /Users/apprentice/.rbenv/versions/2.2.5/lib/ruby/2.2.0/webrick/server.rb:294:in `block in start_thread'
+
+
+  Rendered /Users/apprentice/.rbenv/versions/2.2.5/lib/ruby/gems/2.2.0/gems/actionpack-4.2.5/lib/action_dispatch/middleware/templates/rescues/_source.erb (3.0ms)
+  Rendered /Users/apprentice/.rbenv/versions/2.2.5/lib/ruby/gems/2.2.0/gems/actionpack-4.2.5/lib/action_dispatch/middleware/templates/rescues/_trace.html.erb (1.7ms)
+  Rendered /Users/apprentice/.rbenv/versions/2.2.5/lib/ruby/gems/2.2.0/gems/actionpack-4.2.5/lib/action_dispatch/middleware/templates/rescues/_request_and_response.html.erb (1.1ms)
+  Rendered /Users/apprentice/.rbenv/versions/2.2.5/lib/ruby/gems/2.2.0/gems/actionpack-4.2.5/lib/action_dispatch/middleware/templates/rescues/diagnostics.html.erb within rescues/layout (82.5ms)
+  Rendered /Users/apprentice/.rbenv/versions/2.2.5/lib/ruby/gems/2.2.0/gems/web-console-2.3.0/lib/web_console/templates/_markup.html.erb (0.5ms)
+  Rendered /Users/apprentice/.rbenv/versions/2.2.5/lib/ruby/gems/2.2.0/gems/web-console-2.3.0/lib/web_console/templates/_inner_console_markup.html.erb within layouts/inlined_string (0.4ms)
+  Rendered /Users/apprentice/.rbenv/versions/2.2.5/lib/ruby/gems/2.2.0/gems/web-console-2.3.0/lib/web_console/templates/_prompt_box_markup.html.erb within layouts/inlined_string (0.4ms)
+  Rendered /Users/apprentice/.rbenv/versions/2.2.5/lib/ruby/gems/2.2.0/gems/web-console-2.3.0/lib/web_console/templates/style.css.erb within layouts/inlined_string (0.4ms)
+  Rendered /Users/apprentice/.rbenv/versions/2.2.5/lib/ruby/gems/2.2.0/gems/web-console-2.3.0/lib/web_console/templates/console.js.erb within layouts/javascript (89.1ms)
+  Rendered /Users/apprentice/.rbenv/versions/2.2.5/lib/ruby/gems/2.2.0/gems/web-console-2.3.0/lib/web_console/templates/main.js.erb within layouts/javascript (0.4ms)
+  Rendered /Users/apprentice/.rbenv/versions/2.2.5/lib/ruby/gems/2.2.0/gems/web-console-2.3.0/lib/web_console/templates/error_page.js.erb within layouts/javascript (0.5ms)
+  Rendered /Users/apprentice/.rbenv/versions/2.2.5/lib/ruby/gems/2.2.0/gems/web-console-2.3.0/lib/web_console/templates/index.html.erb (186.6ms)
+  [1m[36mActiveRecord::SchemaMigration Load (0.8ms)[0m  [1mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+Migrating to CreateUsers (20160605173944)
+  [1m[35m (0.5ms)[0m  BEGIN
+  [1m[36m (5.8ms)[0m  [1mCREATE TABLE "users" ("id" serial primary key, "username" character varying NOT NULL, "email" character varying, "password_digest" character varying NOT NULL, "created_at" timestamp NOT NULL, "updated_at" timestamp NOT NULL) [0m
+  [1m[35mSQL (0.4ms)[0m  INSERT INTO "schema_migrations" ("version") VALUES ($1)  [["version", "20160605173944"]]
+  [1m[36m (1.0ms)[0m  [1mCOMMIT[0m
+Migrating to CreateSchools (20160605174245)
+  [1m[35m (0.4ms)[0m  BEGIN
+  [1m[36m (3.2ms)[0m  [1mCREATE TABLE "schools" ("id" serial primary key, "name" character varying NOT NULL, "address" character varying, "lat" decimal, "lng" decimal, "created_at" timestamp NOT NULL, "updated_at" timestamp NOT NULL) [0m
+  [1m[35mSQL (0.2ms)[0m  INSERT INTO "schema_migrations" ("version") VALUES ($1)  [["version", "20160605174245"]]
+  [1m[36m (0.6ms)[0m  [1mCOMMIT[0m
+Migrating to CreatePosts (20160605174412)
+  [1m[35m (0.3ms)[0m  BEGIN
+  [1m[36m (3.4ms)[0m  [1mCREATE TABLE "posts" ("id" serial primary key, "title" character varying, "body" text, "user_id" integer, "school_id" integer, "created_at" timestamp NOT NULL, "updated_at" timestamp NOT NULL) [0m
+  [1m[35m (0.9ms)[0m  CREATE  INDEX  "index_posts_on_user_id" ON "posts"  ("user_id")
+  [1m[36m (1.1ms)[0m  [1mCREATE  INDEX  "index_posts_on_school_id" ON "posts"  ("school_id")[0m
+  [1m[35m (1.8ms)[0m  ALTER TABLE "posts" ADD CONSTRAINT "fk_rails_5b5ddfd518"
+FOREIGN KEY ("user_id")
+  REFERENCES "users" ("id")
+
+  [1m[36m (1.3ms)[0m  [1mALTER TABLE "posts" ADD CONSTRAINT "fk_rails_c6f4066a54"
+FOREIGN KEY ("school_id")
+  REFERENCES "schools" ("id")
+[0m
+  [1m[35mSQL (0.3ms)[0m  INSERT INTO "schema_migrations" ("version") VALUES ($1)  [["version", "20160605174412"]]
+  [1m[36m (0.7ms)[0m  [1mCOMMIT[0m
+Migrating to CreateComments (20160605174457)
+  [1m[35m (0.3ms)[0m  BEGIN
+  [1m[36m (3.0ms)[0m  [1mCREATE TABLE "comments" ("id" serial primary key, "body" character varying, "user_id" integer, "post_id" integer, "created_at" timestamp NOT NULL, "updated_at" timestamp NOT NULL) [0m
+  [1m[35m (1.5ms)[0m  CREATE  INDEX  "index_comments_on_user_id" ON "comments"  ("user_id")
+  [1m[36m (0.9ms)[0m  [1mCREATE  INDEX  "index_comments_on_post_id" ON "comments"  ("post_id")[0m
+  [1m[35m (1.5ms)[0m  ALTER TABLE "comments" ADD CONSTRAINT "fk_rails_03de2dc08c"
+FOREIGN KEY ("user_id")
+  REFERENCES "users" ("id")
+
+  [1m[36m (1.9ms)[0m  [1mALTER TABLE "comments" ADD CONSTRAINT "fk_rails_2fd19c0db7"
+FOREIGN KEY ("post_id")
+  REFERENCES "posts" ("id")
+[0m
+  [1m[35mSQL (0.3ms)[0m  INSERT INTO "schema_migrations" ("version") VALUES ($1)  [["version", "20160605174457"]]
+  [1m[36m (0.7ms)[0m  [1mCOMMIT[0m
+Migrating to CreateFlags (20160605183455)
+  [1m[35m (0.3ms)[0m  BEGIN
+  [1m[36m (3.1ms)[0m  [1mCREATE TABLE "flags" ("id" serial primary key, "user_id" integer, "flaggable_id" integer, "flaggable_type" character varying, "created_at" timestamp NOT NULL, "updated_at" timestamp NOT NULL) [0m
+  [1m[35m (0.9ms)[0m  CREATE  INDEX  "index_flags_on_user_id" ON "flags"  ("user_id")
+  [1m[36m (1.2ms)[0m  [1mCREATE  INDEX  "index_flags_on_flaggable_type_and_flaggable_id" ON "flags"  ("flaggable_type", "flaggable_id")[0m
+  [1m[35m (1.1ms)[0m  ALTER TABLE "flags" ADD CONSTRAINT "fk_rails_d7842de637"
+FOREIGN KEY ("user_id")
+  REFERENCES "users" ("id")
+
+  [1m[36mSQL (0.2ms)[0m  [1mINSERT INTO "schema_migrations" ("version") VALUES ($1)[0m  [["version", "20160605183455"]]
+  [1m[35m (0.6ms)[0m  COMMIT
+  [1m[36mActiveRecord::SchemaMigration Load (0.4ms)[0m  [1mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+  [1m[35m (3.0ms)[0m  SELECT t2.oid::regclass::text AS to_table, a1.attname AS column, a2.attname AS primary_key, c.conname AS name, c.confupdtype AS on_update, c.confdeltype AS on_delete
+FROM pg_constraint c
+JOIN pg_class t1 ON c.conrelid = t1.oid
+JOIN pg_class t2 ON c.confrelid = t2.oid
+JOIN pg_attribute a1 ON a1.attnum = c.conkey[1] AND a1.attrelid = t1.oid
+JOIN pg_attribute a2 ON a2.attnum = c.confkey[1] AND a2.attrelid = t2.oid
+JOIN pg_namespace t3 ON c.connamespace = t3.oid
+WHERE c.contype = 'f'
+  AND t1.relname = 'comments'
+  AND t3.nspname = ANY (current_schemas(false))
+ORDER BY c.conname
+
+  [1m[36m (2.9ms)[0m  [1mSELECT t2.oid::regclass::text AS to_table, a1.attname AS column, a2.attname AS primary_key, c.conname AS name, c.confupdtype AS on_update, c.confdeltype AS on_delete
+FROM pg_constraint c
+JOIN pg_class t1 ON c.conrelid = t1.oid
+JOIN pg_class t2 ON c.confrelid = t2.oid
+JOIN pg_attribute a1 ON a1.attnum = c.conkey[1] AND a1.attrelid = t1.oid
+JOIN pg_attribute a2 ON a2.attnum = c.confkey[1] AND a2.attrelid = t2.oid
+JOIN pg_namespace t3 ON c.connamespace = t3.oid
+WHERE c.contype = 'f'
+  AND t1.relname = 'flags'
+  AND t3.nspname = ANY (current_schemas(false))
+ORDER BY c.conname
+[0m
+  [1m[35m (2.1ms)[0m  SELECT t2.oid::regclass::text AS to_table, a1.attname AS column, a2.attname AS primary_key, c.conname AS name, c.confupdtype AS on_update, c.confdeltype AS on_delete
+FROM pg_constraint c
+JOIN pg_class t1 ON c.conrelid = t1.oid
+JOIN pg_class t2 ON c.confrelid = t2.oid
+JOIN pg_attribute a1 ON a1.attnum = c.conkey[1] AND a1.attrelid = t1.oid
+JOIN pg_attribute a2 ON a2.attnum = c.confkey[1] AND a2.attrelid = t2.oid
+JOIN pg_namespace t3 ON c.connamespace = t3.oid
+WHERE c.contype = 'f'
+  AND t1.relname = 'posts'
+  AND t3.nspname = ANY (current_schemas(false))
+ORDER BY c.conname
+
+  [1m[36m (2.0ms)[0m  [1mSELECT t2.oid::regclass::text AS to_table, a1.attname AS column, a2.attname AS primary_key, c.conname AS name, c.confupdtype AS on_update, c.confdeltype AS on_delete
+FROM pg_constraint c
+JOIN pg_class t1 ON c.conrelid = t1.oid
+JOIN pg_class t2 ON c.confrelid = t2.oid
+JOIN pg_attribute a1 ON a1.attnum = c.conkey[1] AND a1.attrelid = t1.oid
+JOIN pg_attribute a2 ON a2.attnum = c.confkey[1] AND a2.attrelid = t2.oid
+JOIN pg_namespace t3 ON c.connamespace = t3.oid
+WHERE c.contype = 'f'
+  AND t1.relname = 'schools'
+  AND t3.nspname = ANY (current_schemas(false))
+ORDER BY c.conname
+[0m
+  [1m[35m (2.3ms)[0m  SELECT t2.oid::regclass::text AS to_table, a1.attname AS column, a2.attname AS primary_key, c.conname AS name, c.confupdtype AS on_update, c.confdeltype AS on_delete
+FROM pg_constraint c
+JOIN pg_class t1 ON c.conrelid = t1.oid
+JOIN pg_class t2 ON c.confrelid = t2.oid
+JOIN pg_attribute a1 ON a1.attnum = c.conkey[1] AND a1.attrelid = t1.oid
+JOIN pg_attribute a2 ON a2.attnum = c.confkey[1] AND a2.attrelid = t2.oid
+JOIN pg_namespace t3 ON c.connamespace = t3.oid
+WHERE c.contype = 'f'
+  AND t1.relname = 'service_providers'
+  AND t3.nspname = ANY (current_schemas(false))
+ORDER BY c.conname
+
+  [1m[36m (2.2ms)[0m  [1mSELECT t2.oid::regclass::text AS to_table, a1.attname AS column, a2.attname AS primary_key, c.conname AS name, c.confupdtype AS on_update, c.confdeltype AS on_delete
+FROM pg_constraint c
+JOIN pg_class t1 ON c.conrelid = t1.oid
+JOIN pg_class t2 ON c.confrelid = t2.oid
+JOIN pg_attribute a1 ON a1.attnum = c.conkey[1] AND a1.attrelid = t1.oid
+JOIN pg_attribute a2 ON a2.attnum = c.confkey[1] AND a2.attrelid = t2.oid
+JOIN pg_namespace t3 ON c.connamespace = t3.oid
+WHERE c.contype = 'f'
+  AND t1.relname = 'users'
+  AND t3.nspname = ANY (current_schemas(false))
+ORDER BY c.conname
+[0m
+  [1m[36mUser Load (1.0ms)[0m  [1mSELECT  "users".* FROM "users"  ORDER BY "users"."id" ASC LIMIT 1[0m
+  [1m[35mServiceProvider Load (1.1ms)[0m  SELECT  "service_providers".* FROM "service_providers"  ORDER BY "service_providers"."id" ASC LIMIT 1
+
+
+Started GET "/centers" for ::1 at 2016-06-05 13:54:48 -0700
+  [1m[36mActiveRecord::SchemaMigration Load (0.6ms)[0m  [1mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+Processing by CentersController#index as HTML
+Completed 500 Internal Server Error in 2ms (ActiveRecord: 0.0ms)
+
+NameError (uninitialized constant CentersController::Center):
+  app/controllers/centers_controller.rb:3:in `index'
+
+
+  Rendered /Users/apprentice/.rbenv/versions/2.2.5/lib/ruby/gems/2.2.0/gems/actionpack-4.2.5/lib/action_dispatch/middleware/templates/rescues/_source.erb (5.0ms)
+  Rendered /Users/apprentice/.rbenv/versions/2.2.5/lib/ruby/gems/2.2.0/gems/actionpack-4.2.5/lib/action_dispatch/middleware/templates/rescues/_trace.html.erb (2.2ms)
+  Rendered /Users/apprentice/.rbenv/versions/2.2.5/lib/ruby/gems/2.2.0/gems/actionpack-4.2.5/lib/action_dispatch/middleware/templates/rescues/_request_and_response.html.erb (1.4ms)
+  Rendered /Users/apprentice/.rbenv/versions/2.2.5/lib/ruby/gems/2.2.0/gems/actionpack-4.2.5/lib/action_dispatch/middleware/templates/rescues/diagnostics.html.erb within rescues/layout (92.8ms)
+  Rendered /Users/apprentice/.rbenv/versions/2.2.5/lib/ruby/gems/2.2.0/gems/web-console-2.3.0/lib/web_console/templates/_markup.html.erb (0.6ms)
+  Rendered /Users/apprentice/.rbenv/versions/2.2.5/lib/ruby/gems/2.2.0/gems/web-console-2.3.0/lib/web_console/templates/_inner_console_markup.html.erb within layouts/inlined_string (0.4ms)
+  Rendered /Users/apprentice/.rbenv/versions/2.2.5/lib/ruby/gems/2.2.0/gems/web-console-2.3.0/lib/web_console/templates/_prompt_box_markup.html.erb within layouts/inlined_string (0.4ms)
+  Rendered /Users/apprentice/.rbenv/versions/2.2.5/lib/ruby/gems/2.2.0/gems/web-console-2.3.0/lib/web_console/templates/style.css.erb within layouts/inlined_string (0.5ms)
+  Rendered /Users/apprentice/.rbenv/versions/2.2.5/lib/ruby/gems/2.2.0/gems/web-console-2.3.0/lib/web_console/templates/console.js.erb within layouts/javascript (80.5ms)
+  Rendered /Users/apprentice/.rbenv/versions/2.2.5/lib/ruby/gems/2.2.0/gems/web-console-2.3.0/lib/web_console/templates/main.js.erb within layouts/javascript (0.4ms)
+  Rendered /Users/apprentice/.rbenv/versions/2.2.5/lib/ruby/gems/2.2.0/gems/web-console-2.3.0/lib/web_console/templates/error_page.js.erb within layouts/javascript (0.5ms)
+  Rendered /Users/apprentice/.rbenv/versions/2.2.5/lib/ruby/gems/2.2.0/gems/web-console-2.3.0/lib/web_console/templates/index.html.erb (176.6ms)
+
+
+Started GET "/centers" for ::1 at 2016-06-05 13:55:14 -0700
+Processing by CentersController#index as HTML
+  [1m[35mServiceProvider Load (10.1ms)[0m  SELECT "service_providers".* FROM "service_providers"
+Completed 200 OK in 590ms (Views: 574.4ms | ActiveRecord: 13.6ms)
+
+
+Started GET "/centers.1" for ::1 at 2016-06-05 13:55:22 -0700
+Processing by CentersController#index as 
+  [1m[36mServiceProvider Load (7.4ms)[0m  [1mSELECT "service_providers".* FROM "service_providers"[0m
+Completed 200 OK in 514ms (Views: 506.9ms | ActiveRecord: 7.4ms)
+
+
+Started GET "/centers/1" for ::1 at 2016-06-05 13:55:25 -0700
+Processing by CentersController#show as HTML
+  Parameters: {"id"=>"1"}
+  [1m[35mServiceProvider Load (0.5ms)[0m  SELECT  "service_providers".* FROM "service_providers" WHERE "service_providers"."id" = $1 LIMIT 1  [["id", 1]]
+Completed 200 OK in 28ms (Views: 0.7ms | ActiveRecord: 0.8ms)
+
+
+Started GET "/centers/500" for ::1 at 2016-06-05 13:55:31 -0700
+Processing by CentersController#show as HTML
+  Parameters: {"id"=>"500"}
+  [1m[36mServiceProvider Load (0.5ms)[0m  [1mSELECT  "service_providers".* FROM "service_providers" WHERE "service_providers"."id" = $1 LIMIT 1[0m  [["id", 500]]
+Completed 200 OK in 2ms (Views: 0.6ms | ActiveRecord: 0.5ms)
+
+
+Started GET "/centers/geo/23.456/-84.32/5" for ::1 at 2016-06-05 13:56:46 -0700
+
+ActionController::RoutingError (No route matches [GET] "/centers/geo/23.456/-84.32/5"):
+  actionpack (4.2.5) lib/action_dispatch/middleware/debug_exceptions.rb:21:in `call'
+  web-console (2.3.0) lib/web_console/middleware.rb:28:in `block in call'
+  web-console (2.3.0) lib/web_console/middleware.rb:18:in `catch'
+  web-console (2.3.0) lib/web_console/middleware.rb:18:in `call'
+  actionpack (4.2.5) lib/action_dispatch/middleware/show_exceptions.rb:30:in `call'
+  railties (4.2.5) lib/rails/rack/logger.rb:38:in `call_app'
+  railties (4.2.5) lib/rails/rack/logger.rb:20:in `block in call'
+  activesupport (4.2.5) lib/active_support/tagged_logging.rb:68:in `block in tagged'
+  activesupport (4.2.5) lib/active_support/tagged_logging.rb:26:in `tagged'
+  activesupport (4.2.5) lib/active_support/tagged_logging.rb:68:in `tagged'
+  railties (4.2.5) lib/rails/rack/logger.rb:20:in `call'
+  actionpack (4.2.5) lib/action_dispatch/middleware/request_id.rb:21:in `call'
+  rack (1.6.4) lib/rack/runtime.rb:18:in `call'
+  activesupport (4.2.5) lib/active_support/cache/strategy/local_cache_middleware.rb:28:in `call'
+  rack-cors (0.4.0) lib/rack/cors.rb:80:in `call'
+  rack (1.6.4) lib/rack/lock.rb:17:in `call'
+  actionpack (4.2.5) lib/action_dispatch/middleware/static.rb:116:in `call'
+  railties (4.2.5) lib/rails/engine.rb:518:in `call'
+  railties (4.2.5) lib/rails/application.rb:165:in `call'
+  rack (1.6.4) lib/rack/lock.rb:17:in `call'
+  rack (1.6.4) lib/rack/content_length.rb:15:in `call'
+  rack (1.6.4) lib/rack/handler/webrick.rb:88:in `service'
+  /Users/apprentice/.rbenv/versions/2.2.5/lib/ruby/2.2.0/webrick/httpserver.rb:138:in `service'
+  /Users/apprentice/.rbenv/versions/2.2.5/lib/ruby/2.2.0/webrick/httpserver.rb:94:in `run'
+  /Users/apprentice/.rbenv/versions/2.2.5/lib/ruby/2.2.0/webrick/server.rb:294:in `block in start_thread'
+
+
+  Rendered /Users/apprentice/.rbenv/versions/2.2.5/lib/ruby/gems/2.2.0/gems/actionpack-4.2.5/lib/action_dispatch/middleware/templates/rescues/_trace.html.erb (1.5ms)
+  Rendered /Users/apprentice/.rbenv/versions/2.2.5/lib/ruby/gems/2.2.0/gems/actionpack-4.2.5/lib/action_dispatch/middleware/templates/routes/_route.html.erb (0.9ms)
+  Rendered /Users/apprentice/.rbenv/versions/2.2.5/lib/ruby/gems/2.2.0/gems/actionpack-4.2.5/lib/action_dispatch/middleware/templates/routes/_table.html.erb (22.6ms)
+  Rendered /Users/apprentice/.rbenv/versions/2.2.5/lib/ruby/gems/2.2.0/gems/actionpack-4.2.5/lib/action_dispatch/middleware/templates/rescues/_request_and_response.html.erb (1.0ms)
+  Rendered /Users/apprentice/.rbenv/versions/2.2.5/lib/ruby/gems/2.2.0/gems/actionpack-4.2.5/lib/action_dispatch/middleware/templates/rescues/routing_error.html.erb within rescues/layout (120.5ms)
+  Rendered /Users/apprentice/.rbenv/versions/2.2.5/lib/ruby/gems/2.2.0/gems/web-console-2.3.0/lib/web_console/templates/_markup.html.erb (0.4ms)
+  Rendered /Users/apprentice/.rbenv/versions/2.2.5/lib/ruby/gems/2.2.0/gems/web-console-2.3.0/lib/web_console/templates/_inner_console_markup.html.erb within layouts/inlined_string (0.4ms)
+  Rendered /Users/apprentice/.rbenv/versions/2.2.5/lib/ruby/gems/2.2.0/gems/web-console-2.3.0/lib/web_console/templates/_prompt_box_markup.html.erb within layouts/inlined_string (0.3ms)
+  Rendered /Users/apprentice/.rbenv/versions/2.2.5/lib/ruby/gems/2.2.0/gems/web-console-2.3.0/lib/web_console/templates/style.css.erb within layouts/inlined_string (0.4ms)
+  Rendered /Users/apprentice/.rbenv/versions/2.2.5/lib/ruby/gems/2.2.0/gems/web-console-2.3.0/lib/web_console/templates/console.js.erb within layouts/javascript (67.1ms)
+  Rendered /Users/apprentice/.rbenv/versions/2.2.5/lib/ruby/gems/2.2.0/gems/web-console-2.3.0/lib/web_console/templates/main.js.erb within layouts/javascript (0.3ms)
+  Rendered /Users/apprentice/.rbenv/versions/2.2.5/lib/ruby/gems/2.2.0/gems/web-console-2.3.0/lib/web_console/templates/error_page.js.erb within layouts/javascript (0.6ms)
+  Rendered /Users/apprentice/.rbenv/versions/2.2.5/lib/ruby/gems/2.2.0/gems/web-console-2.3.0/lib/web_console/templates/index.html.erb (150.3ms)
+
+
+Started GET "/centers/geo/1/1/5" for ::1 at 2016-06-05 14:00:53 -0700
+Processing by CentersController#location as HTML
+  Parameters: {"lat"=>"1", "lng"=>"1", "radius"=>"5"}
+Completed 200 OK in 0ms (ActiveRecord: 0.0ms)
+
+
+Started GET "/centers/geo/30/30/30" for ::1 at 2016-06-05 14:01:21 -0700
+Processing by CentersController#location as HTML
+  Parameters: {"lat"=>"30", "lng"=>"30", "radius"=>"30"}
+Completed 200 OK in 0ms (ActiveRecord: 0.0ms)
+
+
+Started GET "/centers/geo/30.0/30/30" for ::1 at 2016-06-05 14:01:29 -0700
+
+ActionController::RoutingError (No route matches [GET] "/centers/geo/30.0/30/30"):
+  actionpack (4.2.5) lib/action_dispatch/middleware/debug_exceptions.rb:21:in `call'
+  web-console (2.3.0) lib/web_console/middleware.rb:28:in `block in call'
+  web-console (2.3.0) lib/web_console/middleware.rb:18:in `catch'
+  web-console (2.3.0) lib/web_console/middleware.rb:18:in `call'
+  actionpack (4.2.5) lib/action_dispatch/middleware/show_exceptions.rb:30:in `call'
+  railties (4.2.5) lib/rails/rack/logger.rb:38:in `call_app'
+  railties (4.2.5) lib/rails/rack/logger.rb:20:in `block in call'
+  activesupport (4.2.5) lib/active_support/tagged_logging.rb:68:in `block in tagged'
+  activesupport (4.2.5) lib/active_support/tagged_logging.rb:26:in `tagged'
+  activesupport (4.2.5) lib/active_support/tagged_logging.rb:68:in `tagged'
+  railties (4.2.5) lib/rails/rack/logger.rb:20:in `call'
+  actionpack (4.2.5) lib/action_dispatch/middleware/request_id.rb:21:in `call'
+  rack (1.6.4) lib/rack/runtime.rb:18:in `call'
+  activesupport (4.2.5) lib/active_support/cache/strategy/local_cache_middleware.rb:28:in `call'
+  rack-cors (0.4.0) lib/rack/cors.rb:80:in `call'
+  rack (1.6.4) lib/rack/lock.rb:17:in `call'
+  actionpack (4.2.5) lib/action_dispatch/middleware/static.rb:116:in `call'
+  railties (4.2.5) lib/rails/engine.rb:518:in `call'
+  railties (4.2.5) lib/rails/application.rb:165:in `call'
+  rack (1.6.4) lib/rack/lock.rb:17:in `call'
+  rack (1.6.4) lib/rack/content_length.rb:15:in `call'
+  rack (1.6.4) lib/rack/handler/webrick.rb:88:in `service'
+  /Users/apprentice/.rbenv/versions/2.2.5/lib/ruby/2.2.0/webrick/httpserver.rb:138:in `service'
+  /Users/apprentice/.rbenv/versions/2.2.5/lib/ruby/2.2.0/webrick/httpserver.rb:94:in `run'
+  /Users/apprentice/.rbenv/versions/2.2.5/lib/ruby/2.2.0/webrick/server.rb:294:in `block in start_thread'
+
+
+  Rendered /Users/apprentice/.rbenv/versions/2.2.5/lib/ruby/gems/2.2.0/gems/actionpack-4.2.5/lib/action_dispatch/middleware/templates/rescues/_trace.html.erb (1.5ms)
+  Rendered /Users/apprentice/.rbenv/versions/2.2.5/lib/ruby/gems/2.2.0/gems/actionpack-4.2.5/lib/action_dispatch/middleware/templates/routes/_route.html.erb (0.9ms)
+  Rendered /Users/apprentice/.rbenv/versions/2.2.5/lib/ruby/gems/2.2.0/gems/actionpack-4.2.5/lib/action_dispatch/middleware/templates/routes/_table.html.erb (1.4ms)
+  Rendered /Users/apprentice/.rbenv/versions/2.2.5/lib/ruby/gems/2.2.0/gems/actionpack-4.2.5/lib/action_dispatch/middleware/templates/rescues/_request_and_response.html.erb (1.1ms)
+  Rendered /Users/apprentice/.rbenv/versions/2.2.5/lib/ruby/gems/2.2.0/gems/actionpack-4.2.5/lib/action_dispatch/middleware/templates/rescues/routing_error.html.erb within rescues/layout (108.3ms)
+  Rendered /Users/apprentice/.rbenv/versions/2.2.5/lib/ruby/gems/2.2.0/gems/web-console-2.3.0/lib/web_console/templates/_markup.html.erb (0.4ms)
+  Rendered /Users/apprentice/.rbenv/versions/2.2.5/lib/ruby/gems/2.2.0/gems/web-console-2.3.0/lib/web_console/templates/_inner_console_markup.html.erb within layouts/inlined_string (0.5ms)
+  Rendered /Users/apprentice/.rbenv/versions/2.2.5/lib/ruby/gems/2.2.0/gems/web-console-2.3.0/lib/web_console/templates/_prompt_box_markup.html.erb within layouts/inlined_string (0.4ms)
+  Rendered /Users/apprentice/.rbenv/versions/2.2.5/lib/ruby/gems/2.2.0/gems/web-console-2.3.0/lib/web_console/templates/style.css.erb within layouts/inlined_string (0.4ms)
+  Rendered /Users/apprentice/.rbenv/versions/2.2.5/lib/ruby/gems/2.2.0/gems/web-console-2.3.0/lib/web_console/templates/console.js.erb within layouts/javascript (72.6ms)
+  Rendered /Users/apprentice/.rbenv/versions/2.2.5/lib/ruby/gems/2.2.0/gems/web-console-2.3.0/lib/web_console/templates/main.js.erb within layouts/javascript (0.4ms)
+  Rendered /Users/apprentice/.rbenv/versions/2.2.5/lib/ruby/gems/2.2.0/gems/web-console-2.3.0/lib/web_console/templates/error_page.js.erb within layouts/javascript (0.5ms)
+  Rendered /Users/apprentice/.rbenv/versions/2.2.5/lib/ruby/gems/2.2.0/gems/web-console-2.3.0/lib/web_console/templates/index.html.erb (161.0ms)
+
+
+Started GET "/centers/geo/30/-30/30" for ::1 at 2016-06-05 14:01:40 -0700
+Processing by CentersController#location as HTML
+  Parameters: {"lat"=>"30", "lng"=>"-30", "radius"=>"30"}
+Completed 200 OK in 0ms (ActiveRecord: 0.0ms)
+
+
+Started GET "/centers/geo/30.0/-30/30" for ::1 at 2016-06-05 14:04:14 -0700
+Processing by CentersController#location as HTML
+  Parameters: {"lat"=>"30.0", "lng"=>"-30", "radius"=>"30"}
+Completed 200 OK in 0ms (ActiveRecord: 0.0ms)
+
+
+Started GET "/centers/geo/30.0/-30.22/30" for ::1 at 2016-06-05 14:04:44 -0700
+Processing by CentersController#location as HTML
+  Parameters: {"lat"=>"30.0", "lng"=>"-30.22", "radius"=>"30"}
+Completed 200 OK in 0ms (ActiveRecord: 0.0ms)
+
+
+Started GET "/centers/geo/30.0/-30.22/30" for ::1 at 2016-06-05 14:09:14 -0700
+Processing by CentersController#location as HTML
+  Parameters: {"lat"=>"30.0", "lng"=>"-30.22", "radius"=>"30"}
+  [1m[35m (1.2ms)[0m                    SELECT row_to_json(t)
+                  FROM (
+                    SELECT *,
+                           69 * DEGREES(ACOS(COS(RADIANS(latpoint))
+                              * COS(RADIANS(lat))
+                              * COS(RADIANS(longpoint)) - RADIANS(lng)
+                              + SIN(RADIANS(latpoint))
+                              * SIN(RADIANS(lat)))) AS distance_in_miles
+                    FROM service_providers
+                    JOIN (
+                      SELECT 30.0 AS latpoint,
+                              AS longpoint
+                    ) AS p ON 1=1
+                    ORDER BY distance_in_miles
+                    LIMIT 10;
+                  ) t
+
+Completed 500 Internal Server Error in 2ms (ActiveRecord: 1.2ms)
+
+ActiveRecord::StatementInvalid (PG::SyntaxError: ERROR:  syntax error at or near "AS"
+LINE 12:                               AS longpoint
+                                       ^
+:                   SELECT row_to_json(t)
+                  FROM (
+                    SELECT *,
+                           69 * DEGREES(ACOS(COS(RADIANS(latpoint))
+                              * COS(RADIANS(lat))
+                              * COS(RADIANS(longpoint)) - RADIANS(lng)
+                              + SIN(RADIANS(latpoint))
+                              * SIN(RADIANS(lat)))) AS distance_in_miles
+                    FROM service_providers
+                    JOIN (
+                      SELECT 30.0 AS latpoint,
+                              AS longpoint
+                    ) AS p ON 1=1
+                    ORDER BY distance_in_miles
+                    LIMIT 10;
+                  ) t
+):
+  app/controllers/centers_controller.rb:45:in `location'
+
+
+  Rendered /Users/apprentice/.rbenv/versions/2.2.5/lib/ruby/gems/2.2.0/gems/actionpack-4.2.5/lib/action_dispatch/middleware/templates/rescues/_source.erb (6.2ms)
+  Rendered /Users/apprentice/.rbenv/versions/2.2.5/lib/ruby/gems/2.2.0/gems/actionpack-4.2.5/lib/action_dispatch/middleware/templates/rescues/_trace.html.erb (3.0ms)
+  Rendered /Users/apprentice/.rbenv/versions/2.2.5/lib/ruby/gems/2.2.0/gems/actionpack-4.2.5/lib/action_dispatch/middleware/templates/rescues/_request_and_response.html.erb (1.3ms)
+  Rendered /Users/apprentice/.rbenv/versions/2.2.5/lib/ruby/gems/2.2.0/gems/actionpack-4.2.5/lib/action_dispatch/middleware/templates/rescues/diagnostics.html.erb within rescues/layout (84.7ms)
+  Rendered /Users/apprentice/.rbenv/versions/2.2.5/lib/ruby/gems/2.2.0/gems/web-console-2.3.0/lib/web_console/templates/_markup.html.erb (0.5ms)
+  Rendered /Users/apprentice/.rbenv/versions/2.2.5/lib/ruby/gems/2.2.0/gems/web-console-2.3.0/lib/web_console/templates/_inner_console_markup.html.erb within layouts/inlined_string (7.6ms)
+  Rendered /Users/apprentice/.rbenv/versions/2.2.5/lib/ruby/gems/2.2.0/gems/web-console-2.3.0/lib/web_console/templates/_prompt_box_markup.html.erb within layouts/inlined_string (0.4ms)
+  Rendered /Users/apprentice/.rbenv/versions/2.2.5/lib/ruby/gems/2.2.0/gems/web-console-2.3.0/lib/web_console/templates/style.css.erb within layouts/inlined_string (0.4ms)
+  Rendered /Users/apprentice/.rbenv/versions/2.2.5/lib/ruby/gems/2.2.0/gems/web-console-2.3.0/lib/web_console/templates/console.js.erb within layouts/javascript (83.8ms)
+  Rendered /Users/apprentice/.rbenv/versions/2.2.5/lib/ruby/gems/2.2.0/gems/web-console-2.3.0/lib/web_console/templates/main.js.erb within layouts/javascript (0.3ms)
+  Rendered /Users/apprentice/.rbenv/versions/2.2.5/lib/ruby/gems/2.2.0/gems/web-console-2.3.0/lib/web_console/templates/error_page.js.erb within layouts/javascript (0.4ms)
+  Rendered /Users/apprentice/.rbenv/versions/2.2.5/lib/ruby/gems/2.2.0/gems/web-console-2.3.0/lib/web_console/templates/index.html.erb (171.5ms)
+
+
+Started GET "/centers/geo/30.0/-30.22/30" for ::1 at 2016-06-05 14:10:07 -0700
+Processing by CentersController#location as HTML
+  Parameters: {"lat"=>"30.0", "lng"=>"-30.22", "radius"=>"30"}
+  [1m[36m (0.9ms)[0m  [1m                  SELECT row_to_json(t)
+                  FROM (
+                    SELECT *,
+                           69 * DEGREES(ACOS(COS(RADIANS(latpoint))
+                              * COS(RADIANS(lat))
+                              * COS(RADIANS(longpoint)) - RADIANS(lng)
+                              + SIN(RADIANS(latpoint))
+                              * SIN(RADIANS(lat)))) AS distance_in_miles
+                    FROM service_providers
+                    JOIN (
+                      SELECT 30.0 AS latpoint,
+                              AS longpoint
+                    ) AS p ON 1=1
+                    ORDER BY distance_in_miles
+                    LIMIT 10;
+                  ) t
+[0m
+Completed 500 Internal Server Error in 1ms (ActiveRecord: 0.9ms)
+
+ActiveRecord::StatementInvalid (PG::SyntaxError: ERROR:  syntax error at or near "AS"
+LINE 12:                               AS longpoint
+                                       ^
+:                   SELECT row_to_json(t)
+                  FROM (
+                    SELECT *,
+                           69 * DEGREES(ACOS(COS(RADIANS(latpoint))
+                              * COS(RADIANS(lat))
+                              * COS(RADIANS(longpoint)) - RADIANS(lng)
+                              + SIN(RADIANS(latpoint))
+                              * SIN(RADIANS(lat)))) AS distance_in_miles
+                    FROM service_providers
+                    JOIN (
+                      SELECT 30.0 AS latpoint,
+                              AS longpoint
+                    ) AS p ON 1=1
+                    ORDER BY distance_in_miles
+                    LIMIT 10;
+                  ) t
+):
+  app/controllers/centers_controller.rb:45:in `location'
+
+
+  Rendered /Users/apprentice/.rbenv/versions/2.2.5/lib/ruby/gems/2.2.0/gems/actionpack-4.2.5/lib/action_dispatch/middleware/templates/rescues/_source.erb (5.6ms)
+  Rendered /Users/apprentice/.rbenv/versions/2.2.5/lib/ruby/gems/2.2.0/gems/actionpack-4.2.5/lib/action_dispatch/middleware/templates/rescues/_trace.html.erb (2.5ms)
+  Rendered /Users/apprentice/.rbenv/versions/2.2.5/lib/ruby/gems/2.2.0/gems/actionpack-4.2.5/lib/action_dispatch/middleware/templates/rescues/_request_and_response.html.erb (1.0ms)
+  Rendered /Users/apprentice/.rbenv/versions/2.2.5/lib/ruby/gems/2.2.0/gems/actionpack-4.2.5/lib/action_dispatch/middleware/templates/rescues/diagnostics.html.erb within rescues/layout (78.9ms)
+  Rendered /Users/apprentice/.rbenv/versions/2.2.5/lib/ruby/gems/2.2.0/gems/web-console-2.3.0/lib/web_console/templates/_markup.html.erb (0.4ms)
+  Rendered /Users/apprentice/.rbenv/versions/2.2.5/lib/ruby/gems/2.2.0/gems/web-console-2.3.0/lib/web_console/templates/_inner_console_markup.html.erb within layouts/inlined_string (0.9ms)
+  Rendered /Users/apprentice/.rbenv/versions/2.2.5/lib/ruby/gems/2.2.0/gems/web-console-2.3.0/lib/web_console/templates/_prompt_box_markup.html.erb within layouts/inlined_string (0.5ms)
+  Rendered /Users/apprentice/.rbenv/versions/2.2.5/lib/ruby/gems/2.2.0/gems/web-console-2.3.0/lib/web_console/templates/style.css.erb within layouts/inlined_string (0.3ms)
+  Rendered /Users/apprentice/.rbenv/versions/2.2.5/lib/ruby/gems/2.2.0/gems/web-console-2.3.0/lib/web_console/templates/console.js.erb within layouts/javascript (68.6ms)
+  Rendered /Users/apprentice/.rbenv/versions/2.2.5/lib/ruby/gems/2.2.0/gems/web-console-2.3.0/lib/web_console/templates/main.js.erb within layouts/javascript (0.3ms)
+  Rendered /Users/apprentice/.rbenv/versions/2.2.5/lib/ruby/gems/2.2.0/gems/web-console-2.3.0/lib/web_console/templates/error_page.js.erb within layouts/javascript (0.6ms)
+  Rendered /Users/apprentice/.rbenv/versions/2.2.5/lib/ruby/gems/2.2.0/gems/web-console-2.3.0/lib/web_console/templates/index.html.erb (150.3ms)
+
+
+Started GET "/centers/geo/30.0/-30.22/30" for ::1 at 2016-06-05 14:12:09 -0700
+Processing by CentersController#location as HTML
+  Parameters: {"lat"=>"30.0", "lng"=>"-30.22", "radius"=>"30"}
+  [1m[35m (1.1ms)[0m                    SELECT row_to_json(t)
+                  FROM (
+                    SELECT *,
+                           69 * DEGREES(ACOS(COS(RADIANS(latpoint))
+                              * COS(RADIANS(lat))
+                              * COS(RADIANS(longpoint)) - RADIANS(lng)
+                              + SIN(RADIANS(latpoint))
+                              * SIN(RADIANS(lat)))) AS distance_in_miles
+                    FROM service_providers
+                    ORDER BY distance_in_miles
+                    LIMIT 10;
+                  ) t
+
+Completed 500 Internal Server Error in 2ms (ActiveRecord: 1.1ms)
+
+ActiveRecord::StatementInvalid (PG::SyntaxError: ERROR:  syntax error at or near ";"
+LINE 11:                     LIMIT 10;
+                                     ^
+:                   SELECT row_to_json(t)
+                  FROM (
+                    SELECT *,
+                           69 * DEGREES(ACOS(COS(RADIANS(latpoint))
+                              * COS(RADIANS(lat))
+                              * COS(RADIANS(longpoint)) - RADIANS(lng)
+                              + SIN(RADIANS(latpoint))
+                              * SIN(RADIANS(lat)))) AS distance_in_miles
+                    FROM service_providers
+                    ORDER BY distance_in_miles
+                    LIMIT 10;
+                  ) t
+):
+  app/controllers/centers_controller.rb:41:in `location'
+
+
+  Rendered /Users/apprentice/.rbenv/versions/2.2.5/lib/ruby/gems/2.2.0/gems/actionpack-4.2.5/lib/action_dispatch/middleware/templates/rescues/_source.erb (5.6ms)
+  Rendered /Users/apprentice/.rbenv/versions/2.2.5/lib/ruby/gems/2.2.0/gems/actionpack-4.2.5/lib/action_dispatch/middleware/templates/rescues/_trace.html.erb (3.4ms)
+  Rendered /Users/apprentice/.rbenv/versions/2.2.5/lib/ruby/gems/2.2.0/gems/actionpack-4.2.5/lib/action_dispatch/middleware/templates/rescues/_request_and_response.html.erb (1.4ms)
+  Rendered /Users/apprentice/.rbenv/versions/2.2.5/lib/ruby/gems/2.2.0/gems/actionpack-4.2.5/lib/action_dispatch/middleware/templates/rescues/diagnostics.html.erb within rescues/layout (86.6ms)
+  Rendered /Users/apprentice/.rbenv/versions/2.2.5/lib/ruby/gems/2.2.0/gems/web-console-2.3.0/lib/web_console/templates/_markup.html.erb (0.5ms)
+  Rendered /Users/apprentice/.rbenv/versions/2.2.5/lib/ruby/gems/2.2.0/gems/web-console-2.3.0/lib/web_console/templates/_inner_console_markup.html.erb within layouts/inlined_string (0.4ms)
+  Rendered /Users/apprentice/.rbenv/versions/2.2.5/lib/ruby/gems/2.2.0/gems/web-console-2.3.0/lib/web_console/templates/_prompt_box_markup.html.erb within layouts/inlined_string (0.4ms)
+  Rendered /Users/apprentice/.rbenv/versions/2.2.5/lib/ruby/gems/2.2.0/gems/web-console-2.3.0/lib/web_console/templates/style.css.erb within layouts/inlined_string (0.4ms)
+  Rendered /Users/apprentice/.rbenv/versions/2.2.5/lib/ruby/gems/2.2.0/gems/web-console-2.3.0/lib/web_console/templates/console.js.erb within layouts/javascript (75.4ms)
+  Rendered /Users/apprentice/.rbenv/versions/2.2.5/lib/ruby/gems/2.2.0/gems/web-console-2.3.0/lib/web_console/templates/main.js.erb within layouts/javascript (0.5ms)
+  Rendered /Users/apprentice/.rbenv/versions/2.2.5/lib/ruby/gems/2.2.0/gems/web-console-2.3.0/lib/web_console/templates/error_page.js.erb within layouts/javascript (0.5ms)
+  Rendered /Users/apprentice/.rbenv/versions/2.2.5/lib/ruby/gems/2.2.0/gems/web-console-2.3.0/lib/web_console/templates/index.html.erb (166.6ms)
+
+
+Started GET "/centers/geo/30.0/-30.22/30" for ::1 at 2016-06-05 14:13:58 -0700
+Processing by CentersController#location as HTML
+  Parameters: {"lat"=>"30.0", "lng"=>"-30.22", "radius"=>"30"}
+  [1m[36mServiceProvider Load (0.9ms)[0m  [1m                    SELECT *,
+                           69 * DEGREES(ACOS(COS(RADIANS(latpoint))
+                              * COS(RADIANS(lat))
+                              * COS(RADIANS(longpoint)) - RADIANS(lng)
+                              + SIN(RADIANS(latpoint))
+                              * SIN(RADIANS(lat)))) AS distance_in_miles
+                    FROM service_providers
+                    JOIN (
+                      SELECT 30.0 AS latpoint,
+                              AS longpoint
+                    ) AS p ON 1=1
+                    ORDER BY distance_in_miles
+                    LIMIT 10;
+[0m
+Completed 500 Internal Server Error in 3ms (ActiveRecord: 0.9ms)
+
+ActiveRecord::StatementInvalid (PG::SyntaxError: ERROR:  syntax error at or near "AS"
+LINE 10:                               AS longpoint
+                                       ^
+:                     SELECT *,
+                           69 * DEGREES(ACOS(COS(RADIANS(latpoint))
+                              * COS(RADIANS(lat))
+                              * COS(RADIANS(longpoint)) - RADIANS(lng)
+                              + SIN(RADIANS(latpoint))
+                              * SIN(RADIANS(lat)))) AS distance_in_miles
+                    FROM service_providers
+                    JOIN (
+                      SELECT 30.0 AS latpoint,
+                              AS longpoint
+                    ) AS p ON 1=1
+                    ORDER BY distance_in_miles
+                    LIMIT 10;
+):
+  app/controllers/centers_controller.rb:42:in `location'
+
+
+  Rendered /Users/apprentice/.rbenv/versions/2.2.5/lib/ruby/gems/2.2.0/gems/actionpack-4.2.5/lib/action_dispatch/middleware/templates/rescues/_source.erb (5.7ms)
+  Rendered /Users/apprentice/.rbenv/versions/2.2.5/lib/ruby/gems/2.2.0/gems/actionpack-4.2.5/lib/action_dispatch/middleware/templates/rescues/_trace.html.erb (2.5ms)
+  Rendered /Users/apprentice/.rbenv/versions/2.2.5/lib/ruby/gems/2.2.0/gems/actionpack-4.2.5/lib/action_dispatch/middleware/templates/rescues/_request_and_response.html.erb (1.0ms)
+  Rendered /Users/apprentice/.rbenv/versions/2.2.5/lib/ruby/gems/2.2.0/gems/actionpack-4.2.5/lib/action_dispatch/middleware/templates/rescues/diagnostics.html.erb within rescues/layout (81.0ms)
+  Rendered /Users/apprentice/.rbenv/versions/2.2.5/lib/ruby/gems/2.2.0/gems/web-console-2.3.0/lib/web_console/templates/_markup.html.erb (0.5ms)
+  Rendered /Users/apprentice/.rbenv/versions/2.2.5/lib/ruby/gems/2.2.0/gems/web-console-2.3.0/lib/web_console/templates/_inner_console_markup.html.erb within layouts/inlined_string (0.4ms)
+  Rendered /Users/apprentice/.rbenv/versions/2.2.5/lib/ruby/gems/2.2.0/gems/web-console-2.3.0/lib/web_console/templates/_prompt_box_markup.html.erb within layouts/inlined_string (0.4ms)
+  Rendered /Users/apprentice/.rbenv/versions/2.2.5/lib/ruby/gems/2.2.0/gems/web-console-2.3.0/lib/web_console/templates/style.css.erb within layouts/inlined_string (0.4ms)
+  Rendered /Users/apprentice/.rbenv/versions/2.2.5/lib/ruby/gems/2.2.0/gems/web-console-2.3.0/lib/web_console/templates/console.js.erb within layouts/javascript (82.1ms)
+  Rendered /Users/apprentice/.rbenv/versions/2.2.5/lib/ruby/gems/2.2.0/gems/web-console-2.3.0/lib/web_console/templates/main.js.erb within layouts/javascript (0.4ms)
+  Rendered /Users/apprentice/.rbenv/versions/2.2.5/lib/ruby/gems/2.2.0/gems/web-console-2.3.0/lib/web_console/templates/error_page.js.erb within layouts/javascript (0.6ms)
+  Rendered /Users/apprentice/.rbenv/versions/2.2.5/lib/ruby/gems/2.2.0/gems/web-console-2.3.0/lib/web_console/templates/index.html.erb (178.2ms)
+
+
+Started GET "/centers/geo/30.0/-30.22/30" for ::1 at 2016-06-05 14:16:43 -0700
+Processing by CentersController#location as HTML
+  Parameters: {"lat"=>"30.0", "lng"=>"-30.22", "radius"=>"30"}
+  [1m[35m (1.0ms)[0m                      SELECT *,
+                           69 * DEGREES(ACOS(COS(RADIANS(latpoint))
+                              * COS(RADIANS(lat))
+                              * COS(RADIANS(longpoint)) - RADIANS(lng)
+                              + SIN(RADIANS(latpoint))
+                              * SIN(RADIANS(lat)))) AS distance_in_miles
+                    FROM service_providers
+                    JOIN (
+                      SELECT 30.0 AS latpoint,
+                              AS longpoint
+                    ) AS p ON 1=1
+                    ORDER BY distance_in_miles
+                    LIMIT 10;
+
+Completed 500 Internal Server Error in 4ms (ActiveRecord: 1.0ms)
+
+ActiveRecord::StatementInvalid (PG::SyntaxError: ERROR:  syntax error at or near "AS"
+LINE 10:                               AS longpoint
+                                       ^
+:                     SELECT *,
+                           69 * DEGREES(ACOS(COS(RADIANS(latpoint))
+                              * COS(RADIANS(lat))
+                              * COS(RADIANS(longpoint)) - RADIANS(lng)
+                              + SIN(RADIANS(latpoint))
+                              * SIN(RADIANS(lat)))) AS distance_in_miles
+                    FROM service_providers
+                    JOIN (
+                      SELECT 30.0 AS latpoint,
+                              AS longpoint
+                    ) AS p ON 1=1
+                    ORDER BY distance_in_miles
+                    LIMIT 10;
+):
+  app/controllers/centers_controller.rb:42:in `location'
+
+
+  Rendered /Users/apprentice/.rbenv/versions/2.2.5/lib/ruby/gems/2.2.0/gems/actionpack-4.2.5/lib/action_dispatch/middleware/templates/rescues/_source.erb (6.6ms)
+  Rendered /Users/apprentice/.rbenv/versions/2.2.5/lib/ruby/gems/2.2.0/gems/actionpack-4.2.5/lib/action_dispatch/middleware/templates/rescues/_trace.html.erb (3.0ms)
+  Rendered /Users/apprentice/.rbenv/versions/2.2.5/lib/ruby/gems/2.2.0/gems/actionpack-4.2.5/lib/action_dispatch/middleware/templates/rescues/_request_and_response.html.erb (1.1ms)
+  Rendered /Users/apprentice/.rbenv/versions/2.2.5/lib/ruby/gems/2.2.0/gems/actionpack-4.2.5/lib/action_dispatch/middleware/templates/rescues/diagnostics.html.erb within rescues/layout (81.6ms)
+  Rendered /Users/apprentice/.rbenv/versions/2.2.5/lib/ruby/gems/2.2.0/gems/web-console-2.3.0/lib/web_console/templates/_markup.html.erb (0.5ms)
+  Rendered /Users/apprentice/.rbenv/versions/2.2.5/lib/ruby/gems/2.2.0/gems/web-console-2.3.0/lib/web_console/templates/_inner_console_markup.html.erb within layouts/inlined_string (0.4ms)
+  Rendered /Users/apprentice/.rbenv/versions/2.2.5/lib/ruby/gems/2.2.0/gems/web-console-2.3.0/lib/web_console/templates/_prompt_box_markup.html.erb within layouts/inlined_string (0.4ms)
+  Rendered /Users/apprentice/.rbenv/versions/2.2.5/lib/ruby/gems/2.2.0/gems/web-console-2.3.0/lib/web_console/templates/style.css.erb within layouts/inlined_string (0.4ms)
+  Rendered /Users/apprentice/.rbenv/versions/2.2.5/lib/ruby/gems/2.2.0/gems/web-console-2.3.0/lib/web_console/templates/console.js.erb within layouts/javascript (73.6ms)
+  Rendered /Users/apprentice/.rbenv/versions/2.2.5/lib/ruby/gems/2.2.0/gems/web-console-2.3.0/lib/web_console/templates/main.js.erb within layouts/javascript (0.4ms)
+  Rendered /Users/apprentice/.rbenv/versions/2.2.5/lib/ruby/gems/2.2.0/gems/web-console-2.3.0/lib/web_console/templates/error_page.js.erb within layouts/javascript (0.5ms)
+  Rendered /Users/apprentice/.rbenv/versions/2.2.5/lib/ruby/gems/2.2.0/gems/web-console-2.3.0/lib/web_console/templates/index.html.erb (171.0ms)
+
+
+Started GET "/centers/geo/30.0/-30.22/30" for ::1 at 2016-06-05 14:22:06 -0700
+Processing by CentersController#location as HTML
+  Parameters: {"lat"=>"30.0", "lng"=>"-30.22", "radius"=>"30"}
+  [1m[36m (1.1ms)[0m  [1m                    SELECT *,
+                           69 * DEGREES(ACOS(COS(RADIANS(latpoint))
+                              * COS(RADIANS(lat))
+                              * COS(RADIANS(longpoint)) - RADIANS(lng)
+                              + SIN(RADIANS(latpoint))
+                              * SIN(RADIANS(lat)))) AS distance_in_miles
+                    FROM service_providers
+                    JOIN (
+                      SELECT 30.0 AS latpoint,
+                              AS longpoint
+                    ) AS p ON 1=1
+                    ORDER BY distance_in_miles
+                    LIMIT 10;
+[0m
+Completed 500 Internal Server Error in 2ms (ActiveRecord: 1.1ms)
+
+ActiveRecord::StatementInvalid (PG::SyntaxError: ERROR:  syntax error at or near "AS"
+LINE 10:                               AS longpoint
+                                       ^
+:                     SELECT *,
+                           69 * DEGREES(ACOS(COS(RADIANS(latpoint))
+                              * COS(RADIANS(lat))
+                              * COS(RADIANS(longpoint)) - RADIANS(lng)
+                              + SIN(RADIANS(latpoint))
+                              * SIN(RADIANS(lat)))) AS distance_in_miles
+                    FROM service_providers
+                    JOIN (
+                      SELECT 30.0 AS latpoint,
+                              AS longpoint
+                    ) AS p ON 1=1
+                    ORDER BY distance_in_miles
+                    LIMIT 10;
+):
+  app/controllers/centers_controller.rb:42:in `location'
+
+
+  Rendered /Users/apprentice/.rbenv/versions/2.2.5/lib/ruby/gems/2.2.0/gems/actionpack-4.2.5/lib/action_dispatch/middleware/templates/rescues/_source.erb (9.8ms)
+  Rendered /Users/apprentice/.rbenv/versions/2.2.5/lib/ruby/gems/2.2.0/gems/actionpack-4.2.5/lib/action_dispatch/middleware/templates/rescues/_trace.html.erb (3.3ms)
+  Rendered /Users/apprentice/.rbenv/versions/2.2.5/lib/ruby/gems/2.2.0/gems/actionpack-4.2.5/lib/action_dispatch/middleware/templates/rescues/_request_and_response.html.erb (1.2ms)
+  Rendered /Users/apprentice/.rbenv/versions/2.2.5/lib/ruby/gems/2.2.0/gems/actionpack-4.2.5/lib/action_dispatch/middleware/templates/rescues/diagnostics.html.erb within rescues/layout (81.9ms)
+  Rendered /Users/apprentice/.rbenv/versions/2.2.5/lib/ruby/gems/2.2.0/gems/web-console-2.3.0/lib/web_console/templates/_markup.html.erb (0.4ms)
+  Rendered /Users/apprentice/.rbenv/versions/2.2.5/lib/ruby/gems/2.2.0/gems/web-console-2.3.0/lib/web_console/templates/_inner_console_markup.html.erb within layouts/inlined_string (0.4ms)
+  Rendered /Users/apprentice/.rbenv/versions/2.2.5/lib/ruby/gems/2.2.0/gems/web-console-2.3.0/lib/web_console/templates/_prompt_box_markup.html.erb within layouts/inlined_string (0.4ms)
+  Rendered /Users/apprentice/.rbenv/versions/2.2.5/lib/ruby/gems/2.2.0/gems/web-console-2.3.0/lib/web_console/templates/style.css.erb within layouts/inlined_string (0.7ms)
+  Rendered /Users/apprentice/.rbenv/versions/2.2.5/lib/ruby/gems/2.2.0/gems/web-console-2.3.0/lib/web_console/templates/console.js.erb within layouts/javascript (73.9ms)
+  Rendered /Users/apprentice/.rbenv/versions/2.2.5/lib/ruby/gems/2.2.0/gems/web-console-2.3.0/lib/web_console/templates/main.js.erb within layouts/javascript (0.3ms)
+  Rendered /Users/apprentice/.rbenv/versions/2.2.5/lib/ruby/gems/2.2.0/gems/web-console-2.3.0/lib/web_console/templates/error_page.js.erb within layouts/javascript (0.4ms)
+  Rendered /Users/apprentice/.rbenv/versions/2.2.5/lib/ruby/gems/2.2.0/gems/web-console-2.3.0/lib/web_console/templates/index.html.erb (158.7ms)
+
+
+Started GET "/centers/geo/30.0/-30.22/30" for ::1 at 2016-06-05 14:23:54 -0700
+Processing by CentersController#location as HTML
+  Parameters: {"lat"=>"30.0", "lng"=>"-30.22", "radius"=>"30"}
+Completed 500 Internal Server Error in 7ms (ActiveRecord: 0.0ms)
+
+NoMethodError (undefined method `connection_with' for #<ActiveRecord::ConnectionAdapters::ConnectionPool:0x007fedf17275b8>):
+  app/controllers/centers_controller.rb:42:in `location'
+
+
+  Rendered /Users/apprentice/.rbenv/versions/2.2.5/lib/ruby/gems/2.2.0/gems/actionpack-4.2.5/lib/action_dispatch/middleware/templates/rescues/_source.erb (4.8ms)
+  Rendered /Users/apprentice/.rbenv/versions/2.2.5/lib/ruby/gems/2.2.0/gems/actionpack-4.2.5/lib/action_dispatch/middleware/templates/rescues/_trace.html.erb (2.2ms)
+  Rendered /Users/apprentice/.rbenv/versions/2.2.5/lib/ruby/gems/2.2.0/gems/actionpack-4.2.5/lib/action_dispatch/middleware/templates/rescues/_request_and_response.html.erb (1.0ms)
+  Rendered /Users/apprentice/.rbenv/versions/2.2.5/lib/ruby/gems/2.2.0/gems/actionpack-4.2.5/lib/action_dispatch/middleware/templates/rescues/diagnostics.html.erb within rescues/layout (89.2ms)
+  Rendered /Users/apprentice/.rbenv/versions/2.2.5/lib/ruby/gems/2.2.0/gems/web-console-2.3.0/lib/web_console/templates/_markup.html.erb (0.6ms)
+  Rendered /Users/apprentice/.rbenv/versions/2.2.5/lib/ruby/gems/2.2.0/gems/web-console-2.3.0/lib/web_console/templates/_inner_console_markup.html.erb within layouts/inlined_string (0.3ms)
+  Rendered /Users/apprentice/.rbenv/versions/2.2.5/lib/ruby/gems/2.2.0/gems/web-console-2.3.0/lib/web_console/templates/_prompt_box_markup.html.erb within layouts/inlined_string (0.4ms)
+  Rendered /Users/apprentice/.rbenv/versions/2.2.5/lib/ruby/gems/2.2.0/gems/web-console-2.3.0/lib/web_console/templates/style.css.erb within layouts/inlined_string (0.4ms)
+  Rendered /Users/apprentice/.rbenv/versions/2.2.5/lib/ruby/gems/2.2.0/gems/web-console-2.3.0/lib/web_console/templates/console.js.erb within layouts/javascript (72.6ms)
+  Rendered /Users/apprentice/.rbenv/versions/2.2.5/lib/ruby/gems/2.2.0/gems/web-console-2.3.0/lib/web_console/templates/main.js.erb within layouts/javascript (0.3ms)
+  Rendered /Users/apprentice/.rbenv/versions/2.2.5/lib/ruby/gems/2.2.0/gems/web-console-2.3.0/lib/web_console/templates/error_page.js.erb within layouts/javascript (0.7ms)
+  Rendered /Users/apprentice/.rbenv/versions/2.2.5/lib/ruby/gems/2.2.0/gems/web-console-2.3.0/lib/web_console/templates/index.html.erb (161.2ms)
+
+
+Started GET "/centers/geo/30.0/-30.22/30" for ::1 at 2016-06-05 14:24:14 -0700
+Processing by CentersController#location as HTML
+  Parameters: {"lat"=>"30.0", "lng"=>"-30.22", "radius"=>"30"}
+Completed 500 Internal Server Error in 2ms (ActiveRecord: 0.0ms)
+
+NameError (undefined local variable or method `ocation_query' for #<CentersController:0x007fedf7ed1088>):
+  app/controllers/centers_controller.rb:42:in `block in location'
+  app/controllers/centers_controller.rb:42:in `location'
+
+
+  Rendered /Users/apprentice/.rbenv/versions/2.2.5/lib/ruby/gems/2.2.0/gems/actionpack-4.2.5/lib/action_dispatch/middleware/templates/rescues/_source.erb (5.6ms)
+  Rendered /Users/apprentice/.rbenv/versions/2.2.5/lib/ruby/gems/2.2.0/gems/actionpack-4.2.5/lib/action_dispatch/middleware/templates/rescues/_trace.html.erb (2.6ms)
+  Rendered /Users/apprentice/.rbenv/versions/2.2.5/lib/ruby/gems/2.2.0/gems/actionpack-4.2.5/lib/action_dispatch/middleware/templates/rescues/_request_and_response.html.erb (1.1ms)
+  Rendered /Users/apprentice/.rbenv/versions/2.2.5/lib/ruby/gems/2.2.0/gems/actionpack-4.2.5/lib/action_dispatch/middleware/templates/rescues/diagnostics.html.erb within rescues/layout (82.1ms)
+  Rendered /Users/apprentice/.rbenv/versions/2.2.5/lib/ruby/gems/2.2.0/gems/web-console-2.3.0/lib/web_console/templates/_markup.html.erb (0.5ms)
+  Rendered /Users/apprentice/.rbenv/versions/2.2.5/lib/ruby/gems/2.2.0/gems/web-console-2.3.0/lib/web_console/templates/_inner_console_markup.html.erb within layouts/inlined_string (0.4ms)
+  Rendered /Users/apprentice/.rbenv/versions/2.2.5/lib/ruby/gems/2.2.0/gems/web-console-2.3.0/lib/web_console/templates/_prompt_box_markup.html.erb within layouts/inlined_string (0.3ms)
+  Rendered /Users/apprentice/.rbenv/versions/2.2.5/lib/ruby/gems/2.2.0/gems/web-console-2.3.0/lib/web_console/templates/style.css.erb within layouts/inlined_string (0.5ms)
+  Rendered /Users/apprentice/.rbenv/versions/2.2.5/lib/ruby/gems/2.2.0/gems/web-console-2.3.0/lib/web_console/templates/console.js.erb within layouts/javascript (70.3ms)
+  Rendered /Users/apprentice/.rbenv/versions/2.2.5/lib/ruby/gems/2.2.0/gems/web-console-2.3.0/lib/web_console/templates/main.js.erb within layouts/javascript (0.4ms)
+  Rendered /Users/apprentice/.rbenv/versions/2.2.5/lib/ruby/gems/2.2.0/gems/web-console-2.3.0/lib/web_console/templates/error_page.js.erb within layouts/javascript (0.5ms)
+  Rendered /Users/apprentice/.rbenv/versions/2.2.5/lib/ruby/gems/2.2.0/gems/web-console-2.3.0/lib/web_console/templates/index.html.erb (162.1ms)
+
+
+Started GET "/centers/geo/30.0/-30.22/30" for ::1 at 2016-06-05 14:24:27 -0700
+Processing by CentersController#location as HTML
+  Parameters: {"lat"=>"30.0", "lng"=>"-30.22", "radius"=>"30"}
+  [1m[35mSQL (1.1ms)[0m                      SELECT *,
+                           69 * DEGREES(ACOS(COS(RADIANS(latpoint))
+                              * COS(RADIANS(lat))
+                              * COS(RADIANS(longpoint)) - RADIANS(lng)
+                              + SIN(RADIANS(latpoint))
+                              * SIN(RADIANS(lat)))) AS distance_in_miles
+                    FROM service_providers
+                    JOIN (
+                      SELECT 30.0 AS latpoint,
+                              AS longpoint
+                    ) AS p ON 1=1
+                    ORDER BY distance_in_miles
+                    LIMIT 10;
+
+Completed 500 Internal Server Error in 2ms (ActiveRecord: 1.1ms)
+
+ActiveRecord::StatementInvalid (PG::SyntaxError: ERROR:  syntax error at or near "AS"
+LINE 10:                               AS longpoint
+                                       ^
+:                     SELECT *,
+                           69 * DEGREES(ACOS(COS(RADIANS(latpoint))
+                              * COS(RADIANS(lat))
+                              * COS(RADIANS(longpoint)) - RADIANS(lng)
+                              + SIN(RADIANS(latpoint))
+                              * SIN(RADIANS(lat)))) AS distance_in_miles
+                    FROM service_providers
+                    JOIN (
+                      SELECT 30.0 AS latpoint,
+                              AS longpoint
+                    ) AS p ON 1=1
+                    ORDER BY distance_in_miles
+                    LIMIT 10;
+):
+  app/controllers/centers_controller.rb:42:in `block in location'
+  app/controllers/centers_controller.rb:42:in `location'
+
+
+  Rendered /Users/apprentice/.rbenv/versions/2.2.5/lib/ruby/gems/2.2.0/gems/actionpack-4.2.5/lib/action_dispatch/middleware/templates/rescues/_source.erb (8.1ms)
+  Rendered /Users/apprentice/.rbenv/versions/2.2.5/lib/ruby/gems/2.2.0/gems/actionpack-4.2.5/lib/action_dispatch/middleware/templates/rescues/_trace.html.erb (3.1ms)
+  Rendered /Users/apprentice/.rbenv/versions/2.2.5/lib/ruby/gems/2.2.0/gems/actionpack-4.2.5/lib/action_dispatch/middleware/templates/rescues/_request_and_response.html.erb (1.1ms)
+  Rendered /Users/apprentice/.rbenv/versions/2.2.5/lib/ruby/gems/2.2.0/gems/actionpack-4.2.5/lib/action_dispatch/middleware/templates/rescues/diagnostics.html.erb within rescues/layout (88.2ms)
+  Rendered /Users/apprentice/.rbenv/versions/2.2.5/lib/ruby/gems/2.2.0/gems/web-console-2.3.0/lib/web_console/templates/_markup.html.erb (0.5ms)
+  Rendered /Users/apprentice/.rbenv/versions/2.2.5/lib/ruby/gems/2.2.0/gems/web-console-2.3.0/lib/web_console/templates/_inner_console_markup.html.erb within layouts/inlined_string (0.4ms)
+  Rendered /Users/apprentice/.rbenv/versions/2.2.5/lib/ruby/gems/2.2.0/gems/web-console-2.3.0/lib/web_console/templates/_prompt_box_markup.html.erb within layouts/inlined_string (0.4ms)
+  Rendered /Users/apprentice/.rbenv/versions/2.2.5/lib/ruby/gems/2.2.0/gems/web-console-2.3.0/lib/web_console/templates/style.css.erb within layouts/inlined_string (0.4ms)
+  Rendered /Users/apprentice/.rbenv/versions/2.2.5/lib/ruby/gems/2.2.0/gems/web-console-2.3.0/lib/web_console/templates/console.js.erb within layouts/javascript (70.4ms)
+  Rendered /Users/apprentice/.rbenv/versions/2.2.5/lib/ruby/gems/2.2.0/gems/web-console-2.3.0/lib/web_console/templates/main.js.erb within layouts/javascript (0.6ms)
+  Rendered /Users/apprentice/.rbenv/versions/2.2.5/lib/ruby/gems/2.2.0/gems/web-console-2.3.0/lib/web_console/templates/error_page.js.erb within layouts/javascript (0.5ms)
+  Rendered /Users/apprentice/.rbenv/versions/2.2.5/lib/ruby/gems/2.2.0/gems/web-console-2.3.0/lib/web_console/templates/index.html.erb (157.0ms)
+
+
+Started GET "/centers/geo/30.0/-30.22/30" for ::1 at 2016-06-05 14:24:58 -0700
+Processing by CentersController#location as HTML
+  Parameters: {"lat"=>"30.0", "lng"=>"-30.22", "radius"=>"30"}
+  [1m[36mSQL (1.5ms)[0m  [1m                    SELECT *,
+                           69 * DEGREES(ACOS(COS(RADIANS(latpoint))
+                              * COS(RADIANS(lat))
+                              * COS(RADIANS(longpoint)) - RADIANS(lng)
+                              + SIN(RADIANS(latpoint))
+                              * SIN(RADIANS(lat)))) AS distance_in_miles
+                    FROM service_providers
+                    JOIN (
+                      SELECT 30.0 AS latpoint,
+                              AS longpoint
+                    ) AS p ON 1=1
+                    ORDER BY distance_in_miles
+                    LIMIT 10;
+[0m
+Completed 500 Internal Server Error in 3ms (ActiveRecord: 1.5ms)
+
+ActiveRecord::StatementInvalid (PG::SyntaxError: ERROR:  syntax error at or near "AS"
+LINE 10:                               AS longpoint
+                                       ^
+:                     SELECT *,
+                           69 * DEGREES(ACOS(COS(RADIANS(latpoint))
+                              * COS(RADIANS(lat))
+                              * COS(RADIANS(longpoint)) - RADIANS(lng)
+                              + SIN(RADIANS(latpoint))
+                              * SIN(RADIANS(lat)))) AS distance_in_miles
+                    FROM service_providers
+                    JOIN (
+                      SELECT 30.0 AS latpoint,
+                              AS longpoint
+                    ) AS p ON 1=1
+                    ORDER BY distance_in_miles
+                    LIMIT 10;
+):
+  app/controllers/centers_controller.rb:42:in `location'
+
+
+  Rendered /Users/apprentice/.rbenv/versions/2.2.5/lib/ruby/gems/2.2.0/gems/actionpack-4.2.5/lib/action_dispatch/middleware/templates/rescues/_source.erb (5.0ms)
+  Rendered /Users/apprentice/.rbenv/versions/2.2.5/lib/ruby/gems/2.2.0/gems/actionpack-4.2.5/lib/action_dispatch/middleware/templates/rescues/_trace.html.erb (2.9ms)
+  Rendered /Users/apprentice/.rbenv/versions/2.2.5/lib/ruby/gems/2.2.0/gems/actionpack-4.2.5/lib/action_dispatch/middleware/templates/rescues/_request_and_response.html.erb (1.1ms)
+  Rendered /Users/apprentice/.rbenv/versions/2.2.5/lib/ruby/gems/2.2.0/gems/actionpack-4.2.5/lib/action_dispatch/middleware/templates/rescues/diagnostics.html.erb within rescues/layout (87.8ms)
+  Rendered /Users/apprentice/.rbenv/versions/2.2.5/lib/ruby/gems/2.2.0/gems/web-console-2.3.0/lib/web_console/templates/_markup.html.erb (1.0ms)
+  Rendered /Users/apprentice/.rbenv/versions/2.2.5/lib/ruby/gems/2.2.0/gems/web-console-2.3.0/lib/web_console/templates/_inner_console_markup.html.erb within layouts/inlined_string (0.6ms)
+  Rendered /Users/apprentice/.rbenv/versions/2.2.5/lib/ruby/gems/2.2.0/gems/web-console-2.3.0/lib/web_console/templates/_prompt_box_markup.html.erb within layouts/inlined_string (0.3ms)
+  Rendered /Users/apprentice/.rbenv/versions/2.2.5/lib/ruby/gems/2.2.0/gems/web-console-2.3.0/lib/web_console/templates/style.css.erb within layouts/inlined_string (0.4ms)
+  Rendered /Users/apprentice/.rbenv/versions/2.2.5/lib/ruby/gems/2.2.0/gems/web-console-2.3.0/lib/web_console/templates/console.js.erb within layouts/javascript (74.1ms)
+  Rendered /Users/apprentice/.rbenv/versions/2.2.5/lib/ruby/gems/2.2.0/gems/web-console-2.3.0/lib/web_console/templates/main.js.erb within layouts/javascript (0.3ms)
+  Rendered /Users/apprentice/.rbenv/versions/2.2.5/lib/ruby/gems/2.2.0/gems/web-console-2.3.0/lib/web_console/templates/error_page.js.erb within layouts/javascript (0.4ms)
+  Rendered /Users/apprentice/.rbenv/versions/2.2.5/lib/ruby/gems/2.2.0/gems/web-console-2.3.0/lib/web_console/templates/index.html.erb (161.3ms)
+
+
+Started GET "/centers/geo/30.0/-30.22/30" for ::1 at 2016-06-05 14:25:03 -0700
+Processing by CentersController#location as HTML
+  Parameters: {"lat"=>"30.0", "lng"=>"-30.22", "radius"=>"30"}
+  [1m[35mSQL (0.8ms)[0m                      SELECT *,
+                           69 * DEGREES(ACOS(COS(RADIANS(latpoint))
+                              * COS(RADIANS(lat))
+                              * COS(RADIANS(longpoint)) - RADIANS(lng)
+                              + SIN(RADIANS(latpoint))
+                              * SIN(RADIANS(lat)))) AS distance_in_miles
+                    FROM service_providers
+                    JOIN (
+                      SELECT 30.0 AS latpoint,
+                              AS longpoint
+                    ) AS p ON 1=1
+                    ORDER BY distance_in_miles
+                    LIMIT 10;
+
+Completed 500 Internal Server Error in 1ms (ActiveRecord: 0.8ms)
+
+ActiveRecord::StatementInvalid (PG::SyntaxError: ERROR:  syntax error at or near "AS"
+LINE 10:                               AS longpoint
+                                       ^
+:                     SELECT *,
+                           69 * DEGREES(ACOS(COS(RADIANS(latpoint))
+                              * COS(RADIANS(lat))
+                              * COS(RADIANS(longpoint)) - RADIANS(lng)
+                              + SIN(RADIANS(latpoint))
+                              * SIN(RADIANS(lat)))) AS distance_in_miles
+                    FROM service_providers
+                    JOIN (
+                      SELECT 30.0 AS latpoint,
+                              AS longpoint
+                    ) AS p ON 1=1
+                    ORDER BY distance_in_miles
+                    LIMIT 10;
+):
+  app/controllers/centers_controller.rb:42:in `location'
+
+
+  Rendered /Users/apprentice/.rbenv/versions/2.2.5/lib/ruby/gems/2.2.0/gems/actionpack-4.2.5/lib/action_dispatch/middleware/templates/rescues/_source.erb (5.5ms)
+  Rendered /Users/apprentice/.rbenv/versions/2.2.5/lib/ruby/gems/2.2.0/gems/actionpack-4.2.5/lib/action_dispatch/middleware/templates/rescues/_trace.html.erb (4.1ms)
+  Rendered /Users/apprentice/.rbenv/versions/2.2.5/lib/ruby/gems/2.2.0/gems/actionpack-4.2.5/lib/action_dispatch/middleware/templates/rescues/_request_and_response.html.erb (1.0ms)
+  Rendered /Users/apprentice/.rbenv/versions/2.2.5/lib/ruby/gems/2.2.0/gems/actionpack-4.2.5/lib/action_dispatch/middleware/templates/rescues/diagnostics.html.erb within rescues/layout (87.2ms)
+  Rendered /Users/apprentice/.rbenv/versions/2.2.5/lib/ruby/gems/2.2.0/gems/web-console-2.3.0/lib/web_console/templates/_markup.html.erb (0.5ms)
+  Rendered /Users/apprentice/.rbenv/versions/2.2.5/lib/ruby/gems/2.2.0/gems/web-console-2.3.0/lib/web_console/templates/_inner_console_markup.html.erb within layouts/inlined_string (0.4ms)
+  Rendered /Users/apprentice/.rbenv/versions/2.2.5/lib/ruby/gems/2.2.0/gems/web-console-2.3.0/lib/web_console/templates/_prompt_box_markup.html.erb within layouts/inlined_string (0.3ms)
+  Rendered /Users/apprentice/.rbenv/versions/2.2.5/lib/ruby/gems/2.2.0/gems/web-console-2.3.0/lib/web_console/templates/style.css.erb within layouts/inlined_string (0.4ms)
+  Rendered /Users/apprentice/.rbenv/versions/2.2.5/lib/ruby/gems/2.2.0/gems/web-console-2.3.0/lib/web_console/templates/console.js.erb within layouts/javascript (77.5ms)
+  Rendered /Users/apprentice/.rbenv/versions/2.2.5/lib/ruby/gems/2.2.0/gems/web-console-2.3.0/lib/web_console/templates/main.js.erb within layouts/javascript (0.3ms)
+  Rendered /Users/apprentice/.rbenv/versions/2.2.5/lib/ruby/gems/2.2.0/gems/web-console-2.3.0/lib/web_console/templates/error_page.js.erb within layouts/javascript (0.5ms)
+  Rendered /Users/apprentice/.rbenv/versions/2.2.5/lib/ruby/gems/2.2.0/gems/web-console-2.3.0/lib/web_console/templates/index.html.erb (168.6ms)
+
+
+Started GET "/centers/geo/30.0/-30.22/30" for ::1 at 2016-06-05 14:28:22 -0700
+Processing by CentersController#location as HTML
+  Parameters: {"lat"=>"30.0", "lng"=>"-30.22", "radius"=>"30"}
+  [1m[36mSQL (7.1ms)[0m  [1m                    SELECT * FROM service_providers
+[0m
+Completed 200 OK in 278ms (ActiveRecord: 7.1ms)
+
+
+Started GET "/centers/geo/30.0/-30.22/30" for ::1 at 2016-06-05 14:29:18 -0700
+Processing by CentersController#location as HTML
+  Parameters: {"lat"=>"30.0", "lng"=>"-30.22", "radius"=>"30"}
+  [1m[35mSQL (1.0ms)[0m                      SELECT *,
+                           69 * DEGREES(ACOS(COS(RADIANS(latpoint))
+                              * COS(RADIANS(lat))
+                              * COS(RADIANS(longpoint)) - RADIANS(lng)
+                              + SIN(RADIANS(latpoint))
+                              * SIN(RADIANS(lat)))) AS distance_in_miles
+                    FROM service_providers
+                    ORDER BY distance_in_miles
+                    LIMIT 10;
+
+Completed 500 Internal Server Error in 2ms (ActiveRecord: 1.0ms)
+
+ActiveRecord::StatementInvalid (PG::UndefinedColumn: ERROR:  column "latpoint" does not exist
+LINE 2: ...                    69 * DEGREES(ACOS(COS(RADIANS(latpoint))
+                                                             ^
+:                     SELECT *,
+                           69 * DEGREES(ACOS(COS(RADIANS(latpoint))
+                              * COS(RADIANS(lat))
+                              * COS(RADIANS(longpoint)) - RADIANS(lng)
+                              + SIN(RADIANS(latpoint))
+                              * SIN(RADIANS(lat)))) AS distance_in_miles
+                    FROM service_providers
+                    ORDER BY distance_in_miles
+                    LIMIT 10;
+):
+  app/controllers/centers_controller.rb:38:in `location'
+
+
+  Rendered /Users/apprentice/.rbenv/versions/2.2.5/lib/ruby/gems/2.2.0/gems/actionpack-4.2.5/lib/action_dispatch/middleware/templates/rescues/_source.erb (5.7ms)
+  Rendered /Users/apprentice/.rbenv/versions/2.2.5/lib/ruby/gems/2.2.0/gems/actionpack-4.2.5/lib/action_dispatch/middleware/templates/rescues/_trace.html.erb (2.8ms)
+  Rendered /Users/apprentice/.rbenv/versions/2.2.5/lib/ruby/gems/2.2.0/gems/actionpack-4.2.5/lib/action_dispatch/middleware/templates/rescues/_request_and_response.html.erb (1.1ms)
+  Rendered /Users/apprentice/.rbenv/versions/2.2.5/lib/ruby/gems/2.2.0/gems/actionpack-4.2.5/lib/action_dispatch/middleware/templates/rescues/diagnostics.html.erb within rescues/layout (85.7ms)
+  Rendered /Users/apprentice/.rbenv/versions/2.2.5/lib/ruby/gems/2.2.0/gems/web-console-2.3.0/lib/web_console/templates/_markup.html.erb (0.5ms)
+  Rendered /Users/apprentice/.rbenv/versions/2.2.5/lib/ruby/gems/2.2.0/gems/web-console-2.3.0/lib/web_console/templates/_inner_console_markup.html.erb within layouts/inlined_string (0.6ms)
+  Rendered /Users/apprentice/.rbenv/versions/2.2.5/lib/ruby/gems/2.2.0/gems/web-console-2.3.0/lib/web_console/templates/_prompt_box_markup.html.erb within layouts/inlined_string (0.4ms)
+  Rendered /Users/apprentice/.rbenv/versions/2.2.5/lib/ruby/gems/2.2.0/gems/web-console-2.3.0/lib/web_console/templates/style.css.erb within layouts/inlined_string (0.5ms)
+  Rendered /Users/apprentice/.rbenv/versions/2.2.5/lib/ruby/gems/2.2.0/gems/web-console-2.3.0/lib/web_console/templates/console.js.erb within layouts/javascript (78.5ms)
+  Rendered /Users/apprentice/.rbenv/versions/2.2.5/lib/ruby/gems/2.2.0/gems/web-console-2.3.0/lib/web_console/templates/main.js.erb within layouts/javascript (0.4ms)
+  Rendered /Users/apprentice/.rbenv/versions/2.2.5/lib/ruby/gems/2.2.0/gems/web-console-2.3.0/lib/web_console/templates/error_page.js.erb within layouts/javascript (0.8ms)
+  Rendered /Users/apprentice/.rbenv/versions/2.2.5/lib/ruby/gems/2.2.0/gems/web-console-2.3.0/lib/web_console/templates/index.html.erb (175.0ms)
+
+
+Started GET "/centers/geo/30.0/-30.22/30" for ::1 at 2016-06-05 14:30:04 -0700
+Processing by CentersController#location as HTML
+  Parameters: {"lat"=>"30.0", "lng"=>"-30.22", "radius"=>"30"}
+  [1m[36mSQL (0.5ms)[0m  [1m                    SELECT *
+                    FROM service_providers
+                    LIMIT 10;
+[0m
+Completed 200 OK in 2ms (ActiveRecord: 0.5ms)
+
+
+Started GET "/centers/geo/30.0/-30.22/30" for ::1 at 2016-06-05 14:30:14 -0700
+
+SyntaxError (/Users/apprentice/Desktop/chelsie/app/controllers/centers_controller.rb:42: syntax error, unexpected tSTRING_DEND, expecting keyword_end):
+  app/controllers/centers_controller.rb:42: syntax error, unexpected tSTRING_DEND, expecting keyword_end
+
+
+  Rendered /Users/apprentice/.rbenv/versions/2.2.5/lib/ruby/gems/2.2.0/gems/actionpack-4.2.5/lib/action_dispatch/middleware/templates/rescues/_source.erb (5.1ms)
+  Rendered /Users/apprentice/.rbenv/versions/2.2.5/lib/ruby/gems/2.2.0/gems/actionpack-4.2.5/lib/action_dispatch/middleware/templates/rescues/_trace.html.erb (2.3ms)
+  Rendered /Users/apprentice/.rbenv/versions/2.2.5/lib/ruby/gems/2.2.0/gems/actionpack-4.2.5/lib/action_dispatch/middleware/templates/rescues/_request_and_response.html.erb (1.1ms)
+  Rendered /Users/apprentice/.rbenv/versions/2.2.5/lib/ruby/gems/2.2.0/gems/actionpack-4.2.5/lib/action_dispatch/middleware/templates/rescues/diagnostics.html.erb within rescues/layout (84.0ms)
+  Rendered /Users/apprentice/.rbenv/versions/2.2.5/lib/ruby/gems/2.2.0/gems/web-console-2.3.0/lib/web_console/templates/_markup.html.erb (0.9ms)
+  Rendered /Users/apprentice/.rbenv/versions/2.2.5/lib/ruby/gems/2.2.0/gems/web-console-2.3.0/lib/web_console/templates/_inner_console_markup.html.erb within layouts/inlined_string (0.4ms)
+  Rendered /Users/apprentice/.rbenv/versions/2.2.5/lib/ruby/gems/2.2.0/gems/web-console-2.3.0/lib/web_console/templates/_prompt_box_markup.html.erb within layouts/inlined_string (0.4ms)
+  Rendered /Users/apprentice/.rbenv/versions/2.2.5/lib/ruby/gems/2.2.0/gems/web-console-2.3.0/lib/web_console/templates/style.css.erb within layouts/inlined_string (0.4ms)
+  Rendered /Users/apprentice/.rbenv/versions/2.2.5/lib/ruby/gems/2.2.0/gems/web-console-2.3.0/lib/web_console/templates/console.js.erb within layouts/javascript (75.8ms)
+  Rendered /Users/apprentice/.rbenv/versions/2.2.5/lib/ruby/gems/2.2.0/gems/web-console-2.3.0/lib/web_console/templates/main.js.erb within layouts/javascript (0.4ms)
+  Rendered /Users/apprentice/.rbenv/versions/2.2.5/lib/ruby/gems/2.2.0/gems/web-console-2.3.0/lib/web_console/templates/error_page.js.erb within layouts/javascript (0.8ms)
+  Rendered /Users/apprentice/.rbenv/versions/2.2.5/lib/ruby/gems/2.2.0/gems/web-console-2.3.0/lib/web_console/templates/index.html.erb (170.0ms)
+
+
+Started GET "/centers/geo/30.0/-30.22/30" for ::1 at 2016-06-05 14:31:23 -0700
+
+SyntaxError (/Users/apprentice/Desktop/chelsie/app/controllers/centers_controller.rb:42: syntax error, unexpected tSTRING_DEND, expecting keyword_end):
+  app/controllers/centers_controller.rb:42: syntax error, unexpected tSTRING_DEND, expecting keyword_end
+
+
+  Rendered /Users/apprentice/.rbenv/versions/2.2.5/lib/ruby/gems/2.2.0/gems/actionpack-4.2.5/lib/action_dispatch/middleware/templates/rescues/_source.erb (5.6ms)
+  Rendered /Users/apprentice/.rbenv/versions/2.2.5/lib/ruby/gems/2.2.0/gems/actionpack-4.2.5/lib/action_dispatch/middleware/templates/rescues/_trace.html.erb (2.5ms)
+  Rendered /Users/apprentice/.rbenv/versions/2.2.5/lib/ruby/gems/2.2.0/gems/actionpack-4.2.5/lib/action_dispatch/middleware/templates/rescues/_request_and_response.html.erb (1.3ms)
+  Rendered /Users/apprentice/.rbenv/versions/2.2.5/lib/ruby/gems/2.2.0/gems/actionpack-4.2.5/lib/action_dispatch/middleware/templates/rescues/diagnostics.html.erb within rescues/layout (83.6ms)
+  Rendered /Users/apprentice/.rbenv/versions/2.2.5/lib/ruby/gems/2.2.0/gems/web-console-2.3.0/lib/web_console/templates/_markup.html.erb (0.4ms)
+  Rendered /Users/apprentice/.rbenv/versions/2.2.5/lib/ruby/gems/2.2.0/gems/web-console-2.3.0/lib/web_console/templates/_inner_console_markup.html.erb within layouts/inlined_string (0.5ms)
+  Rendered /Users/apprentice/.rbenv/versions/2.2.5/lib/ruby/gems/2.2.0/gems/web-console-2.3.0/lib/web_console/templates/_prompt_box_markup.html.erb within layouts/inlined_string (0.3ms)
+  Rendered /Users/apprentice/.rbenv/versions/2.2.5/lib/ruby/gems/2.2.0/gems/web-console-2.3.0/lib/web_console/templates/style.css.erb within layouts/inlined_string (0.4ms)
+  Rendered /Users/apprentice/.rbenv/versions/2.2.5/lib/ruby/gems/2.2.0/gems/web-console-2.3.0/lib/web_console/templates/console.js.erb within layouts/javascript (74.0ms)
+  Rendered /Users/apprentice/.rbenv/versions/2.2.5/lib/ruby/gems/2.2.0/gems/web-console-2.3.0/lib/web_console/templates/main.js.erb within layouts/javascript (0.3ms)
+  Rendered /Users/apprentice/.rbenv/versions/2.2.5/lib/ruby/gems/2.2.0/gems/web-console-2.3.0/lib/web_console/templates/error_page.js.erb within layouts/javascript (0.4ms)
+  Rendered /Users/apprentice/.rbenv/versions/2.2.5/lib/ruby/gems/2.2.0/gems/web-console-2.3.0/lib/web_console/templates/index.html.erb (162.6ms)
+
+
+Started GET "/centers/geo/30.0/-30.22/30" for ::1 at 2016-06-05 14:31:35 -0700
+Processing by CentersController#location as HTML
+  Parameters: {"lat"=>"30.0", "lng"=>"-30.22", "radius"=>"30"}
+  [1m[35mSQL (1.2ms)[0m                      SELECT *,
+                           69 * DEGREES(ACOS(COS(RADIANS(latpoint))
+                              * COS(RADIANS(lat))
+                              * COS(RADIANS(longpoint)) - RADIANS(lng)
+                              + SIN(RADIANS(latpoint))
+                              * SIN(RADIANS(lat)))) AS distance_in_miles
+                    FROM service_providers
+                    JOIN (
+                      SELECT 30.0 AS latpoint,
+                              AS longpoint
+                    ) AS p ON 1=1
+                    ORDER BY distance_in_miles
+                    LIMIT 10;
+
+Completed 500 Internal Server Error in 2ms (ActiveRecord: 1.2ms)
+
+ActiveRecord::StatementInvalid (PG::SyntaxError: ERROR:  syntax error at or near "AS"
+LINE 10:                               AS longpoint
+                                       ^
+:                     SELECT *,
+                           69 * DEGREES(ACOS(COS(RADIANS(latpoint))
+                              * COS(RADIANS(lat))
+                              * COS(RADIANS(longpoint)) - RADIANS(lng)
+                              + SIN(RADIANS(latpoint))
+                              * SIN(RADIANS(lat)))) AS distance_in_miles
+                    FROM service_providers
+                    JOIN (
+                      SELECT 30.0 AS latpoint,
+                              AS longpoint
+                    ) AS p ON 1=1
+                    ORDER BY distance_in_miles
+                    LIMIT 10;
+):
+  app/controllers/centers_controller.rb:42:in `location'
+
+
+  Rendered /Users/apprentice/.rbenv/versions/2.2.5/lib/ruby/gems/2.2.0/gems/actionpack-4.2.5/lib/action_dispatch/middleware/templates/rescues/_source.erb (7.7ms)
+  Rendered /Users/apprentice/.rbenv/versions/2.2.5/lib/ruby/gems/2.2.0/gems/actionpack-4.2.5/lib/action_dispatch/middleware/templates/rescues/_trace.html.erb (3.3ms)
+  Rendered /Users/apprentice/.rbenv/versions/2.2.5/lib/ruby/gems/2.2.0/gems/actionpack-4.2.5/lib/action_dispatch/middleware/templates/rescues/_request_and_response.html.erb (1.3ms)
+  Rendered /Users/apprentice/.rbenv/versions/2.2.5/lib/ruby/gems/2.2.0/gems/actionpack-4.2.5/lib/action_dispatch/middleware/templates/rescues/diagnostics.html.erb within rescues/layout (86.2ms)
+  Rendered /Users/apprentice/.rbenv/versions/2.2.5/lib/ruby/gems/2.2.0/gems/web-console-2.3.0/lib/web_console/templates/_markup.html.erb (0.6ms)
+  Rendered /Users/apprentice/.rbenv/versions/2.2.5/lib/ruby/gems/2.2.0/gems/web-console-2.3.0/lib/web_console/templates/_inner_console_markup.html.erb within layouts/inlined_string (0.4ms)
+  Rendered /Users/apprentice/.rbenv/versions/2.2.5/lib/ruby/gems/2.2.0/gems/web-console-2.3.0/lib/web_console/templates/_prompt_box_markup.html.erb within layouts/inlined_string (0.3ms)
+  Rendered /Users/apprentice/.rbenv/versions/2.2.5/lib/ruby/gems/2.2.0/gems/web-console-2.3.0/lib/web_console/templates/style.css.erb within layouts/inlined_string (0.6ms)
+  Rendered /Users/apprentice/.rbenv/versions/2.2.5/lib/ruby/gems/2.2.0/gems/web-console-2.3.0/lib/web_console/templates/console.js.erb within layouts/javascript (76.6ms)
+  Rendered /Users/apprentice/.rbenv/versions/2.2.5/lib/ruby/gems/2.2.0/gems/web-console-2.3.0/lib/web_console/templates/main.js.erb within layouts/javascript (0.3ms)
+  Rendered /Users/apprentice/.rbenv/versions/2.2.5/lib/ruby/gems/2.2.0/gems/web-console-2.3.0/lib/web_console/templates/error_page.js.erb within layouts/javascript (0.5ms)
+  Rendered /Users/apprentice/.rbenv/versions/2.2.5/lib/ruby/gems/2.2.0/gems/web-console-2.3.0/lib/web_console/templates/index.html.erb (176.5ms)
+
+
+Started GET "/centers/geo/30.0/-30.22/30" for ::1 at 2016-06-05 14:33:26 -0700
+Processing by CentersController#location as HTML
+  Parameters: {"lat"=>"30.0", "lng"=>"-30.22", "radius"=>"30"}
+  [1m[36mSQL (37.7ms)[0m  [1m                    SELECT *,
+                           69 * DEGREES(ACOS(COS(RADIANS(30.0))
+                              * COS(RADIANS(lat))
+                              * COS(RADIANS()) - RADIANS(lng)
+                              + SIN(RADIANS(30.0))
+                              * SIN(RADIANS(lat)))) AS distance_in_miles
+                    FROM service_providers
+                    ORDER BY distance_in_miles
+                    LIMIT 10;
+[0m
+Completed 500 Internal Server Error in 39ms (ActiveRecord: 37.7ms)
+
+ActiveRecord::StatementInvalid (PG::UndefinedFunction: ERROR:  function radians() does not exist
+LINE 4:                               * COS(RADIANS()) - RADIANS(lng...
+                                            ^
+HINT:  No function matches the given name and argument types. You might need to add explicit type casts.
+:                     SELECT *,
+                           69 * DEGREES(ACOS(COS(RADIANS(30.0))
+                              * COS(RADIANS(lat))
+                              * COS(RADIANS()) - RADIANS(lng)
+                              + SIN(RADIANS(30.0))
+                              * SIN(RADIANS(lat)))) AS distance_in_miles
+                    FROM service_providers
+                    ORDER BY distance_in_miles
+                    LIMIT 10;
+):
+  app/controllers/centers_controller.rb:38:in `location'
+
+
+  Rendered /Users/apprentice/.rbenv/versions/2.2.5/lib/ruby/gems/2.2.0/gems/actionpack-4.2.5/lib/action_dispatch/middleware/templates/rescues/_source.erb (5.5ms)
+  Rendered /Users/apprentice/.rbenv/versions/2.2.5/lib/ruby/gems/2.2.0/gems/actionpack-4.2.5/lib/action_dispatch/middleware/templates/rescues/_trace.html.erb (2.6ms)
+  Rendered /Users/apprentice/.rbenv/versions/2.2.5/lib/ruby/gems/2.2.0/gems/actionpack-4.2.5/lib/action_dispatch/middleware/templates/rescues/_request_and_response.html.erb (1.1ms)
+  Rendered /Users/apprentice/.rbenv/versions/2.2.5/lib/ruby/gems/2.2.0/gems/actionpack-4.2.5/lib/action_dispatch/middleware/templates/rescues/diagnostics.html.erb within rescues/layout (79.2ms)
+  Rendered /Users/apprentice/.rbenv/versions/2.2.5/lib/ruby/gems/2.2.0/gems/web-console-2.3.0/lib/web_console/templates/_markup.html.erb (0.4ms)
+  Rendered /Users/apprentice/.rbenv/versions/2.2.5/lib/ruby/gems/2.2.0/gems/web-console-2.3.0/lib/web_console/templates/_inner_console_markup.html.erb within layouts/inlined_string (0.5ms)
+  Rendered /Users/apprentice/.rbenv/versions/2.2.5/lib/ruby/gems/2.2.0/gems/web-console-2.3.0/lib/web_console/templates/_prompt_box_markup.html.erb within layouts/inlined_string (0.3ms)
+  Rendered /Users/apprentice/.rbenv/versions/2.2.5/lib/ruby/gems/2.2.0/gems/web-console-2.3.0/lib/web_console/templates/style.css.erb within layouts/inlined_string (0.4ms)
+  Rendered /Users/apprentice/.rbenv/versions/2.2.5/lib/ruby/gems/2.2.0/gems/web-console-2.3.0/lib/web_console/templates/console.js.erb within layouts/javascript (69.5ms)
+  Rendered /Users/apprentice/.rbenv/versions/2.2.5/lib/ruby/gems/2.2.0/gems/web-console-2.3.0/lib/web_console/templates/main.js.erb within layouts/javascript (0.3ms)
+  Rendered /Users/apprentice/.rbenv/versions/2.2.5/lib/ruby/gems/2.2.0/gems/web-console-2.3.0/lib/web_console/templates/error_page.js.erb within layouts/javascript (0.4ms)
+  Rendered /Users/apprentice/.rbenv/versions/2.2.5/lib/ruby/gems/2.2.0/gems/web-console-2.3.0/lib/web_console/templates/index.html.erb (149.6ms)
+
+
+Started GET "/centers/geo/30.0/-30.22/30" for ::1 at 2016-06-05 14:37:59 -0700
+  [1m[36mActiveRecord::SchemaMigration Load (0.5ms)[0m  [1mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+Processing by CentersController#location as HTML
+  Parameters: {"lat"=>"30.0", "lng"=>"-30.22", "radius"=>"30"}
+  [1m[35mSQL (1.3ms)[0m                      SELECT *,
+                           69 * DEGREES(ACOS(COS(RADIANS(30.0))
+                              * COS(RADIANS(lat))
+                              * COS(RADIANS()) - RADIANS(lng)
+                              + SIN(RADIANS(30.0))
+                              * SIN(RADIANS(lat)))) AS distance_in_miles
+                    FROM service_providers
+                    ORDER BY distance_in_miles
+                    LIMIT 10;
+
+Completed 500 Internal Server Error in 2ms (ActiveRecord: 1.3ms)
+
+ActiveRecord::StatementInvalid (PG::UndefinedFunction: ERROR:  function radians() does not exist
+LINE 4:                               * COS(RADIANS()) - RADIANS(lng...
+                                            ^
+HINT:  No function matches the given name and argument types. You might need to add explicit type casts.
+:                     SELECT *,
+                           69 * DEGREES(ACOS(COS(RADIANS(30.0))
+                              * COS(RADIANS(lat))
+                              * COS(RADIANS()) - RADIANS(lng)
+                              + SIN(RADIANS(30.0))
+                              * SIN(RADIANS(lat)))) AS distance_in_miles
+                    FROM service_providers
+                    ORDER BY distance_in_miles
+                    LIMIT 10;
+):
+  app/controllers/centers_controller.rb:43:in `location'
+
+
+  Rendered /Users/apprentice/.rbenv/versions/2.2.5/lib/ruby/gems/2.2.0/gems/actionpack-4.2.5/lib/action_dispatch/middleware/templates/rescues/_source.erb (6.2ms)
+  Rendered /Users/apprentice/.rbenv/versions/2.2.5/lib/ruby/gems/2.2.0/gems/actionpack-4.2.5/lib/action_dispatch/middleware/templates/rescues/_trace.html.erb (2.6ms)
+  Rendered /Users/apprentice/.rbenv/versions/2.2.5/lib/ruby/gems/2.2.0/gems/actionpack-4.2.5/lib/action_dispatch/middleware/templates/rescues/_request_and_response.html.erb (1.1ms)
+  Rendered /Users/apprentice/.rbenv/versions/2.2.5/lib/ruby/gems/2.2.0/gems/actionpack-4.2.5/lib/action_dispatch/middleware/templates/rescues/diagnostics.html.erb within rescues/layout (94.5ms)
+  Rendered /Users/apprentice/.rbenv/versions/2.2.5/lib/ruby/gems/2.2.0/gems/web-console-2.3.0/lib/web_console/templates/_markup.html.erb (0.8ms)
+  Rendered /Users/apprentice/.rbenv/versions/2.2.5/lib/ruby/gems/2.2.0/gems/web-console-2.3.0/lib/web_console/templates/_inner_console_markup.html.erb within layouts/inlined_string (0.4ms)
+  Rendered /Users/apprentice/.rbenv/versions/2.2.5/lib/ruby/gems/2.2.0/gems/web-console-2.3.0/lib/web_console/templates/_prompt_box_markup.html.erb within layouts/inlined_string (0.4ms)
+  Rendered /Users/apprentice/.rbenv/versions/2.2.5/lib/ruby/gems/2.2.0/gems/web-console-2.3.0/lib/web_console/templates/style.css.erb within layouts/inlined_string (0.4ms)
+  Rendered /Users/apprentice/.rbenv/versions/2.2.5/lib/ruby/gems/2.2.0/gems/web-console-2.3.0/lib/web_console/templates/console.js.erb within layouts/javascript (85.3ms)
+  Rendered /Users/apprentice/.rbenv/versions/2.2.5/lib/ruby/gems/2.2.0/gems/web-console-2.3.0/lib/web_console/templates/main.js.erb within layouts/javascript (0.4ms)
+  Rendered /Users/apprentice/.rbenv/versions/2.2.5/lib/ruby/gems/2.2.0/gems/web-console-2.3.0/lib/web_console/templates/error_page.js.erb within layouts/javascript (0.6ms)
+  Rendered /Users/apprentice/.rbenv/versions/2.2.5/lib/ruby/gems/2.2.0/gems/web-console-2.3.0/lib/web_console/templates/index.html.erb (190.9ms)
+
+
+Started GET "/centers/geo/30.0/-30.22/30" for ::1 at 2016-06-05 14:38:43 -0700
+Processing by CentersController#location as HTML
+  Parameters: {"lat"=>"30.0", "lng"=>"-30.22", "radius"=>"30"}
+  [1m[36mSQL (4.4ms)[0m  [1m                    SELECT *,
+                           69 * DEGREES(ACOS(COS(RADIANS(30.0))
+                              * COS(RADIANS(lat))
+                              * COS(RADIANS(-30.22)) - RADIANS(lng)
+                              + SIN(RADIANS(30.0))
+                              * SIN(RADIANS(lat)))) AS distance_in_miles
+                    FROM service_providers
+                    ORDER BY distance_in_miles
+                    LIMIT 10;
+[0m
+Completed 200 OK in 7ms (ActiveRecord: 4.4ms)
+
+
+Started GET "/centers/geo/30.0/-30.22/30" for ::1 at 2016-06-05 14:39:55 -0700
+Processing by CentersController#location as HTML
+  Parameters: {"lat"=>"30.0", "lng"=>"-30.22", "radius"=>"30"}
+  [1m[35mSQL (3.4ms)[0m                      SELECT *,
+                           69 * DEGREES(ACOS(COS(RADIANS(30.0))
+                              * COS(RADIANS(lat))
+                              * COS(RADIANS(-30.22)) - RADIANS(lng)
+                              + SIN(RADIANS(30.0))
+                              * SIN(RADIANS(lat)))) AS distance_in_miles
+                    FROM service_providers
+                    ORDER BY distance_in_miles
+                    LIMIT 10;
+
+Completed 200 OK in 7ms (Views: 2.7ms | ActiveRecord: 3.4ms)
+
+
+Started GET "/centers/geo/24.0/-82.22/30" for ::1 at 2016-06-05 14:40:14 -0700
+Processing by CentersController#location as HTML
+  Parameters: {"lat"=>"24.0", "lng"=>"-82.22", "radius"=>"30"}
+  [1m[36mSQL (3.4ms)[0m  [1m                    SELECT *,
+                           69 * DEGREES(ACOS(COS(RADIANS(24.0))
+                              * COS(RADIANS(lat))
+                              * COS(RADIANS(-82.22)) - RADIANS(lng)
+                              + SIN(RADIANS(24.0))
+                              * SIN(RADIANS(lat)))) AS distance_in_miles
+                    FROM service_providers
+                    ORDER BY distance_in_miles
+                    LIMIT 10;
+[0m
+Completed 200 OK in 7ms (Views: 2.6ms | ActiveRecord: 3.4ms)
+
+
+Started GET "/centers/geo/24.0/-82.22/30" for ::1 at 2016-06-05 14:43:06 -0700
+Processing by CentersController#location as HTML
+  Parameters: {"lat"=>"24.0", "lng"=>"-82.22", "radius"=>"30"}
+  [1m[35mSQL (3.2ms)[0m                      SELECT *,
+                           69 * DEGREES(ACOS(COS(RADIANS(24.0))
+                              * COS(RADIANS(lat))
+                              * COS(RADIANS(-82.22)) - RADIANS(lng)
+                              + SIN(RADIANS(24.0))
+                              * SIN(RADIANS(lat)))) AS distance_in_miles
+                    FROM service_providers
+                    WHERE lat IS NOT NULL AND lng IS NOT NULL
+                    ORDER BY distance_in_miles
+                    LIMIT 10;
+
+Completed 200 OK in 7ms (Views: 2.9ms | ActiveRecord: 3.2ms)
+
+
+Started GET "/centers/geo/24.0/-82.22/30" for ::1 at 2016-06-05 14:43:08 -0700
+Processing by CentersController#location as HTML
+  Parameters: {"lat"=>"24.0", "lng"=>"-82.22", "radius"=>"30"}
+  [1m[36mSQL (3.5ms)[0m  [1m                    SELECT *,
+                           69 * DEGREES(ACOS(COS(RADIANS(24.0))
+                              * COS(RADIANS(lat))
+                              * COS(RADIANS(-82.22)) - RADIANS(lng)
+                              + SIN(RADIANS(24.0))
+                              * SIN(RADIANS(lat)))) AS distance_in_miles
+                    FROM service_providers
+                    WHERE lat IS NOT NULL AND lng IS NOT NULL
+                    ORDER BY distance_in_miles
+                    LIMIT 10;
+[0m
+Completed 200 OK in 7ms (Views: 2.9ms | ActiveRecord: 3.5ms)
+
+
+Started GET "/centers/geo/37.77/122.41/30" for ::1 at 2016-06-05 14:43:49 -0700
+Processing by CentersController#location as HTML
+  Parameters: {"lat"=>"37.77", "lng"=>"122.41", "radius"=>"30"}
+  [1m[35mSQL (3.4ms)[0m                      SELECT *,
+                           69 * DEGREES(ACOS(COS(RADIANS(37.77))
+                              * COS(RADIANS(lat))
+                              * COS(RADIANS(122.41)) - RADIANS(lng)
+                              + SIN(RADIANS(37.77))
+                              * SIN(RADIANS(lat)))) AS distance_in_miles
+                    FROM service_providers
+                    WHERE lat IS NOT NULL AND lng IS NOT NULL
+                    ORDER BY distance_in_miles
+                    LIMIT 10;
+
+Completed 200 OK in 7ms (Views: 3.2ms | ActiveRecord: 3.4ms)
+
+
+Started GET "/centers/geo/37.77/122.41/30" for ::1 at 2016-06-05 14:46:55 -0700
+Processing by CentersController#location as HTML
+  Parameters: {"lat"=>"37.77", "lng"=>"122.41", "radius"=>"30"}
+  [1m[36mSQL (4.3ms)[0m  [1m                    SELECT name, address, lat, lng,
+                           69.0 * DEGREES(ACOS(COS(RADIANS(37.77))
+                              * COS(RADIANS(lat))
+                              * COS(RADIANS(122.41)) - RADIANS(lng)
+                              + SIN(RADIANS(37.77))
+                              * SIN(RADIANS(lat)))) AS distance_in_miles
+                    FROM service_providers
+                    WHERE lat IS NOT NULL AND lng IS NOT NULL
+                    ORDER BY distance_in_miles
+                    LIMIT 10;
+[0m
+Completed 200 OK in 7ms (Views: 2.4ms | ActiveRecord: 4.3ms)
+
+
+Started GET "/centers/geo/122.41/37.77/30" for ::1 at 2016-06-05 14:52:50 -0700
+Processing by CentersController#location as HTML
+  Parameters: {"lat"=>"122.41", "lng"=>"37.77", "radius"=>"30"}
+  [1m[35mSQL (2.9ms)[0m                      SELECT name, address, lat, lng,
+                           69.0 * DEGREES(ACOS(COS(RADIANS(122.41))
+                              * COS(RADIANS(lat))
+                              * COS(RADIANS(37.77)) - RADIANS(lng)
+                              + SIN(RADIANS(122.41))
+                              * SIN(RADIANS(lat)))) AS distance_in_miles
+                    FROM service_providers
+                    WHERE lat IS NOT NULL AND lng IS NOT NULL
+                    ORDER BY distance_in_miles
+                    LIMIT 10;
+
+Completed 200 OK in 5ms (Views: 1.7ms | ActiveRecord: 2.9ms)
+
+
+Started GET "/centers/geo/122.41/37.77/30" for ::1 at 2016-06-05 14:56:19 -0700
+Processing by CentersController#location as HTML
+  Parameters: {"lat"=>"122.41", "lng"=>"37.77", "radius"=>"30"}
+  [1m[36mSQL (4.3ms)[0m  [1m                    SELECT name, address, lat, lng,
+                           69.0 * DEGREES(ACOS(COS(RADIANS(122.41))
+                              * COS(RADIANS(lat))
+                              * COS(RADIANS(37.77)) - RADIANS(lng)
+                              + SIN(RADIANS(122.41))
+                              * SIN(RADIANS(lat)))) AS distance_in_miles
+                    FROM service_providers
+                    WHERE lat IS NOT NULL AND lng IS NOT NULL
+                    ORDER BY distance_in_miles
+                    LIMIT 10;
+[0m
+Completed 200 OK in 7ms (Views: 2.3ms | ActiveRecord: 4.3ms)
+
+
+Started GET "/centers/geo/122.41/37.77/30" for ::1 at 2016-06-05 14:56:48 -0700
+Processing by CentersController#location as HTML
+  Parameters: {"lat"=>"122.41", "lng"=>"37.77", "radius"=>"30"}
+  [1m[35mSQL (3.0ms)[0m                      SELECT name, address, lat, lng,
+                           69.0 * DEGREES(ACOS(COS(RADIANS(122.41))
+                              * COS(RADIANS(lat))
+                              * COS(RADIANS(37.77)) - RADIANS(lng)
+                              + SIN(RADIANS(122.41))
+                              * SIN(RADIANS(lat)))) AS distance_in_miles
+                    FROM service_providers
+                    WHERE lat IS NOT NULL AND lng IS NOT NULL
+                    ORDER BY distance_in_miles
+                    LIMIT 10;
+
+Completed 200 OK in 5ms (Views: 1.7ms | ActiveRecord: 3.0ms)
+
+
+Started GET "/centers/geo/122.41/37.77/30" for ::1 at 2016-06-05 14:56:50 -0700
+Processing by CentersController#location as HTML
+  Parameters: {"lat"=>"122.41", "lng"=>"37.77", "radius"=>"30"}
+  [1m[36mSQL (3.0ms)[0m  [1m                    SELECT name, address, lat, lng,
+                           69.0 * DEGREES(ACOS(COS(RADIANS(122.41))
+                              * COS(RADIANS(lat))
+                              * COS(RADIANS(37.77)) - RADIANS(lng)
+                              + SIN(RADIANS(122.41))
+                              * SIN(RADIANS(lat)))) AS distance_in_miles
+                    FROM service_providers
+                    WHERE lat IS NOT NULL AND lng IS NOT NULL
+                    ORDER BY distance_in_miles
+                    LIMIT 10;
+[0m
+Completed 200 OK in 5ms (Views: 1.6ms | ActiveRecord: 3.0ms)
+
+
+Started GET "/centers/geo/122.41/37.77/30" for ::1 at 2016-06-05 14:56:51 -0700
+Processing by CentersController#location as HTML
+  Parameters: {"lat"=>"122.41", "lng"=>"37.77", "radius"=>"30"}
+  [1m[35mSQL (3.0ms)[0m                      SELECT name, address, lat, lng,
+                           69.0 * DEGREES(ACOS(COS(RADIANS(122.41))
+                              * COS(RADIANS(lat))
+                              * COS(RADIANS(37.77)) - RADIANS(lng)
+                              + SIN(RADIANS(122.41))
+                              * SIN(RADIANS(lat)))) AS distance_in_miles
+                    FROM service_providers
+                    WHERE lat IS NOT NULL AND lng IS NOT NULL
+                    ORDER BY distance_in_miles
+                    LIMIT 10;
+
+Completed 200 OK in 6ms (Views: 2.3ms | ActiveRecord: 3.0ms)
+
+
+Started GET "/centers/geo/37.77/122.41/30" for ::1 at 2016-06-05 14:57:36 -0700
+Processing by CentersController#location as HTML
+  Parameters: {"lat"=>"37.77", "lng"=>"122.41", "radius"=>"30"}
+  [1m[36mSQL (2.6ms)[0m  [1m                    SELECT name, address, lat, lng,
+                           69.0 * DEGREES(ACOS(COS(RADIANS(37.77))
+                              * COS(RADIANS(lat))
+                              * COS(RADIANS(122.41)) - RADIANS(lng)
+                              + SIN(RADIANS(37.77))
+                              * SIN(RADIANS(lat)))) AS distance_in_miles
+                    FROM service_providers
+                    WHERE lat IS NOT NULL AND lng IS NOT NULL
+                    ORDER BY distance_in_miles
+                    LIMIT 10;
+[0m
+Completed 200 OK in 5ms (Views: 2.0ms | ActiveRecord: 2.6ms)
+
+
+Started GET "/centers/geo/37.77/122.41/30" for ::1 at 2016-06-05 14:59:51 -0700
+Processing by CentersController#location as HTML
+  Parameters: {"lat"=>"37.77", "lng"=>"122.41", "radius"=>"30"}
+  [1m[35mSQL (6.0ms)[0m                      SELECT name, address, lat, lng,
+                           69.0 * DEGREES(ACOS(COS(RADIANS(latpoint))
+                              * COS(RADIANS(lat))
+                              * COS(RADIANS(longpoint)) - RADIANS(lng)
+                              + SIN(RADIANS(latpoint))
+                              * SIN(RADIANS(lat)))) AS distance_in_miles
+                    FROM service_providers
+                    JOIN (
+                      SELECT 37.77 AS latpoint, 122.41 AS longpoint
+                    ) AS p ON 1=1
+                    WHERE lat IS NOT NULL AND lng IS NOT NULL
+                    ORDER BY distance_in_miles
+                    LIMIT 10;
+
+Completed 200 OK in 8ms (Views: 1.6ms | ActiveRecord: 6.0ms)
+
+
+Started GET "/centers/geo/37.77/122.41/30" for ::1 at 2016-06-05 14:59:53 -0700
+Processing by CentersController#location as HTML
+  Parameters: {"lat"=>"37.77", "lng"=>"122.41", "radius"=>"30"}
+  [1m[36mSQL (3.5ms)[0m  [1m                    SELECT name, address, lat, lng,
+                           69.0 * DEGREES(ACOS(COS(RADIANS(latpoint))
+                              * COS(RADIANS(lat))
+                              * COS(RADIANS(longpoint)) - RADIANS(lng)
+                              + SIN(RADIANS(latpoint))
+                              * SIN(RADIANS(lat)))) AS distance_in_miles
+                    FROM service_providers
+                    JOIN (
+                      SELECT 37.77 AS latpoint, 122.41 AS longpoint
+                    ) AS p ON 1=1
+                    WHERE lat IS NOT NULL AND lng IS NOT NULL
+                    ORDER BY distance_in_miles
+                    LIMIT 10;
+[0m
+Completed 200 OK in 5ms (Views: 0.9ms | ActiveRecord: 3.5ms)
+
+
+Started GET "/centers/geo/37.77/122.41/30" for ::1 at 2016-06-05 14:59:54 -0700
+Processing by CentersController#location as HTML
+  Parameters: {"lat"=>"37.77", "lng"=>"122.41", "radius"=>"30"}
+  [1m[35mSQL (4.2ms)[0m                      SELECT name, address, lat, lng,
+                           69.0 * DEGREES(ACOS(COS(RADIANS(latpoint))
+                              * COS(RADIANS(lat))
+                              * COS(RADIANS(longpoint)) - RADIANS(lng)
+                              + SIN(RADIANS(latpoint))
+                              * SIN(RADIANS(lat)))) AS distance_in_miles
+                    FROM service_providers
+                    JOIN (
+                      SELECT 37.77 AS latpoint, 122.41 AS longpoint
+                    ) AS p ON 1=1
+                    WHERE lat IS NOT NULL AND lng IS NOT NULL
+                    ORDER BY distance_in_miles
+                    LIMIT 10;
+
+Completed 200 OK in 6ms (Views: 1.7ms | ActiveRecord: 4.2ms)
+
+
+Started GET "/centers/geo/33.6430139/-85.8276911/30" for ::1 at 2016-06-05 15:24:51 -0700
+Processing by CentersController#location as HTML
+  Parameters: {"lat"=>"33.6430139", "lng"=>"-85.8276911", "radius"=>"30"}
+  [1m[36mSQL (3.7ms)[0m  [1m                    SELECT name, address, lat, lng,
+                          69.0 * DEGREES(ACOS(COS(RADIANS(latpoint))
+                               * COS(RADIANS(lat))
+                               * COS(RADIANS(longpoint) - RADIANS(lng))
+                               + SIN(RADIANS(latpoint))
+                               * SIN(RADIANS(lat)))) AS distance_in_miles
+                    FROM service_providers
+                    JOIN (
+                      SELECT 33.6430139 AS latpoint, -85.8276911 AS longpoint
+                    ) AS p ON 1=1
+                    WHERE lat IS NOT NULL AND lng IS NOT NULL
+                    ORDER BY distance_in_miles
+                    LIMIT 10;
+[0m
+Completed 200 OK in 5ms (Views: 0.9ms | ActiveRecord: 3.7ms)
+
+
+Started GET "/centers/geo/35.6211098/-117.6695033/30" for ::1 at 2016-06-05 15:25:37 -0700
+Processing by CentersController#location as HTML
+  Parameters: {"lat"=>"35.6211098", "lng"=>"-117.6695033", "radius"=>"30"}
+  [1m[35mSQL (3.9ms)[0m                      SELECT name, address, lat, lng,
+                          69.0 * DEGREES(ACOS(COS(RADIANS(latpoint))
+                               * COS(RADIANS(lat))
+                               * COS(RADIANS(longpoint) - RADIANS(lng))
+                               + SIN(RADIANS(latpoint))
+                               * SIN(RADIANS(lat)))) AS distance_in_miles
+                    FROM service_providers
+                    JOIN (
+                      SELECT 35.6211098 AS latpoint, -117.6695033 AS longpoint
+                    ) AS p ON 1=1
+                    WHERE lat IS NOT NULL AND lng IS NOT NULL
+                    ORDER BY distance_in_miles
+                    LIMIT 10;
+
+Completed 200 OK in 5ms (Views: 0.9ms | ActiveRecord: 3.9ms)
+
+
+Started GET "/centers/geo/35.6/-117/30" for ::1 at 2016-06-05 16:05:43 -0700
+Processing by CentersController#location as HTML
+  Parameters: {"lat"=>"35.6", "lng"=>"-117", "radius"=>"30"}
+  [1m[36mSQL (3.6ms)[0m  [1m                    SELECT name, address, lat, lng,
+                          69.0 * DEGREES(ACOS(COS(RADIANS(latpoint))
+                               * COS(RADIANS(lat))
+                               * COS(RADIANS(longpoint) - RADIANS(lng))
+                               + SIN(RADIANS(latpoint))
+                               * SIN(RADIANS(lat)))) AS distance_in_miles
+                    FROM service_providers
+                    JOIN (
+                      SELECT 35.6 AS latpoint, -117 AS longpoint
+                    ) AS p ON 1=1
+                    WHERE lat IS NOT NULL AND lng IS NOT NULL
+                    ORDER BY distance_in_miles
+                    LIMIT 10;
+[0m
+Completed 200 OK in 5ms (Views: 0.9ms | ActiveRecord: 3.6ms)
+
+
+Started GET "/centers/geo/35.6/-120/30" for ::1 at 2016-06-05 16:10:00 -0700
+Processing by CentersController#location as HTML
+  Parameters: {"lat"=>"35.6", "lng"=>"-120", "radius"=>"30"}
+  [1m[35mSQL (3.5ms)[0m                      SELECT name, address, lat, lng,
+                          69.0 * DEGREES(ACOS(COS(RADIANS(latpoint))
+                               * COS(RADIANS(lat))
+                               * COS(RADIANS(longpoint) - RADIANS(lng))
+                               + SIN(RADIANS(latpoint))
+                               * SIN(RADIANS(lat)))) AS distance_in_miles
+                    FROM service_providers
+                    JOIN (
+                      SELECT 35.6 AS latpoint, -120 AS longpoint
+                    ) AS p ON 1=1
+                    WHERE lat IS NOT NULL AND lng IS NOT NULL
+                    ORDER BY distance_in_miles
+                    LIMIT 10;
+
+Completed 200 OK in 5ms (Views: 1.0ms | ActiveRecord: 3.5ms)
+
+
+Started GET "/centers/geo/34.0224,/-118.2851/30" for ::1 at 2016-06-05 16:11:56 -0700
+Processing by CentersController#location as HTML
+  Parameters: {"lat"=>"34.0224,", "lng"=>"-118.2851", "radius"=>"30"}
+  [1m[36mSQL (0.8ms)[0m  [1m                    SELECT name, address, lat, lng,
+                          69.0 * DEGREES(ACOS(COS(RADIANS(latpoint))
+                               * COS(RADIANS(lat))
+                               * COS(RADIANS(longpoint) - RADIANS(lng))
+                               + SIN(RADIANS(latpoint))
+                               * SIN(RADIANS(lat)))) AS distance_in_miles
+                    FROM service_providers
+                    JOIN (
+                      SELECT 34.0224, AS latpoint, -118.2851 AS longpoint
+                    ) AS p ON 1=1
+                    WHERE lat IS NOT NULL AND lng IS NOT NULL
+                    ORDER BY distance_in_miles
+                    LIMIT 10;
+[0m
+Completed 500 Internal Server Error in 1ms (ActiveRecord: 0.8ms)
+
+ActiveRecord::StatementInvalid (PG::SyntaxError: ERROR:  syntax error at or near "AS"
+LINE 9:                       SELECT 34.0224, AS latpoint, -118.2851...
+                                              ^
+:                     SELECT name, address, lat, lng,
+                          69.0 * DEGREES(ACOS(COS(RADIANS(latpoint))
+                               * COS(RADIANS(lat))
+                               * COS(RADIANS(longpoint) - RADIANS(lng))
+                               + SIN(RADIANS(latpoint))
+                               * SIN(RADIANS(lat)))) AS distance_in_miles
+                    FROM service_providers
+                    JOIN (
+                      SELECT 34.0224, AS latpoint, -118.2851 AS longpoint
+                    ) AS p ON 1=1
+                    WHERE lat IS NOT NULL AND lng IS NOT NULL
+                    ORDER BY distance_in_miles
+                    LIMIT 10;
+):
+  app/controllers/centers_controller.rb:42:in `location'
+
+
+  Rendered /Users/apprentice/.rbenv/versions/2.2.5/lib/ruby/gems/2.2.0/gems/actionpack-4.2.5/lib/action_dispatch/middleware/templates/rescues/_source.erb (5.5ms)
+  Rendered /Users/apprentice/.rbenv/versions/2.2.5/lib/ruby/gems/2.2.0/gems/actionpack-4.2.5/lib/action_dispatch/middleware/templates/rescues/_trace.html.erb (2.5ms)
+  Rendered /Users/apprentice/.rbenv/versions/2.2.5/lib/ruby/gems/2.2.0/gems/actionpack-4.2.5/lib/action_dispatch/middleware/templates/rescues/_request_and_response.html.erb (1.2ms)
+  Rendered /Users/apprentice/.rbenv/versions/2.2.5/lib/ruby/gems/2.2.0/gems/actionpack-4.2.5/lib/action_dispatch/middleware/templates/rescues/diagnostics.html.erb within rescues/layout (79.8ms)
+  Rendered /Users/apprentice/.rbenv/versions/2.2.5/lib/ruby/gems/2.2.0/gems/web-console-2.3.0/lib/web_console/templates/_markup.html.erb (0.7ms)
+  Rendered /Users/apprentice/.rbenv/versions/2.2.5/lib/ruby/gems/2.2.0/gems/web-console-2.3.0/lib/web_console/templates/_inner_console_markup.html.erb within layouts/inlined_string (0.4ms)
+  Rendered /Users/apprentice/.rbenv/versions/2.2.5/lib/ruby/gems/2.2.0/gems/web-console-2.3.0/lib/web_console/templates/_prompt_box_markup.html.erb within layouts/inlined_string (0.3ms)
+  Rendered /Users/apprentice/.rbenv/versions/2.2.5/lib/ruby/gems/2.2.0/gems/web-console-2.3.0/lib/web_console/templates/style.css.erb within layouts/inlined_string (0.4ms)
+  Rendered /Users/apprentice/.rbenv/versions/2.2.5/lib/ruby/gems/2.2.0/gems/web-console-2.3.0/lib/web_console/templates/console.js.erb within layouts/javascript (73.9ms)
+  Rendered /Users/apprentice/.rbenv/versions/2.2.5/lib/ruby/gems/2.2.0/gems/web-console-2.3.0/lib/web_console/templates/main.js.erb within layouts/javascript (0.3ms)
+  Rendered /Users/apprentice/.rbenv/versions/2.2.5/lib/ruby/gems/2.2.0/gems/web-console-2.3.0/lib/web_console/templates/error_page.js.erb within layouts/javascript (0.4ms)
+  Rendered /Users/apprentice/.rbenv/versions/2.2.5/lib/ruby/gems/2.2.0/gems/web-console-2.3.0/lib/web_console/templates/index.html.erb (175.7ms)
+
+
+Started GET "/centers/geo/34.0224/-118.2851/30" for ::1 at 2016-06-05 16:12:02 -0700
+Processing by CentersController#location as HTML
+  Parameters: {"lat"=>"34.0224", "lng"=>"-118.2851", "radius"=>"30"}
+  [1m[35mSQL (3.7ms)[0m                      SELECT name, address, lat, lng,
+                          69.0 * DEGREES(ACOS(COS(RADIANS(latpoint))
+                               * COS(RADIANS(lat))
+                               * COS(RADIANS(longpoint) - RADIANS(lng))
+                               + SIN(RADIANS(latpoint))
+                               * SIN(RADIANS(lat)))) AS distance_in_miles
+                    FROM service_providers
+                    JOIN (
+                      SELECT 34.0224 AS latpoint, -118.2851 AS longpoint
+                    ) AS p ON 1=1
+                    WHERE lat IS NOT NULL AND lng IS NOT NULL
+                    ORDER BY distance_in_miles
+                    LIMIT 10;
+
+Completed 200 OK in 5ms (Views: 1.0ms | ActiveRecord: 3.7ms)
