@@ -17,13 +17,19 @@ ActiveRecord::Schema.define(version: 20160603014136) do
   enable_extension "plpgsql"
 
   create_table "service_providers", force: :cascade do |t|
-    t.string   "name",       null: false
-    t.string   "address",    null: false
+    t.string   "name",               null: false
+    t.string   "address"
+    t.string   "zip"
     t.decimal  "lat"
     t.decimal  "lng"
     t.string   "place_id"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
+    t.string   "telephone"
+    t.string   "tty"
+    t.string   "website"
+    t.string   "services_offered"
+    t.string   "populations_served"
+    t.datetime "created_at",         null: false
+    t.datetime "updated_at",         null: false
   end
 
 end
