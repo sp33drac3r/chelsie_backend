@@ -1,8 +1,12 @@
 source 'https://rubygems.org'
 
+gem 'mechanize'
+gem 'nokogiri'
+gem 'watir-webdriver'
 
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
 gem 'rails', '4.2.5'
+gem 'heroku'
 gem 'rails-api'
 gem 'dotenv-rails', :require => 'dotenv/rails-now'
 # gem 'gem-that-requires-env-variables'

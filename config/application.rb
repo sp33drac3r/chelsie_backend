@@ -14,6 +14,13 @@ require "action_controller/railtie"
 require "action_mailer/railtie"
 require "action_view/railtie"
 require "sprockets/railtie"
+require 'rubygems'
+require 'mechanize'
+require 'nokogiri'
+require 'open-uri'
+require 'watir-webdriver'
+require "google_places"
+require 'csv'
 
 module Chelsie
   class Application < Rails::Application
