@@ -7254,3 +7254,46 @@ ORDER BY c.conname
   [1m[36mServiceProvider Load (17.3ms)[0m  [1mSELECT  "service_providers".* FROM "service_providers"  ORDER BY "service_providers"."id" DESC LIMIT 1[0m
   [1m[35mServiceProvider Load (0.8ms)[0m  SELECT  "service_providers".* FROM "service_providers"  ORDER BY "service_providers"."id" DESC LIMIT 1
   [1m[36mServiceProvider Load (0.8ms)[0m  [1mSELECT  "service_providers".* FROM "service_providers"  ORDER BY "service_providers"."id" DESC LIMIT 1[0m
+  [1m[36m (180.1ms)[0m  [1mDROP DATABASE IF EXISTS "chelsie_development"[0m
+  [1m[35m (150.1ms)[0m  DROP DATABASE IF EXISTS "chelsie_test"
+  [1m[36m (1121.2ms)[0m  [1mCREATE DATABASE "chelsie_development" ENCODING = 'unicode'[0m
+  [1m[35m (304.0ms)[0m  CREATE DATABASE "chelsie_test" ENCODING = 'unicode'
+  [1m[36mSQL (0.5ms)[0m  [1mCREATE EXTENSION IF NOT EXISTS "plpgsql"[0m
+  [1m[35m (230.6ms)[0m  CREATE TABLE "service_providers" ("id" serial primary key, "name" character varying NOT NULL, "address" character varying, "zip" character varying, "lat" decimal, "lng" decimal, "place_id" character varying, "telephone" character varying, "tty" character varying, "website" character varying, "services_offered" character varying, "populations_served" character varying, "created_at" timestamp NOT NULL, "updated_at" timestamp NOT NULL) 
+  [1m[36m (17.7ms)[0m  [1mCREATE TABLE "schema_migrations" ("version" character varying NOT NULL) [0m
+  [1m[35m (1.7ms)[0m  CREATE UNIQUE INDEX  "unique_schema_migrations" ON "schema_migrations"  ("version")
+  [1m[36m (0.5ms)[0m  [1mSELECT version FROM "schema_migrations"[0m
+  [1m[35m (0.7ms)[0m  INSERT INTO "schema_migrations" (version) VALUES ('20160603014136')
+  [1m[36mSQL (0.3ms)[0m  [1mCREATE EXTENSION IF NOT EXISTS "plpgsql"[0m
+  [1m[35m (7.2ms)[0m  CREATE TABLE "service_providers" ("id" serial primary key, "name" character varying NOT NULL, "address" character varying, "zip" character varying, "lat" decimal, "lng" decimal, "place_id" character varying, "telephone" character varying, "tty" character varying, "website" character varying, "services_offered" character varying, "populations_served" character varying, "created_at" timestamp NOT NULL, "updated_at" timestamp NOT NULL) 
+  [1m[36m (2.7ms)[0m  [1mCREATE TABLE "schema_migrations" ("version" character varying NOT NULL) [0m
+  [1m[35m (46.4ms)[0m  CREATE UNIQUE INDEX  "unique_schema_migrations" ON "schema_migrations"  ("version")
+  [1m[36m (0.5ms)[0m  [1mSELECT version FROM "schema_migrations"[0m
+  [1m[35m (3.7ms)[0m  INSERT INTO "schema_migrations" (version) VALUES ('20160603014136')
+  [1m[36mActiveRecord::SchemaMigration Load (0.8ms)[0m  [1mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+  [1m[36m (421.4ms)[0m  [1mDROP DATABASE IF EXISTS "chelsie_development"[0m
+  [1m[35m (121.3ms)[0m  DROP DATABASE IF EXISTS "chelsie_test"
+  [1m[36m (322.6ms)[0m  [1mCREATE DATABASE "chelsie_development" ENCODING = 'unicode'[0m
+  [1m[35m (453.2ms)[0m  CREATE DATABASE "chelsie_test" ENCODING = 'unicode'
+  [1m[36mSQL (0.4ms)[0m  [1mCREATE EXTENSION IF NOT EXISTS "plpgsql"[0m
+  [1m[35m (24.1ms)[0m  CREATE TABLE "service_providers" ("id" serial primary key, "name" character varying NOT NULL, "address" character varying, "zip" character varying, "lat" decimal, "lng" decimal, "place_id" character varying, "telephone" character varying, "tty" character varying, "website" character varying, "services_offered" character varying, "populations_served" character varying, "created_at" timestamp NOT NULL, "updated_at" timestamp NOT NULL) 
+  [1m[36m (2.6ms)[0m  [1mCREATE TABLE "schema_migrations" ("version" character varying NOT NULL) [0m
+  [1m[35m (1.6ms)[0m  CREATE UNIQUE INDEX  "unique_schema_migrations" ON "schema_migrations"  ("version")
+  [1m[36m (0.4ms)[0m  [1mSELECT version FROM "schema_migrations"[0m
+  [1m[35m (0.7ms)[0m  INSERT INTO "schema_migrations" (version) VALUES ('20160603014136')
+  [1m[36mSQL (0.3ms)[0m  [1mCREATE EXTENSION IF NOT EXISTS "plpgsql"[0m
+  [1m[35m (23.2ms)[0m  CREATE TABLE "service_providers" ("id" serial primary key, "name" character varying NOT NULL, "address" character varying, "zip" character varying, "lat" decimal, "lng" decimal, "place_id" character varying, "telephone" character varying, "tty" character varying, "website" character varying, "services_offered" character varying, "populations_served" character varying, "created_at" timestamp NOT NULL, "updated_at" timestamp NOT NULL) 
+  [1m[36m (3.2ms)[0m  [1mCREATE TABLE "schema_migrations" ("version" character varying NOT NULL) [0m
+  [1m[35m (2.5ms)[0m  CREATE UNIQUE INDEX  "unique_schema_migrations" ON "schema_migrations"  ("version")
+  [1m[36m (0.6ms)[0m  [1mSELECT version FROM "schema_migrations"[0m
+  [1m[35m (0.6ms)[0m  INSERT INTO "schema_migrations" (version) VALUES ('20160603014136')
+  [1m[36mActiveRecord::SchemaMigration Load (1.0ms)[0m  [1mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+  [1m[35m (0.3ms)[0m  BEGIN
+  [1m[36mSQL (1.5ms)[0m  [1mINSERT INTO "service_providers" ("name", "telephone", "tty", "zip", "website", "services_offered", "populations_served", "address", "lat", "lng", "place_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5, $6, $7, $8, $9, $10, $11, $12, $13) RETURNING "id"[0m  [["name", "Underground Railroad"], ["telephone", "(989) 399-0007"], ["tty", "(888) 399-8385"], ["zip", "48603"], ["website", "http://www.undergroundrailroadinc.org"], ["services_offered", "Hotline , Individual Counseling , Group Counseling/Support Groups , Legal/Criminal Justice System Advocacy , Crime Victim Assistance Advocacy , Community Education , Casework/Practical Assistance , Emergency Shelter , Other: transitional housing program, human trafficking task force , Hospital Accompaniment "], ["populations_served", "Adults molested as children , People With Disabilities , Elderly Adults , Family of victim , GLBT , Children , Men , Teens , TTY , Women "], ["address", "5645 State St, Saginaw, MI 48603, United States"], ["lat", "43.4363053"], ["lng", "-84.0269141"], ["place_id", "ChIJ6Qb2MHvEI4gRlCcQwmc0Hjg"], ["created_at", "2016-06-05 04:09:24.094294"], ["updated_at", "2016-06-05 04:09:24.094294"]]
+  [1m[35m (15.7ms)[0m  COMMIT
+  [1m[36m (0.3ms)[0m  [1mBEGIN[0m
+  [1m[35mSQL (0.6ms)[0m  INSERT INTO "service_providers" ("name", "telephone", "tty", "zip", "website", "services_offered", "populations_served", "address", "lat", "lng", "place_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5, $6, $7, $8, $9, $10, $11, $12, $13) RETURNING "id"  [["name", "Diane Peppler Resource Center"], ["telephone", "(906) 635-0566"], ["tty", "(800) 882-1515"], ["zip", "49783"], ["website", "http://www.dprcenter.org"], ["services_offered", "Hotline , Individual Counseling , Group Counseling/Support Groups , Legal/Criminal Justice System Advocacy , Crime Victim Assistance Advocacy , Community Education: prevention, parenting , Professional Education , Casework/Practical Assistance , Emergency Shelter , Hospital Accompaniment "], ["populations_served", "Adults molested as children , People With Disabilities , Elderly Adults , Family of victim , GLBT , Children , Men , Teens , Women "], ["address", "698 Post Office Box, Sault Ste. Marie, MI 49783, United States"], ["lat", "46.492375"], ["lng", "-84.344158"], ["place_id", "ChIJzTW7jag5Nk0RSrrpJCWDJH0"], ["created_at", "2016-06-05 04:09:33.152023"], ["updated_at", "2016-06-05 04:09:33.152023"]]
+  [1m[36m (1.0ms)[0m  [1mCOMMIT[0m
+  [1m[36mServiceProvider Load (0.9ms)[0m  [1mSELECT  "service_providers".* FROM "service_providers"  ORDER BY "service_providers"."id" ASC LIMIT 1[0m
+  [1m[35mServiceProvider Load (0.8ms)[0m  SELECT  "service_providers".* FROM "service_providers"  ORDER BY "service_providers"."id" DESC LIMIT 1
+  [1m[36mServiceProvider Load (1.1ms)[0m  [1mSELECT  "service_providers".* FROM "service_providers"  ORDER BY "service_providers"."id" DESC LIMIT 1[0m

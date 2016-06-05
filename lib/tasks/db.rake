@@ -16,18 +16,18 @@ namespace :db do
     cmd = nil
     # "psql -P format=unaligned -P tuples_only -P fieldsep=\, -c 'SELECT * FROM chelsie_development' > db/backups/#{file_name}"
     with_config do |app, host, db, user|
-      file_name = Time.now.strftime("%Y%m%d%H%M%S") + "_" + db + '.csv'
-      cmd = "pg_dump chelsie_development > db/backups/#{file_name}"
+      file_name = Time.now.strftime("%Y%m%d%H%M%S") + "_" + db + '.dump'
+      cmd = "pg_dump -Fc chelsie_development > db/backups/#{file_name}"
       # cmd = "psql -P format=unaligned -P tuples_only -P fieldsep=\, -c 'SELECT * FROM service_providers' > db/backups/#{file_name}"
     end
     puts cmd
     exec cmd
   end
 
-  desc "Resets the remote database"
-  task :reset => :environment do
-    exec 'heroku pg:reset DATABASE_URL'
-  end
+  # desc "Resets the remote database"
+  # task :reset => :environment do
+  #   exec 'heroku pg:reset DATABASE_URL'
+  # end
 
   desc "Pushes the database to heroku"
   task :push => :environment do
