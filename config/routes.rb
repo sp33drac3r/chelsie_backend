@@ -11,6 +11,13 @@ Rails.application.routes.draw do
 
   get '/centers/geo/:lat/:lng/:radius', to: 'centers#location', :constraints => { :lat => /[^\/]+/, :lng => /[^\/]+/}
 
+  resources :users
+
+  resources :schools do
+    resources :posts do
+      resources :comments
+    end
+  end
 
   # Example resource route within a namespace:
   #   namespace :admin do

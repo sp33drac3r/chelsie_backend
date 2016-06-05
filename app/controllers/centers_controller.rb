@@ -32,7 +32,8 @@ class CentersController < ApplicationController
                                * SIN(RADIANS(lat)))) AS distance_in_miles
                     FROM service_providers
                     JOIN (
-                      SELECT #{@lattitude} AS latpoint, #{@longitude} AS longpoint
+                      SELECT #{@lattitude} AS latpoint,
+                             #{@longitude} AS longpoint
                     ) AS p ON 1=1
                     WHERE lat IS NOT NULL AND lng IS NOT NULL
                     ORDER BY distance_in_miles
