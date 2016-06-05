@@ -5,7 +5,11 @@ Rails.application.routes.draw do
   # Root
   # root '#index'
 
-  get '/', to: 'application#index'
+  get '/centers', to: 'centers#index'
+
+  get '/centers/:id', to: 'centers#show'
+
+  get '/centers/geo/:lat/:lng/:radius', to: 'centers#location'
 
 
   # Example resource route within a namespace:
