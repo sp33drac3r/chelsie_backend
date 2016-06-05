@@ -7683,3 +7683,5 @@ ORDER BY c.conname
   [1m[36m (1.4ms)[0m  [1mCOMMIT[0m
   [1m[35mPost Load (0.9ms)[0m  SELECT  "posts".* FROM "posts"  ORDER BY "posts"."id" ASC LIMIT 1
   [1m[36mFlag Load (0.4ms)[0m  [1mSELECT "flags".* FROM "flags" WHERE "flags"."flaggable_id" = $1 AND "flags"."flaggable_type" = $2[0m  [["flaggable_id", 1], ["flaggable_type", "Post"]]
+  [1m[36mPost Load (1.2ms)[0m  [1mSELECT  "posts".* FROM "posts"  ORDER BY "posts"."id" DESC LIMIT 1[0m
+  [1m[35mSchool Load (0.5ms)[0m  SELECT  "schools".* FROM "schools" WHERE "schools"."id" = $1 LIMIT 1  [["id", 5]]
