@@ -9,7 +9,7 @@ Rails.application.routes.draw do
 
   get '/centers/:id', to: 'centers#show'
 
-  get '/centers/geo/:lat/:lng/:radius', to: 'centers#location'
+  get '/centers/geo/:lat/:lng/:radius', to: 'centers#location', :constraints => { :lat => /[^\/]+/, :lng => /[^\/]+/}
 
   resources :users
 
