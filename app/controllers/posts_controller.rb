@@ -1,13 +1,13 @@
 class PostsController < ApplicationController
-  # def index
-  #   @school = School.find(params[:school_id])
-  #   @posts = @school.posts
+  def index
+    @school = School.find(params[:school_id])
+    @posts = @school.posts
 
-  #   render :json => {
-  #     :school => @school,
-  #     :posts => @posts
-  #   }
-  # end
+    render :json => {
+      :school => @school,
+      :posts => @posts
+    }
+  end
 
   def show
     @post = Post.find(params[:id])
