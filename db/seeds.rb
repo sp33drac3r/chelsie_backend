@@ -68,11 +68,6 @@ end
 
 
 
-
-
-
-
-
 ######### RAINN CENTERS SCRAPE - DO NOT UNCOMMENT ##############
 # CSV.foreach("db/RAINN_centers.csv") do |row|
 #   browser = Watir::Browser.new
