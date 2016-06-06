@@ -1,9 +1,8 @@
 class CommentsController < ApplicationController
 
   def create
-    comment = params[:comment]
-    comment[:post_id] = params[:post_id]
     @new_comment = Comment.new(comment_params)
+    @new_comment.post_id = params[:post_id]
     if @new_comment.save
       render json: @new_comment
     end
