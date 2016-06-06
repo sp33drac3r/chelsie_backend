@@ -24,7 +24,7 @@ class CentersController < ApplicationController
     @radius   = params[:radius]
 
     location_query = <<-SQL
-                    SELECT name, address, lat, lng,
+                    SELECT *,
                           69.0 * DEGREES(ACOS(COS(RADIANS(latpoint))
                                * COS(RADIANS(lat))
                                * COS(RADIANS(longpoint) - RADIANS(lng))
