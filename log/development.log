@@ -12375,3 +12375,4 @@ Processing by FlagsController#create as */*
   [1m[35m (16.0ms)[0m  COMMIT
 Completed 200 OK in 77ms (Views: 0.4ms | ActiveRecord: 22.0ms)
   [1m[36mFlag Load (39.1ms)[0m  [1mSELECT  "flags".* FROM "flags"  ORDER BY "flags"."id" DESC LIMIT 1[0m
+  [1m[36mPost Load (27.6ms)[0m  [1mSELECT  "posts".* FROM "posts"  ORDER BY "posts"."id" ASC LIMIT 1[0m
