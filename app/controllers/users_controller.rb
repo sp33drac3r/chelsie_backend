@@ -12,7 +12,10 @@ class UsersController < ApplicationController
           :posts => @posts,
         }
     else
-      render :json => {response: 'No posts for this user'}
+      render :json => {
+        username: @user.username,
+        response: 'No posts for this user'
+      }
     end
   end
 
