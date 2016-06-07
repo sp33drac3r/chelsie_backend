@@ -2,9 +2,9 @@ class FlagsController < ApplicationController
   def create
     @flag = Flag.new(user_id: params[:user_id], flaggable: params[:flaggable], flaggable_type: params[:flaggable_type])
     if @flag.save
-      render json: {response: '200'}
+      render json: {response: 'good'}
     else
-      render json: {response: '500'}
+      render json: {response: 'bad'}
     end
   end
 
