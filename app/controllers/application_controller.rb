@@ -9,7 +9,7 @@ class ApplicationController < ActionController::API
   # end
 
   def index
-    render :json => {'You are not alone.'}
+    render :json => {response: 'You are not alone.'}
   end
 
 end
