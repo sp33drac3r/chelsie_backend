@@ -1,9 +1,16 @@
 class UsersController < ApplicationController
+  def index
+    render :json => {response: 'You are not alone'}
+  end
+
   def show
     @user = User.find(params[:id])
     @posts = @user.posts
     unless @posts.empty?
-      render :json => @posts
+      render :json => {
+          :username => @user.username,
+          :posts => @posts,
+        }
     else
       render :json => {response: 'No posts for this user'}
     end
@@ -11,8 +18,11 @@ class UsersController < ApplicationController
 
   def create
     @user = User.new(user_params)
+    @user.email.downcase
+    @user.username.downcase
+    @user.password.downcase
     if @user.save
-      render :json => @user
+      render :json => @user.id
     else
       render :json => {response: 'Failed to save User'}
     end
@@ -20,7 +30,7 @@ class UsersController < ApplicationController
 
   def update
     if @user.update(user_params)
-      render :json => @user
+      render :json => @user.id
     else
       render :json => {response: 'Failed to update'}
     end

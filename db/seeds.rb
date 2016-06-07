@@ -1,71 +1,72 @@
 User.create(username: 'chelsie', email: 'chelsie@chelsie.com', password: '123')
-# School.create(
-#   name: 'Ohio State University',
-#   address: "Columbus, OH 43210",
-#   lat: 40.0142,
-#   lng: -83.0309
-# )
 
-# School.create(
-#   name: 'Kenyon College',
-#   address: "103 College Rd, Gambier, OH 43022",
-#   lat: 40.3719,
-#   lng: -82.3983
-# )
+School.create(
+  name: 'Ohio State University',
+  address: "Columbus, OH 43210",
+  lat: 40.0142,
+  lng: -83.0309
+)
 
-# School.create(
-#   name: 'University of Southern California',
-#   address: "Los Angeles, CA",
-#   lat: 34.0224,
-#   lng: -118.2851
-# )
+School.create(
+  name: 'Kenyon College',
+  address: "103 College Rd, Gambier, OH 43022",
+  lat: 40.3719,
+  lng: -82.3983
+)
 
-# School.create(
-#   name: 'Stanford University',
-#   address: "450 Serra Mall, Stanford, CA 94305",
-#   lat: 37.4275,
-#   lng: -122.1697
-# )
+School.create(
+  name: 'University of Southern California',
+  address: "Los Angeles, CA",
+  lat: 34.0224,
+  lng: -118.2851
+)
 
-# School.create(
-#   name: 'University of San Francisco',
-#   address: "4202 E Fowler Ave, Tampa, FL 33620",
-#   lat: 28.0587,
-#   lng: -82.4139
-# )
+School.create(
+  name: 'Stanford University',
+  address: "450 Serra Mall, Stanford, CA 94305",
+  lat: 37.4275,
+  lng: -122.1697
+)
 
-# 20.times do
-#   User.create(
-#     username: Faker::Internet.user_name,
-#     email: Faker::Internet.email,
-#     password: '123'
-#     )
-# end
+School.create(
+  name: 'University of San Francisco',
+  address: "4202 E Fowler Ave, Tampa, FL 33620",
+  lat: 28.0587,
+  lng: -82.4139
+)
 
-# 40.times do
-#   Post.create(
-#     title: Faker::Hipster.sentence,
-#     body: Faker::Hipster.paragraph(8),
-#     user_id: rand(1..20),
-#     school_id: rand(1..5)
-#     )
-# end
+20.times do
+  User.create(
+    username: Faker::Internet.user_name,
+    email: Faker::Internet.email,
+    password: '123'
+    )
+end
 
-# 60.times do
-#   Comment.create(
-#     body: Faker::Hipster.paragraph(2),
-#     user_id: rand(1..20),
-#     post_id: rand(1..40)
-#     )
-# end
+40.times do
+  Post.create(
+    title: Faker::Hipster.sentence,
+    body: Faker::Hipster.paragraph(8),
+    user_id: rand(1..20),
+    school_id: rand(1..5)
+    )
+end
 
-# 12.times do
-#   Flag.create(
-#     user_id: rand(1..20),
-#     flaggable_id: rand(1..40),
-#     flaggable_type: ["comment","post"].sample
-#     )
-# end
+60.times do
+  Comment.create(
+    body: Faker::Hipster.paragraph(2),
+    user_id: rand(1..20),
+    post_id: rand(1..40)
+    )
+end
+
+12.times do
+  Flag.create(
+    user_id: rand(1..20),
+    flaggable_id: rand(1..40),
+    flaggable_type: ["comment","post"].sample
+    )
+end
 
 
 
