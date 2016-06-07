@@ -1,6 +1,6 @@
 class UsersController < ApplicationController
   def index
-    render :json => {response: 'You are not alone'}
+    render :json => {response: 'You are not alone.'}
   end
 
   def show

@@ -13,7 +13,7 @@ Rails.application.routes.draw do
   # See how all your routes lay out with "rake routes".
 
   # Root
-  # root '#index'
+  # root '/'
 
 
   get '/centers', to: 'centers#index'
@@ -31,6 +31,10 @@ Rails.application.routes.draw do
   end
 
   post '/login', to: 'sessions#create'
+
+  post '/flags', to: 'flags#create'
+
+  delete '/flags/:id', to: 'flags#destroy'
 
 
   # Example resource route within a namespace:
