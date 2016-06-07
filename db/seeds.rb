@@ -1,3 +1,5 @@
+User.create(username: 'chelsie', email: 'chelsie@chelsie.com', password: '123')
+
 School.create(
   name: 'Ohio State University',
   address: "Columbus, OH 43210",
@@ -33,11 +35,11 @@ School.create(
   lng: -82.4139
 )
 
-20.times do |i|
+20.times do
   User.create(
     username: Faker::Internet.user_name,
-    email:Faker::Internet.email,
-    password: Faker::Internet.password
+    email: Faker::Internet.email,
+    password: '123'
     )
 end
 
