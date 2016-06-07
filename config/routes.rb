@@ -1,4 +1,8 @@
 Rails.application.routes.draw do
+  get 'sessions/create'
+
+  get 'sessions/destroy'
+
   # get 'users/create'
 
   # get 'users/update'
@@ -10,6 +14,7 @@ Rails.application.routes.draw do
 
   # Root
   # root '#index'
+
 
   get '/centers', to: 'centers#index'
 
@@ -24,6 +29,9 @@ Rails.application.routes.draw do
       resources :comments
     end
   end
+
+  post '/login', to: 'sessions#create'
+
 
   # Example resource route within a namespace:
   #   namespace :admin do

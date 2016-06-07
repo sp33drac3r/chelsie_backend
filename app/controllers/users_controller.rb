@@ -1,4 +1,14 @@
 class UsersController < ApplicationController
+  def show
+    @user = User.find(params[:id])
+    @posts = @user.posts
+    unless @posts.empty?
+      render :json => @posts
+    else
+      render :json => {response: 'No posts for this user'}
+    end
+  end
+
   def create
     @user = User.new(user_params)
     if @user.save
