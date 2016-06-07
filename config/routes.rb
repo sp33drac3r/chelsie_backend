@@ -13,7 +13,7 @@ Rails.application.routes.draw do
   # See how all your routes lay out with "rake routes".
 
   # Root
-  # root '#index'
+  root '#index'
 
 
   get '/centers', to: 'centers#index'

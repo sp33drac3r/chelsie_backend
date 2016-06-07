@@ -1,6 +1,6 @@
 class UsersController < ApplicationController
   def index
-    render :json => {response: 'You are not alone'}
+    render :json => {'You are not alone.'}
   end
 
   def show
@@ -22,7 +22,9 @@ class UsersController < ApplicationController
     @user.username.downcase
     @user.password.downcase
     if @user.save
-      render :json => @user.id
+      @user.email = nil
+      @user.password = nil
+      render :json => @user
     else
       render :json => {response: 'Failed to save User'}
     end
@@ -30,7 +32,9 @@ class UsersController < ApplicationController
 
   def update
     if @user.update(user_params)
-      render :json => @user.id
+      @user.email = nil
+      @user.password = nil
+      render :json => @user
     else
       render :json => {response: 'Failed to update'}
     end

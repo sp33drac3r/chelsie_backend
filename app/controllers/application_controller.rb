@@ -3,9 +3,13 @@ class ApplicationController < ActionController::API
   # For APIs, you may want to use :null_session instead.
   # protect_from_forgery with: :exception
 
+  # def index
+  #   @centers = ServiceProvider.all
+  #   render :json => @centers
+  # end
+
   def index
-    @centers = ServiceProvider.all
-    render :json => @centers
+    render :json => {'You are not alone.'}
   end
 
 end
