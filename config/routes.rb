@@ -32,6 +32,10 @@ Rails.application.routes.draw do
 
   post '/login', to: 'sessions#create'
 
+  post '/flags', to: 'flags#create'
+
+  delete '/flags/:id', to: 'flags#destroy'
+
 
   # Example resource route within a namespace:
   #   namespace :admin do
