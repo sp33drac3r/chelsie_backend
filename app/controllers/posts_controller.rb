@@ -1,7 +1,7 @@
 class PostsController < ApplicationController
   def index
     @school = School.find(params[:school_id])
-    @posts = @school.posts
+    @posts = @school.posts.reverse
 
     render :json => {
       :school => @school,
