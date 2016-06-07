@@ -1,6 +1,6 @@
 class FlagsController < ApplicationController
   def create
-    @flag = Flag.new(flag_params)
+    @flag = Flag.new(user_id: params[:user_id], flaggable: params[:flaggable], flaggable_type: params[:flaggable_type])
     if @flag.save
       render json: {response: '200'}
     else
@@ -17,8 +17,8 @@ class FlagsController < ApplicationController
     end
   end
 
-  private
-  def flag_params
-    params.require(:flag).permit(:user, :flaggable, :flaggable_type)
-  end
+  # private
+  # # def flag_params
+  # #   params.require(:flag).permit(:user, :flaggable, :flaggable_type)
+  # # end
 end
