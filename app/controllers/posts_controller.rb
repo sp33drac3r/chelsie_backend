@@ -42,9 +42,13 @@ class PostsController < ApplicationController
     end
   end
 
-  def delete
+  def destroy
     @post = Post.find(params[:id])
-    @post.destroy
+    if @post.destroy
+      render :json => {response: "Post successfully deleted"}
+    else
+      render :json => {response: "Server error: Post cannot be deleted"}
+    end
   end
 
   private
