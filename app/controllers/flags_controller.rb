@@ -2,7 +2,7 @@ class FlagsController < ApplicationController
   def show
     @user = User.find(params[:user_id])
     @flags = @user.flags
-    unless @flags.empty
+    unless @flags.empty?
       render json: @flags
     else
       render json: {response: 'No flags for this user'}
