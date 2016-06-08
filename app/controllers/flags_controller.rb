@@ -1,12 +1,20 @@
 class FlagsController < ApplicationController
+  def show
+    @user = User.find(params[:user_id])
+    @flags = @user.flags
+    unless @flags.empty
+      render json: @flags
+    else
+      render json: {response: 'No flags for this user'}
+    end
+  end
+
   def create
     if params[:flaggable_type]
       item = params[:flaggable_type]
     else
       item = ''
     end
-
-    p item
 
     if item.downcase == 'post'
       flaggable = Post.find(params[:flaggable])

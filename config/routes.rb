@@ -36,7 +36,10 @@ Rails.application.routes.draw do
     end
   end
 
+
   post '/login', to: 'sessions#create'
+
+  get '/flags/:user_id', to: 'flags#show'
 
   post '/flags', to: 'flags#create'
 
