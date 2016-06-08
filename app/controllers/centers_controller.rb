@@ -10,12 +10,27 @@ class CentersController < ApplicationController
   end
 
   def services
+    @center = ServiceProvider.find(params[:id])
+    render :json => @center.services_offered
   end
 
   def populations
+    @center = ServiceProvider.find(params[:id])
+    render :json => @center.populations_served
   end
 
   def query
+    p "%$#" * 30
+    query = params[:query]
+    query = Rack::Utils.parse_nested_query(params[:query])
+    query.each{|sub_query| puts "#{sub_query[1]}"}
+    p "%$#" * 30
+    @center = ServiceProvider.where( )
+  end
+
+  def state
+    @centers = ServiceProvider.where("address LIKE ?", "%#{params[:state_abbr]}%")
+    render :json => @centers
   end
 
   def location
