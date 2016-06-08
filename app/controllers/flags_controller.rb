@@ -1,6 +1,20 @@
 class FlagsController < ApplicationController
   def create
-    @flag = Flag.new(user_id: params[:user_id], flaggable: params[:flaggable], flaggable_type: params[:flaggable_type])
+    if params[:flaggable_type]
+      item = params[:flaggable_type]
+    else
+      item = ''
+    end
+
+    p item
+
+    if item.downcase == 'post'
+      flaggable = Post.find(params[:flaggable])
+    else
+      flaggable = Comment.find(params[:flaggable])
+    end
+
+    @flag = Flag.new(user_id: params[:user_id].to_i, flaggable: flaggable, flaggable_type: params[:flaggable_type].capitalize)
     if @flag.save
       render json: {response: 'good'}
     else
