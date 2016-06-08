@@ -16,9 +16,9 @@ class FlagsController < ApplicationController
 
     @flag = Flag.new(user_id: params[:user_id].to_i, flaggable: flaggable, flaggable_type: params[:flaggable_type].capitalize)
     if @flag.save
-      render json: {response: 'good'}
+      render json: @flag.id
     else
-      render json: {response: 'bad'}
+      render json: {response: '404, flag not saved'}
     end
   end
 
