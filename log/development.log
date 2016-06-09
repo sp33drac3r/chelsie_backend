@@ -16019,3 +16019,839 @@ ORDER BY c.conname
   [1m[36mFlag Load (1.9ms)[0m  [1mSELECT  "flags".* FROM "flags"  ORDER BY "flags"."id" ASC LIMIT 1[0m
   [1m[35mPost Load (0.6ms)[0m  SELECT  "posts".* FROM "posts" WHERE "posts"."id" = $1 LIMIT 1  [["id", 14]]
   [1m[36mFlag Load (0.4ms)[0m  [1mSELECT "flags".* FROM "flags" WHERE "flags"."flaggable_id" = $1 AND "flags"."flaggable_type" = $2[0m  [["flaggable_id", 14], ["flaggable_type", "Post"]]
+  [1m[36m (3.6ms)[0m  [1mCREATE TABLE "schema_migrations" ("version" character varying NOT NULL) [0m
+  [1m[35m (1.6ms)[0m  CREATE UNIQUE INDEX  "unique_schema_migrations" ON "schema_migrations"  ("version")
+  [1m[36mActiveRecord::SchemaMigration Load (0.5ms)[0m  [1mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+Migrating to CreateServiceProviders (20160603014136)
+  [1m[35m (0.3ms)[0m  BEGIN
+  [1m[36m (4.5ms)[0m  [1mCREATE TABLE "service_providers" ("id" serial primary key, "name" character varying NOT NULL, "address" character varying, "zip" character varying, "lat" decimal, "lng" decimal, "place_id" character varying, "telephone" character varying, "tty" character varying, "website" character varying, "services_offered" character varying, "populations_served" character varying, "created_at" timestamp NOT NULL, "updated_at" timestamp NOT NULL) [0m
+  [1m[35mSQL (0.5ms)[0m  INSERT INTO "schema_migrations" ("version") VALUES ($1)  [["version", "20160603014136"]]
+  [1m[36m (0.8ms)[0m  [1mCOMMIT[0m
+Migrating to CreateUsers (20160605173944)
+  [1m[35m (0.3ms)[0m  BEGIN
+  [1m[36m (3.4ms)[0m  [1mCREATE TABLE "users" ("id" serial primary key, "username" character varying NOT NULL, "email" character varying, "password_digest" character varying NOT NULL, "created_at" timestamp NOT NULL, "updated_at" timestamp NOT NULL) [0m
+  [1m[35mSQL (0.3ms)[0m  INSERT INTO "schema_migrations" ("version") VALUES ($1)  [["version", "20160605173944"]]
+  [1m[36m (0.8ms)[0m  [1mCOMMIT[0m
+Migrating to CreateSchools (20160605174245)
+  [1m[35m (0.3ms)[0m  BEGIN
+  [1m[36m (3.5ms)[0m  [1mCREATE TABLE "schools" ("id" serial primary key, "name" character varying NOT NULL, "address" character varying, "lat" decimal, "lng" decimal, "created_at" timestamp NOT NULL, "updated_at" timestamp NOT NULL) [0m
+  [1m[35mSQL (0.3ms)[0m  INSERT INTO "schema_migrations" ("version") VALUES ($1)  [["version", "20160605174245"]]
+  [1m[36m (0.7ms)[0m  [1mCOMMIT[0m
+Migrating to CreatePosts (20160605174412)
+  [1m[35m (0.4ms)[0m  BEGIN
+  [1m[36m (6.2ms)[0m  [1mCREATE TABLE "posts" ("id" serial primary key, "title" character varying, "body" text, "user_id" integer, "school_id" integer, "created_at" timestamp NOT NULL, "updated_at" timestamp NOT NULL) [0m
+  [1m[35m (1.3ms)[0m  CREATE  INDEX  "index_posts_on_user_id" ON "posts"  ("user_id")
+  [1m[36m (1.1ms)[0m  [1mCREATE  INDEX  "index_posts_on_school_id" ON "posts"  ("school_id")[0m
+  [1m[35m (2.7ms)[0m  ALTER TABLE "posts" ADD CONSTRAINT "fk_rails_5b5ddfd518"
+FOREIGN KEY ("user_id")
+  REFERENCES "users" ("id")
+
+  [1m[36m (1.9ms)[0m  [1mALTER TABLE "posts" ADD CONSTRAINT "fk_rails_c6f4066a54"
+FOREIGN KEY ("school_id")
+  REFERENCES "schools" ("id")
+[0m
+  [1m[35mSQL (0.3ms)[0m  INSERT INTO "schema_migrations" ("version") VALUES ($1)  [["version", "20160605174412"]]
+  [1m[36m (0.7ms)[0m  [1mCOMMIT[0m
+Migrating to CreateComments (20160605174457)
+  [1m[35m (0.4ms)[0m  BEGIN
+  [1m[36m (3.8ms)[0m  [1mCREATE TABLE "comments" ("id" serial primary key, "body" character varying, "user_id" integer, "post_id" integer, "created_at" timestamp NOT NULL, "updated_at" timestamp NOT NULL) [0m
+  [1m[35m (5.2ms)[0m  CREATE  INDEX  "index_comments_on_user_id" ON "comments"  ("user_id")
+  [1m[36m (1.2ms)[0m  [1mCREATE  INDEX  "index_comments_on_post_id" ON "comments"  ("post_id")[0m
+  [1m[35m (1.6ms)[0m  ALTER TABLE "comments" ADD CONSTRAINT "fk_rails_03de2dc08c"
+FOREIGN KEY ("user_id")
+  REFERENCES "users" ("id")
+
+  [1m[36m (1.3ms)[0m  [1mALTER TABLE "comments" ADD CONSTRAINT "fk_rails_2fd19c0db7"
+FOREIGN KEY ("post_id")
+  REFERENCES "posts" ("id")
+[0m
+  [1m[35mSQL (0.3ms)[0m  INSERT INTO "schema_migrations" ("version") VALUES ($1)  [["version", "20160605174457"]]
+  [1m[36m (0.8ms)[0m  [1mCOMMIT[0m
+Migrating to CreateFlags (20160605183455)
+  [1m[35m (0.4ms)[0m  BEGIN
+  [1m[36m (3.7ms)[0m  [1mCREATE TABLE "flags" ("id" serial primary key, "user_id" integer, "flaggable_id" integer, "flaggable_type" character varying, "created_at" timestamp NOT NULL, "updated_at" timestamp NOT NULL) [0m
+  [1m[35m (1.1ms)[0m  CREATE  INDEX  "index_flags_on_user_id" ON "flags"  ("user_id")
+  [1m[36m (2.9ms)[0m  [1mCREATE  INDEX  "index_flags_on_flaggable_type_and_flaggable_id" ON "flags"  ("flaggable_type", "flaggable_id")[0m
+  [1m[35m (2.1ms)[0m  ALTER TABLE "flags" ADD CONSTRAINT "fk_rails_d7842de637"
+FOREIGN KEY ("user_id")
+  REFERENCES "users" ("id")
+
+  [1m[36mSQL (0.3ms)[0m  [1mINSERT INTO "schema_migrations" ("version") VALUES ($1)[0m  [["version", "20160605183455"]]
+  [1m[35m (0.8ms)[0m  COMMIT
+  [1m[36mActiveRecord::SchemaMigration Load (0.3ms)[0m  [1mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+  [1m[35m (5.1ms)[0m  SELECT t2.oid::regclass::text AS to_table, a1.attname AS column, a2.attname AS primary_key, c.conname AS name, c.confupdtype AS on_update, c.confdeltype AS on_delete
+FROM pg_constraint c
+JOIN pg_class t1 ON c.conrelid = t1.oid
+JOIN pg_class t2 ON c.confrelid = t2.oid
+JOIN pg_attribute a1 ON a1.attnum = c.conkey[1] AND a1.attrelid = t1.oid
+JOIN pg_attribute a2 ON a2.attnum = c.confkey[1] AND a2.attrelid = t2.oid
+JOIN pg_namespace t3 ON c.connamespace = t3.oid
+WHERE c.contype = 'f'
+  AND t1.relname = 'comments'
+  AND t3.nspname = ANY (current_schemas(false))
+ORDER BY c.conname
+
+  [1m[36m (2.2ms)[0m  [1mSELECT t2.oid::regclass::text AS to_table, a1.attname AS column, a2.attname AS primary_key, c.conname AS name, c.confupdtype AS on_update, c.confdeltype AS on_delete
+FROM pg_constraint c
+JOIN pg_class t1 ON c.conrelid = t1.oid
+JOIN pg_class t2 ON c.confrelid = t2.oid
+JOIN pg_attribute a1 ON a1.attnum = c.conkey[1] AND a1.attrelid = t1.oid
+JOIN pg_attribute a2 ON a2.attnum = c.confkey[1] AND a2.attrelid = t2.oid
+JOIN pg_namespace t3 ON c.connamespace = t3.oid
+WHERE c.contype = 'f'
+  AND t1.relname = 'flags'
+  AND t3.nspname = ANY (current_schemas(false))
+ORDER BY c.conname
+[0m
+  [1m[35m (2.3ms)[0m  SELECT t2.oid::regclass::text AS to_table, a1.attname AS column, a2.attname AS primary_key, c.conname AS name, c.confupdtype AS on_update, c.confdeltype AS on_delete
+FROM pg_constraint c
+JOIN pg_class t1 ON c.conrelid = t1.oid
+JOIN pg_class t2 ON c.confrelid = t2.oid
+JOIN pg_attribute a1 ON a1.attnum = c.conkey[1] AND a1.attrelid = t1.oid
+JOIN pg_attribute a2 ON a2.attnum = c.confkey[1] AND a2.attrelid = t2.oid
+JOIN pg_namespace t3 ON c.connamespace = t3.oid
+WHERE c.contype = 'f'
+  AND t1.relname = 'posts'
+  AND t3.nspname = ANY (current_schemas(false))
+ORDER BY c.conname
+
+  [1m[36m (2.1ms)[0m  [1mSELECT t2.oid::regclass::text AS to_table, a1.attname AS column, a2.attname AS primary_key, c.conname AS name, c.confupdtype AS on_update, c.confdeltype AS on_delete
+FROM pg_constraint c
+JOIN pg_class t1 ON c.conrelid = t1.oid
+JOIN pg_class t2 ON c.confrelid = t2.oid
+JOIN pg_attribute a1 ON a1.attnum = c.conkey[1] AND a1.attrelid = t1.oid
+JOIN pg_attribute a2 ON a2.attnum = c.confkey[1] AND a2.attrelid = t2.oid
+JOIN pg_namespace t3 ON c.connamespace = t3.oid
+WHERE c.contype = 'f'
+  AND t1.relname = 'schools'
+  AND t3.nspname = ANY (current_schemas(false))
+ORDER BY c.conname
+[0m
+  [1m[35m (2.0ms)[0m  SELECT t2.oid::regclass::text AS to_table, a1.attname AS column, a2.attname AS primary_key, c.conname AS name, c.confupdtype AS on_update, c.confdeltype AS on_delete
+FROM pg_constraint c
+JOIN pg_class t1 ON c.conrelid = t1.oid
+JOIN pg_class t2 ON c.confrelid = t2.oid
+JOIN pg_attribute a1 ON a1.attnum = c.conkey[1] AND a1.attrelid = t1.oid
+JOIN pg_attribute a2 ON a2.attnum = c.confkey[1] AND a2.attrelid = t2.oid
+JOIN pg_namespace t3 ON c.connamespace = t3.oid
+WHERE c.contype = 'f'
+  AND t1.relname = 'service_providers'
+  AND t3.nspname = ANY (current_schemas(false))
+ORDER BY c.conname
+
+  [1m[36m (2.0ms)[0m  [1mSELECT t2.oid::regclass::text AS to_table, a1.attname AS column, a2.attname AS primary_key, c.conname AS name, c.confupdtype AS on_update, c.confdeltype AS on_delete
+FROM pg_constraint c
+JOIN pg_class t1 ON c.conrelid = t1.oid
+JOIN pg_class t2 ON c.confrelid = t2.oid
+JOIN pg_attribute a1 ON a1.attnum = c.conkey[1] AND a1.attrelid = t1.oid
+JOIN pg_attribute a2 ON a2.attnum = c.confkey[1] AND a2.attrelid = t2.oid
+JOIN pg_namespace t3 ON c.connamespace = t3.oid
+WHERE c.contype = 'f'
+  AND t1.relname = 'users'
+  AND t3.nspname = ANY (current_schemas(false))
+ORDER BY c.conname
+[0m
+  [1m[35mActiveRecord::SchemaMigration Load (0.3ms)[0m  SELECT "schema_migrations".* FROM "schema_migrations"
+  [1m[36m (0.3ms)[0m  [1mBEGIN[0m
+  [1m[35mSQL (0.6ms)[0m  INSERT INTO "users" ("username", "email", "password_digest", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5) RETURNING "id"  [["username", "chelsie"], ["email", "chelsie@chelsie.com"], ["password_digest", "$2a$10$SGw53CZTzO894Bkk7q9yXebGFX0RDYt117Jeum2un25j7OH4JgBWS"], ["created_at", "2016-06-09 15:53:22.963624"], ["updated_at", "2016-06-09 15:53:22.963624"]]
+  [1m[36m (0.7ms)[0m  [1mCOMMIT[0m
+  [1m[35m (0.3ms)[0m  BEGIN
+  [1m[36mSQL (0.5ms)[0m  [1mINSERT INTO "schools" ("name", "created_at", "updated_at") VALUES ($1, $2, $3) RETURNING "id"[0m  [["name", "Ivy Tech Community College - Central Indiana"], ["created_at", "2016-06-09 15:53:22.976660"], ["updated_at", "2016-06-09 15:53:22.976660"]]
+  [1m[35m (0.5ms)[0m  COMMIT
+  [1m[36m (0.2ms)[0m  [1mBEGIN[0m
+  [1m[35mSQL (0.5ms)[0m  INSERT INTO "schools" ("name", "created_at", "updated_at") VALUES ($1, $2, $3) RETURNING "id"  [["name", "Liberty University (LU)"], ["created_at", "2016-06-09 15:53:22.980256"], ["updated_at", "2016-06-09 15:53:22.980256"]]
+  [1m[36m (0.7ms)[0m  [1mCOMMIT[0m
+  [1m[35m (0.2ms)[0m  BEGIN
+  [1m[36mSQL (0.4ms)[0m  [1mINSERT INTO "schools" ("name", "created_at", "updated_at") VALUES ($1, $2, $3) RETURNING "id"[0m  [["name", "Lone Star College - Montgomery (LSC) "], ["created_at", "2016-06-09 15:53:22.983574"], ["updated_at", "2016-06-09 15:53:22.983574"]]
+  [1m[35m (0.6ms)[0m  COMMIT
+  [1m[36m (0.2ms)[0m  [1mBEGIN[0m
+  [1m[35mSQL (0.3ms)[0m  INSERT INTO "schools" ("name", "created_at", "updated_at") VALUES ($1, $2, $3) RETURNING "id"  [["name", "Miami Dade College (MDC) "], ["created_at", "2016-06-09 15:53:22.986290"], ["updated_at", "2016-06-09 15:53:22.986290"]]
+  [1m[36m (0.6ms)[0m  [1mCOMMIT[0m
+  [1m[35m (0.3ms)[0m  BEGIN
+  [1m[36mSQL (0.3ms)[0m  [1mINSERT INTO "schools" ("name", "created_at", "updated_at") VALUES ($1, $2, $3) RETURNING "id"[0m  [["name", "Grand Canyon University (GCU)"], ["created_at", "2016-06-09 15:53:22.988952"], ["updated_at", "2016-06-09 15:53:22.988952"]]
+  [1m[35m (0.6ms)[0m  COMMIT
+  [1m[36m (0.2ms)[0m  [1mBEGIN[0m
+  [1m[35mSQL (0.3ms)[0m  INSERT INTO "schools" ("name", "created_at", "updated_at") VALUES ($1, $2, $3) RETURNING "id"  [["name", "Texas A&M University (Texas A&M) "], ["created_at", "2016-06-09 15:53:22.991562"], ["updated_at", "2016-06-09 15:53:22.991562"]]
+  [1m[36m (0.5ms)[0m  [1mCOMMIT[0m
+  [1m[35m (0.2ms)[0m  BEGIN
+  [1m[36mSQL (0.3ms)[0m  [1mINSERT INTO "schools" ("name", "created_at", "updated_at") VALUES ($1, $2, $3) RETURNING "id"[0m  [["name", "University of Central Florida (UCF) "], ["created_at", "2016-06-09 15:53:22.994008"], ["updated_at", "2016-06-09 15:53:22.994008"]]
+  [1m[35m (0.6ms)[0m  COMMIT
+  [1m[36m (0.2ms)[0m  [1mBEGIN[0m
+  [1m[35mSQL (0.3ms)[0m  INSERT INTO "schools" ("name", "created_at", "updated_at") VALUES ($1, $2, $3) RETURNING "id"  [["name", "Ohio State University"], ["created_at", "2016-06-09 15:53:22.996511"], ["updated_at", "2016-06-09 15:53:22.996511"]]
+  [1m[36m (0.7ms)[0m  [1mCOMMIT[0m
+  [1m[35m (0.3ms)[0m  BEGIN
+  [1m[36mSQL (0.3ms)[0m  [1mINSERT INTO "schools" ("name", "created_at", "updated_at") VALUES ($1, $2, $3) RETURNING "id"[0m  [["name", "Houston Community College System "], ["created_at", "2016-06-09 15:53:23.000313"], ["updated_at", "2016-06-09 15:53:23.000313"]]
+  [1m[35m (0.7ms)[0m  COMMIT
+  [1m[36m (0.2ms)[0m  [1mBEGIN[0m
+  [1m[35mSQL (0.3ms)[0m  INSERT INTO "schools" ("name", "created_at", "updated_at") VALUES ($1, $2, $3) RETURNING "id"  [["name", "Western Governors University (WGU) "], ["created_at", "2016-06-09 15:53:23.002995"], ["updated_at", "2016-06-09 15:53:23.002995"]]
+  [1m[36m (0.5ms)[0m  [1mCOMMIT[0m
+  [1m[35m (0.3ms)[0m  BEGIN
+  [1m[36mSQL (0.3ms)[0m  [1mINSERT INTO "schools" ("name", "created_at", "updated_at") VALUES ($1, $2, $3) RETURNING "id"[0m  [["name", "American Public University System (American Military University)"], ["created_at", "2016-06-09 15:53:23.005897"], ["updated_at", "2016-06-09 15:53:23.005897"]]
+  [1m[35m (0.6ms)[0m  COMMIT
+  [1m[36m (0.2ms)[0m  [1mBEGIN[0m
+  [1m[35mSQL (0.3ms)[0m  INSERT INTO "schools" ("name", "created_at", "updated_at") VALUES ($1, $2, $3) RETURNING "id"  [["name", "Walden University (Walden U)"], ["created_at", "2016-06-09 15:53:23.008662"], ["updated_at", "2016-06-09 15:53:23.008662"]]
+  [1m[36m (0.5ms)[0m  [1mCOMMIT[0m
+  [1m[35m (0.2ms)[0m  BEGIN
+  [1m[36mSQL (0.3ms)[0m  [1mINSERT INTO "schools" ("name", "created_at", "updated_at") VALUES ($1, $2, $3) RETURNING "id"[0m  [["name", "Kaplan University"], ["created_at", "2016-06-09 15:53:23.011362"], ["updated_at", "2016-06-09 15:53:23.011362"]]
+  [1m[35m (0.5ms)[0m  COMMIT
+  [1m[36m (0.2ms)[0m  [1mBEGIN[0m
+  [1m[35mSQL (0.4ms)[0m  INSERT INTO "schools" ("name", "created_at", "updated_at") VALUES ($1, $2, $3) RETURNING "id"  [["name", "Northern Virginia Community College (NVCC)"], ["created_at", "2016-06-09 15:53:23.015003"], ["updated_at", "2016-06-09 15:53:23.015003"]]
+  [1m[36m (0.6ms)[0m  [1mCOMMIT[0m
+  [1m[35m (0.2ms)[0m  BEGIN
+  [1m[36mSQL (0.3ms)[0m  [1mINSERT INTO "schools" ("name", "created_at", "updated_at") VALUES ($1, $2, $3) RETURNING "id"[0m  [["name", "The University of Texas at Austin (UT Austin)"], ["created_at", "2016-06-09 15:53:23.018503"], ["updated_at", "2016-06-09 15:53:23.018503"]]
+  [1m[35m (0.6ms)[0m  COMMIT
+  [1m[36m (0.3ms)[0m  [1mBEGIN[0m
+  [1m[35mSQL (0.3ms)[0m  INSERT INTO "schools" ("name", "created_at", "updated_at") VALUES ($1, $2, $3) RETURNING "id"  [["name", "Ashford University (AU)"], ["created_at", "2016-06-09 15:53:23.021348"], ["updated_at", "2016-06-09 15:53:23.021348"]]
+  [1m[36m (0.6ms)[0m  [1mCOMMIT[0m
+  [1m[35m (0.3ms)[0m  BEGIN
+  [1m[36mSQL (0.3ms)[0m  [1mINSERT INTO "schools" ("name", "created_at", "updated_at") VALUES ($1, $2, $3) RETURNING "id"[0m  [["name", "University of Minnesota - Twin Cities (U of M)"], ["created_at", "2016-06-09 15:53:23.024005"], ["updated_at", "2016-06-09 15:53:23.024005"]]
+  [1m[35m (0.6ms)[0m  COMMIT
+  [1m[36m (0.2ms)[0m  [1mBEGIN[0m
+  [1m[35mSQL (0.4ms)[0m  INSERT INTO "schools" ("name", "created_at", "updated_at") VALUES ($1, $2, $3) RETURNING "id"  [["name", "Tarrant County College (TCC) "], ["created_at", "2016-06-09 15:53:23.026572"], ["updated_at", "2016-06-09 15:53:23.026572"]]
+  [1m[36m (0.6ms)[0m  [1mCOMMIT[0m
+  [1m[35m (0.3ms)[0m  BEGIN
+  [1m[36mSQL (0.3ms)[0m  [1mINSERT INTO "schools" ("name", "created_at", "updated_at") VALUES ($1, $2, $3) RETURNING "id"[0m  [["name", "Arizona State University"], ["created_at", "2016-06-09 15:53:23.029372"], ["updated_at", "2016-06-09 15:53:23.029372"]]
+  [1m[35m (0.6ms)[0m  COMMIT
+  [1m[36m (0.2ms)[0m  [1mBEGIN[0m
+  [1m[35mSQL (0.3ms)[0m  INSERT INTO "schools" ("name", "created_at", "updated_at") VALUES ($1, $2, $3) RETURNING "id"  [["name", "Michigan State University"], ["created_at", "2016-06-09 15:53:23.032089"], ["updated_at", "2016-06-09 15:53:23.032089"]]
+  [1m[36m (0.5ms)[0m  [1mCOMMIT[0m
+  [1m[35m (0.2ms)[0m  BEGIN
+  [1m[36mSQL (0.3ms)[0m  [1mINSERT INTO "schools" ("name", "created_at", "updated_at") VALUES ($1, $2, $3) RETURNING "id"[0m  [["name", "Florida International University (FIU)"], ["created_at", "2016-06-09 15:53:23.034697"], ["updated_at", "2016-06-09 15:53:23.034697"]]
+  [1m[35m (0.6ms)[0m  COMMIT
+  [1m[36m (0.2ms)[0m  [1mBEGIN[0m
+  [1m[35mSQL (0.3ms)[0m  INSERT INTO "schools" ("name", "created_at", "updated_at") VALUES ($1, $2, $3) RETURNING "id"  [["name", "University of Florida (UF)"], ["created_at", "2016-06-09 15:53:23.037377"], ["updated_at", "2016-06-09 15:53:23.037377"]]
+  [1m[36m (0.7ms)[0m  [1mCOMMIT[0m
+  [1m[35m (0.2ms)[0m  BEGIN
+  [1m[36mSQL (0.3ms)[0m  [1mINSERT INTO "schools" ("name", "created_at", "updated_at") VALUES ($1, $2, $3) RETURNING "id"[0m  [["name", "New York University (NYU)"], ["created_at", "2016-06-09 15:53:23.040351"], ["updated_at", "2016-06-09 15:53:23.040351"]]
+  [1m[35m (0.6ms)[0m  COMMIT
+  [1m[36m (0.3ms)[0m  [1mBEGIN[0m
+  [1m[35mSQL (0.3ms)[0m  INSERT INTO "schools" ("name", "created_at", "updated_at") VALUES ($1, $2, $3) RETURNING "id"  [["name", "Rutgers University - New Brunswick (Rutgers, The State University)"], ["created_at", "2016-06-09 15:53:23.043002"], ["updated_at", "2016-06-09 15:53:23.043002"]]
+  [1m[36m (0.6ms)[0m  [1mCOMMIT[0m
+  [1m[35m (0.2ms)[0m  BEGIN
+  [1m[36mSQL (0.3ms)[0m  [1mINSERT INTO "schools" ("name", "created_at", "updated_at") VALUES ($1, $2, $3) RETURNING "id"[0m  [["name", "University of Maryland - University College (UMUC)"], ["created_at", "2016-06-09 15:53:23.045569"], ["updated_at", "2016-06-09 15:53:23.045569"]]
+  [1m[35m (0.6ms)[0m  COMMIT
+  [1m[36m (0.2ms)[0m  [1mBEGIN[0m
+  [1m[35mSQL (0.3ms)[0m  INSERT INTO "schools" ("name", "created_at", "updated_at") VALUES ($1, $2, $3) RETURNING "id"  [["name", "Pennsylvania State University"], ["created_at", "2016-06-09 15:53:23.048087"], ["updated_at", "2016-06-09 15:53:23.048087"]]
+  [1m[36m (0.5ms)[0m  [1mCOMMIT[0m
+  [1m[35m (0.3ms)[0m  BEGIN
+  [1m[36mSQL (0.3ms)[0m  [1mINSERT INTO "schools" ("name", "created_at", "updated_at") VALUES ($1, $2, $3) RETURNING "id"[0m  [["name", "Indiana University - Bloomington (IU)"], ["created_at", "2016-06-09 15:53:23.050739"], ["updated_at", "2016-06-09 15:53:23.050739"]]
+  [1m[35m (0.6ms)[0m  COMMIT
+  [1m[36m (0.2ms)[0m  [1mBEGIN[0m
+  [1m[35mSQL (0.3ms)[0m  INSERT INTO "schools" ("name", "created_at", "updated_at") VALUES ($1, $2, $3) RETURNING "id"  [["name", "University of Illinois at Urbana - Champaign (UIUC)"], ["created_at", "2016-06-09 15:53:23.053345"], ["updated_at", "2016-06-09 15:53:23.053345"]]
+  [1m[36m (0.6ms)[0m  [1mCOMMIT[0m
+  [1m[35m (0.2ms)[0m  BEGIN
+  [1m[36mSQL (0.3ms)[0m  [1mINSERT INTO "schools" ("name", "created_at", "updated_at") VALUES ($1, $2, $3) RETURNING "id"[0m  [["name", "University of Washington - Seattle Campus (UW-Seattle)"], ["created_at", "2016-06-09 15:53:23.055944"], ["updated_at", "2016-06-09 15:53:23.055944"]]
+  [1m[35m (0.6ms)[0m  COMMIT
+  [1m[36m (0.2ms)[0m  [1mBEGIN[0m
+  [1m[35mSQL (0.3ms)[0m  INSERT INTO "schools" ("name", "created_at", "updated_at") VALUES ($1, $2, $3) RETURNING "id"  [["name", "Broward College (BCC)"], ["created_at", "2016-06-09 15:53:23.058465"], ["updated_at", "2016-06-09 15:53:23.058465"]]
+  [1m[36m (0.5ms)[0m  [1mCOMMIT[0m
+  [1m[35m (0.3ms)[0m  BEGIN
+  [1m[36mSQL (0.3ms)[0m  [1mINSERT INTO "schools" ("name", "created_at", "updated_at") VALUES ($1, $2, $3) RETURNING "id"[0m  [["name", "University of Michigan - Ann Arbor (U-M)"], ["created_at", "2016-06-09 15:53:23.061070"], ["updated_at", "2016-06-09 15:53:23.061070"]]
+  [1m[35m (0.6ms)[0m  COMMIT
+  [1m[36m (0.2ms)[0m  [1mBEGIN[0m
+  [1m[35mSQL (0.3ms)[0m  INSERT INTO "schools" ("name", "created_at", "updated_at") VALUES ($1, $2, $3) RETURNING "id"  [["name", "Southern New Hampshire University (SNHU)"], ["created_at", "2016-06-09 15:53:23.063958"], ["updated_at", "2016-06-09 15:53:23.063958"]]
+  [1m[36m (0.5ms)[0m  [1mCOMMIT[0m
+  [1m[35m (0.3ms)[0m  BEGIN
+  [1m[36mSQL (0.4ms)[0m  [1mINSERT INTO "schools" ("name", "created_at", "updated_at") VALUES ($1, $2, $3) RETURNING "id"[0m  [["name", "Valencia College (Valencia CC) "], ["created_at", "2016-06-09 15:53:23.066497"], ["updated_at", "2016-06-09 15:53:23.066497"]]
+  [1m[35m (0.6ms)[0m  COMMIT
+  [1m[36m (0.3ms)[0m  [1mBEGIN[0m
+  [1m[35mSQL (0.3ms)[0m  INSERT INTO "schools" ("name", "created_at", "updated_at") VALUES ($1, $2, $3) RETURNING "id"  [["name", "University of Wisconsin"], ["created_at", "2016-06-09 15:53:23.069506"], ["updated_at", "2016-06-09 15:53:23.069506"]]
+  [1m[36m (0.6ms)[0m  [1mCOMMIT[0m
+  [1m[35m (0.2ms)[0m  BEGIN
+  [1m[36mSQL (0.4ms)[0m  [1mINSERT INTO "schools" ("name", "created_at", "updated_at") VALUES ($1, $2, $3) RETURNING "id"[0m  [["name", "University of Southern California (USC)"], ["created_at", "2016-06-09 15:53:23.072085"], ["updated_at", "2016-06-09 15:53:23.072085"]]
+  [1m[35m (0.6ms)[0m  COMMIT
+  [1m[36m (0.2ms)[0m  [1mBEGIN[0m
+  [1m[35mSQL (0.3ms)[0m  INSERT INTO "schools" ("name", "created_at", "updated_at") VALUES ($1, $2, $3) RETURNING "id"  [["name", "University of Arizona (UA)"], ["created_at", "2016-06-09 15:53:23.074946"], ["updated_at", "2016-06-09 15:53:23.074946"]]
+  [1m[36m (0.5ms)[0m  [1mCOMMIT[0m
+  [1m[35m (0.2ms)[0m  BEGIN
+  [1m[36mSQL (0.3ms)[0m  [1mINSERT INTO "schools" ("name", "created_at", "updated_at") VALUES ($1, $2, $3) RETURNING "id"[0m  [["name", "University of South Florida (USF)"], ["created_at", "2016-06-09 15:53:23.077367"], ["updated_at", "2016-06-09 15:53:23.077367"]]
+  [1m[35m (0.6ms)[0m  COMMIT
+  [1m[36m (0.2ms)[0m  [1mBEGIN[0m
+  [1m[35mSQL (0.3ms)[0m  INSERT INTO "schools" ("name", "created_at", "updated_at") VALUES ($1, $2, $3) RETURNING "id"  [["name", "University of California - Los Angeles (UCLA)"], ["created_at", "2016-06-09 15:53:23.080167"], ["updated_at", "2016-06-09 15:53:23.080167"]]
+  [1m[36m (0.6ms)[0m  [1mCOMMIT[0m
+  [1m[35m (0.2ms)[0m  BEGIN
+  [1m[36mSQL (0.3ms)[0m  [1mINSERT INTO "schools" ("name", "created_at", "updated_at") VALUES ($1, $2, $3) RETURNING "id"[0m  [["name", "Excelsior College (EC)"], ["created_at", "2016-06-09 15:53:23.082780"], ["updated_at", "2016-06-09 15:53:23.082780"]]
+  [1m[35m (0.6ms)[0m  COMMIT
+  [1m[36m (0.2ms)[0m  [1mBEGIN[0m
+  [1m[35mSQL (0.3ms)[0m  INSERT INTO "schools" ("name", "created_at", "updated_at") VALUES ($1, $2, $3) RETURNING "id"  [["name", "Florida State University (FSU)"], ["created_at", "2016-06-09 15:53:23.085495"], ["updated_at", "2016-06-09 15:53:23.085495"]]
+  [1m[36m (0.5ms)[0m  [1mCOMMIT[0m
+  [1m[35m (0.2ms)[0m  BEGIN
+  [1m[36mSQL (0.3ms)[0m  [1mINSERT INTO "schools" ("name", "created_at", "updated_at") VALUES ($1, $2, $3) RETURNING "id"[0m  [["name", "Austin Community College District (ACC)"], ["created_at", "2016-06-09 15:53:23.088055"], ["updated_at", "2016-06-09 15:53:23.088055"]]
+  [1m[35m (0.5ms)[0m  COMMIT
+  [1m[36m (0.2ms)[0m  [1mBEGIN[0m
+  [1m[35mSQL (0.3ms)[0m  INSERT INTO "schools" ("name", "created_at", "updated_at") VALUES ($1, $2, $3) RETURNING "id"  [["name", "University of Houston (UH) "], ["created_at", "2016-06-09 15:53:23.090592"], ["updated_at", "2016-06-09 15:53:23.090592"]]
+  [1m[36m (0.6ms)[0m  [1mCOMMIT[0m
+  [1m[35m (0.2ms)[0m  BEGIN
+  [1m[36mSQL (0.3ms)[0m  [1mINSERT INTO "schools" ("name", "created_at", "updated_at") VALUES ($1, $2, $3) RETURNING "id"[0m  [["name", "California State University - Northridge (CSUN)"], ["created_at", "2016-06-09 15:53:23.093124"], ["updated_at", "2016-06-09 15:53:23.093124"]]
+  [1m[35m (0.6ms)[0m  COMMIT
+  [1m[36m (0.2ms)[0m  [1mBEGIN[0m
+  [1m[35mSQL (0.3ms)[0m  INSERT INTO "schools" ("name", "created_at", "updated_at") VALUES ($1, $2, $3) RETURNING "id"  [["name", "Purdue University (Purdue-West Lafayette)"], ["created_at", "2016-06-09 15:53:23.095855"], ["updated_at", "2016-06-09 15:53:23.095855"]]
+  [1m[36m (0.6ms)[0m  [1mCOMMIT[0m
+  [1m[35m (0.3ms)[0m  BEGIN
+  [1m[36mSQL (0.3ms)[0m  [1mINSERT INTO "schools" ("name", "created_at", "updated_at") VALUES ($1, $2, $3) RETURNING "id"[0m  [["name", "The University of Texas at Arlington (UT Arlington)"], ["created_at", "2016-06-09 15:53:23.098349"], ["updated_at", "2016-06-09 15:53:23.098349"]]
+  [1m[35m (0.5ms)[0m  COMMIT
+  [1m[36m (0.2ms)[0m  [1mBEGIN[0m
+  [1m[35mSQL (0.3ms)[0m  INSERT INTO "schools" ("name", "created_at", "updated_at") VALUES ($1, $2, $3) RETURNING "id"  [["name", "California State University - Fullerton (CSUF)"], ["created_at", "2016-06-09 15:53:23.100785"], ["updated_at", "2016-06-09 15:53:23.100785"]]
+  [1m[36m (0.6ms)[0m  [1mCOMMIT[0m
+  [1m[35m (0.2ms)[0m  BEGIN
+  [1m[36mSQL (0.3ms)[0m  [1mINSERT INTO "schools" ("name", "created_at", "updated_at") VALUES ($1, $2, $3) RETURNING "id"[0m  [["name", "University of Maryland - College Park (UM)"], ["created_at", "2016-06-09 15:53:23.103339"], ["updated_at", "2016-06-09 15:53:23.103339"]]
+  [1m[35m (0.5ms)[0m  COMMIT
+  [1m[36m (0.2ms)[0m  [1mBEGIN[0m
+  [1m[35mSQL (0.3ms)[0m  INSERT INTO "schools" ("name", "created_at", "updated_at") VALUES ($1, $2, $3) RETURNING "id"  [["name", "University of California - Berkeley (UC Berkeley)"], ["created_at", "2016-06-09 15:53:23.105829"], ["updated_at", "2016-06-09 15:53:23.105829"]]
+  [1m[36m (0.5ms)[0m  [1mCOMMIT[0m
+  [1m[35m (0.2ms)[0m  BEGIN
+  [1m[36mSQL (0.3ms)[0m  [1mINSERT INTO "schools" ("name", "created_at", "updated_at") VALUES ($1, $2, $3) RETURNING "id"[0m  [["name", "Temple University"], ["created_at", "2016-06-09 15:53:23.108295"], ["updated_at", "2016-06-09 15:53:23.108295"]]
+  [1m[35m (0.5ms)[0m  COMMIT
+  [1m[36m (0.3ms)[0m  [1mBEGIN[0m
+  [1m[35mSQL (0.3ms)[0m  INSERT INTO "schools" ("name", "created_at", "updated_at") VALUES ($1, $2, $3) RETURNING "id"  [["name", "California State University - Long Beach (CSULB)"], ["created_at", "2016-06-09 15:53:23.110836"], ["updated_at", "2016-06-09 15:53:23.110836"]]
+  [1m[36m (0.6ms)[0m  [1mCOMMIT[0m
+  [1m[35m (0.2ms)[0m  BEGIN
+  [1m[36mSQL (0.3ms)[0m  [1mINSERT INTO "schools" ("name", "created_at", "updated_at") VALUES ($1, $2, $3) RETURNING "id"[0m  [["name", "Texas State University (Texas State) "], ["created_at", "2016-06-09 15:53:23.113474"], ["updated_at", "2016-06-09 15:53:23.113474"]]
+  [1m[35m (0.6ms)[0m  COMMIT
+  [1m[36m (0.2ms)[0m  [1mBEGIN[0m
+  [1m[35mSQL (0.4ms)[0m  INSERT INTO "schools" ("name", "created_at", "updated_at") VALUES ($1, $2, $3) RETURNING "id"  [["name", "Brigham Young University - Idaho (BYU-I) "], ["created_at", "2016-06-09 15:53:23.115989"], ["updated_at", "2016-06-09 15:53:23.115989"]]
+  [1m[36m (0.7ms)[0m  [1mCOMMIT[0m
+  [1m[35m (0.2ms)[0m  BEGIN
+  [1m[36mSQL (0.3ms)[0m  [1mINSERT INTO "schools" ("name", "created_at", "updated_at") VALUES ($1, $2, $3) RETURNING "id"[0m  [["name", "University of North Texas (UNT)"], ["created_at", "2016-06-09 15:53:23.118745"], ["updated_at", "2016-06-09 15:53:23.118745"]]
+  [1m[35m (0.5ms)[0m  COMMIT
+  [1m[36m (0.2ms)[0m  [1mBEGIN[0m
+  [1m[35mSQL (0.3ms)[0m  INSERT INTO "schools" ("name", "created_at", "updated_at") VALUES ($1, $2, $3) RETURNING "id"  [["name", "The University of Alabama"], ["created_at", "2016-06-09 15:53:23.121262"], ["updated_at", "2016-06-09 15:53:23.121262"]]
+  [1m[36m (0.7ms)[0m  [1mCOMMIT[0m
+  [1m[35m (0.2ms)[0m  BEGIN
+  [1m[36mSQL (0.3ms)[0m  [1mINSERT INTO "schools" ("name", "created_at", "updated_at") VALUES ($1, $2, $3) RETURNING "id"[0m  [["name", "East Los Angeles College (ELAC)"], ["created_at", "2016-06-09 15:53:23.124043"], ["updated_at", "2016-06-09 15:53:23.124043"]]
+  [1m[35m (0.6ms)[0m  COMMIT
+  [1m[36m (0.2ms)[0m  [1mBEGIN[0m
+  [1m[35mSQL (0.4ms)[0m  INSERT INTO "schools" ("name", "created_at", "updated_at") VALUES ($1, $2, $3) RETURNING "id"  [["name", "College of Southern Nevada (CSN)"], ["created_at", "2016-06-09 15:53:23.126671"], ["updated_at", "2016-06-09 15:53:23.126671"]]
+  [1m[36m (0.6ms)[0m  [1mCOMMIT[0m
+  [1m[35m (0.2ms)[0m  BEGIN
+  [1m[36mSQL (0.3ms)[0m  [1mINSERT INTO "schools" ("name", "created_at", "updated_at") VALUES ($1, $2, $3) RETURNING "id"[0m  [["name", "University of Missouri - Columbia (Mizzou)"], ["created_at", "2016-06-09 15:53:23.129475"], ["updated_at", "2016-06-09 15:53:23.129475"]]
+  [1m[35m (0.4ms)[0m  COMMIT
+  [1m[36m (0.2ms)[0m  [1mBEGIN[0m
+  [1m[35mSQL (0.2ms)[0m  INSERT INTO "schools" ("name", "created_at", "updated_at") VALUES ($1, $2, $3) RETURNING "id"  [["name", "University of Cincinnati (UC)"], ["created_at", "2016-06-09 15:53:23.131946"], ["updated_at", "2016-06-09 15:53:23.131946"]]
+  [1m[36m (0.5ms)[0m  [1mCOMMIT[0m
+  [1m[35m (0.2ms)[0m  BEGIN
+  [1m[36mSQL (0.3ms)[0m  [1mINSERT INTO "schools" ("name", "created_at", "updated_at") VALUES ($1, $2, $3) RETURNING "id"[0m  [["name", "University of Georgia (UGA)"], ["created_at", "2016-06-09 15:53:23.134486"], ["updated_at", "2016-06-09 15:53:23.134486"]]
+  [1m[35m (0.5ms)[0m  COMMIT
+  [1m[36m (0.3ms)[0m  [1mBEGIN[0m
+  [1m[35mSQL (0.4ms)[0m  INSERT INTO "schools" ("name", "created_at", "updated_at") VALUES ($1, $2, $3) RETURNING "id"  [["name", "Texas Tech University (TTU)"], ["created_at", "2016-06-09 15:53:23.144362"], ["updated_at", "2016-06-09 15:53:23.144362"]]
+  [1m[36m (0.7ms)[0m  [1mCOMMIT[0m
+  [1m[35m (0.2ms)[0m  BEGIN
+  [1m[36mSQL (0.3ms)[0m  [1mINSERT INTO "schools" ("name", "created_at", "updated_at") VALUES ($1, $2, $3) RETURNING "id"[0m  [["name", "Capella University"], ["created_at", "2016-06-09 15:53:23.147715"], ["updated_at", "2016-06-09 15:53:23.147715"]]
+  [1m[35m (0.5ms)[0m  COMMIT
+  [1m[36m (0.3ms)[0m  [1mBEGIN[0m
+  [1m[35mSQL (0.3ms)[0m  INSERT INTO "schools" ("name", "created_at", "updated_at") VALUES ($1, $2, $3) RETURNING "id"  [["name", "University of California - Davis (UC Davis)"], ["created_at", "2016-06-09 15:53:23.150479"], ["updated_at", "2016-06-09 15:53:23.150479"]]
+  [1m[36m (0.6ms)[0m  [1mCOMMIT[0m
+  [1m[35m (0.2ms)[0m  BEGIN
+  [1m[36mSQL (0.3ms)[0m  [1mINSERT INTO "schools" ("name", "created_at", "updated_at") VALUES ($1, $2, $3) RETURNING "id"[0m  [["name", "Iowa State University"], ["created_at", "2016-06-09 15:53:23.153198"], ["updated_at", "2016-06-09 15:53:23.153198"]]
+  [1m[35m (0.6ms)[0m  COMMIT
+  [1m[36m (0.3ms)[0m  [1mBEGIN[0m
+  [1m[35mSQL (0.3ms)[0m  INSERT INTO "schools" ("name", "created_at", "updated_at") VALUES ($1, $2, $3) RETURNING "id"  [["name", "North Carolina State University at Raleigh (NC State)"], ["created_at", "2016-06-09 15:53:23.155864"], ["updated_at", "2016-06-09 15:53:23.155864"]]
+  [1m[36m (0.6ms)[0m  [1mCOMMIT[0m
+  [1m[35m (0.2ms)[0m  BEGIN
+  [1m[36mSQL (0.3ms)[0m  [1mINSERT INTO "schools" ("name", "created_at", "updated_at") VALUES ($1, $2, $3) RETURNING "id"[0m  [["name", "George Mason University (Mason)"], ["created_at", "2016-06-09 15:53:23.158373"], ["updated_at", "2016-06-09 15:53:23.158373"]]
+  [1m[35m (0.6ms)[0m  COMMIT
+  [1m[36m (0.3ms)[0m  [1mBEGIN[0m
+  [1m[35mSQL (0.3ms)[0m  INSERT INTO "schools" ("name", "created_at", "updated_at") VALUES ($1, $2, $3) RETURNING "id"  [["name", "San Diego State University (SDSU)"], ["created_at", "2016-06-09 15:53:23.161081"], ["updated_at", "2016-06-09 15:53:23.161081"]]
+  [1m[36m (0.6ms)[0m  [1mCOMMIT[0m
+  [1m[35m (0.2ms)[0m  BEGIN
+  [1m[36mSQL (0.3ms)[0m  [1mINSERT INTO "schools" ("name", "created_at", "updated_at") VALUES ($1, $2, $3) RETURNING "id"[0m  [["name", "University of South Carolina - Columbia (SC)"], ["created_at", "2016-06-09 15:53:23.163503"], ["updated_at", "2016-06-09 15:53:23.163503"]]
+  [1m[35m (0.5ms)[0m  COMMIT
+  [1m[36m (0.2ms)[0m  [1mBEGIN[0m
+  [1m[35mSQL (0.3ms)[0m  INSERT INTO "schools" ("name", "created_at", "updated_at") VALUES ($1, $2, $3) RETURNING "id"  [["name", "San Jose State University (SJSU)"], ["created_at", "2016-06-09 15:53:23.166012"], ["updated_at", "2016-06-09 15:53:23.166012"]]
+  [1m[36m (0.6ms)[0m  [1mCOMMIT[0m
+  [1m[35m (0.2ms)[0m  BEGIN
+  [1m[36mSQL (0.3ms)[0m  [1mINSERT INTO "schools" ("name", "created_at", "updated_at") VALUES ($1, $2, $3) RETURNING "id"[0m  [["name", "St Petersburg College (SPC)"], ["created_at", "2016-06-09 15:53:23.168768"], ["updated_at", "2016-06-09 15:53:23.168768"]]
+  [1m[35m (0.6ms)[0m  COMMIT
+  [1m[36m (0.2ms)[0m  [1mBEGIN[0m
+  [1m[35mSQL (0.3ms)[0m  INSERT INTO "schools" ("name", "created_at", "updated_at") VALUES ($1, $2, $3) RETURNING "id"  [["name", "Georgia State University (GSU)"], ["created_at", "2016-06-09 15:53:23.171430"], ["updated_at", "2016-06-09 15:53:23.171430"]]
+  [1m[36m (0.6ms)[0m  [1mCOMMIT[0m
+  [1m[35m (0.3ms)[0m  BEGIN
+  [1m[36mSQL (0.3ms)[0m  [1mINSERT INTO "schools" ("name", "created_at", "updated_at") VALUES ($1, $2, $3) RETURNING "id"[0m  [["name", "University of Colorado at Boulder (CU Boulder)"], ["created_at", "2016-06-09 15:53:23.174390"], ["updated_at", "2016-06-09 15:53:23.174390"]]
+  [1m[35m (0.6ms)[0m  COMMIT
+  [1m[36m (0.2ms)[0m  [1mBEGIN[0m
+  [1m[35mSQL (0.3ms)[0m  INSERT INTO "schools" ("name", "created_at", "updated_at") VALUES ($1, $2, $3) RETURNING "id"  [["name", "Boston University (BU)"], ["created_at", "2016-06-09 15:53:23.177283"], ["updated_at", "2016-06-09 15:53:23.177283"]]
+  [1m[36m (0.5ms)[0m  [1mCOMMIT[0m
+  [1m[35m (0.2ms)[0m  BEGIN
+  [1m[36mSQL (0.3ms)[0m  [1mINSERT INTO "schools" ("name", "created_at", "updated_at") VALUES ($1, $2, $3) RETURNING "id"[0m  [["name", "University of Utah (The U)"], ["created_at", "2016-06-09 15:53:23.179819"], ["updated_at", "2016-06-09 15:53:23.179819"]]
+  [1m[35m (0.5ms)[0m  COMMIT
+  [1m[36m (0.2ms)[0m  [1mBEGIN[0m
+  [1m[35mSQL (0.3ms)[0m  INSERT INTO "schools" ("name", "created_at", "updated_at") VALUES ($1, $2, $3) RETURNING "id"  [["name", "Colorado State University (CSU)"], ["created_at", "2016-06-09 15:53:23.182382"], ["updated_at", "2016-06-09 15:53:23.182382"]]
+  [1m[36m (0.6ms)[0m  [1mCOMMIT[0m
+  [1m[35m (0.2ms)[0m  BEGIN
+  [1m[36mSQL (0.3ms)[0m  [1mINSERT INTO "schools" ("name", "created_at", "updated_at") VALUES ($1, $2, $3) RETURNING "id"[0m  [["name", "Utah Valley University (UVU) "], ["created_at", "2016-06-09 15:53:23.185126"], ["updated_at", "2016-06-09 15:53:23.185126"]]
+  [1m[35m (0.5ms)[0m  COMMIT
+  [1m[36m (0.2ms)[0m  [1mBEGIN[0m
+  [1m[35mSQL (0.3ms)[0m  INSERT INTO "schools" ("name", "created_at", "updated_at") VALUES ($1, $2, $3) RETURNING "id"  [["name", "Virginia Polytechnic Institute and State University (Virginia Tech)"], ["created_at", "2016-06-09 15:53:23.187841"], ["updated_at", "2016-06-09 15:53:23.187841"]]
+  [1m[36m (0.5ms)[0m  [1mCOMMIT[0m
+  [1m[35m (0.3ms)[0m  BEGIN
+  [1m[36mSQL (0.3ms)[0m  [1mINSERT INTO "schools" ("name", "created_at", "updated_at") VALUES ($1, $2, $3) RETURNING "id"[0m  [["name", "Louisiana State University (LSU)"], ["created_at", "2016-06-09 15:53:23.190515"], ["updated_at", "2016-06-09 15:53:23.190515"]]
+  [1m[35m (0.5ms)[0m  COMMIT
+  [1m[36m (0.2ms)[0m  [1mBEGIN[0m
+  [1m[35mSQL (0.2ms)[0m  INSERT INTO "schools" ("name", "created_at", "updated_at") VALUES ($1, $2, $3) RETURNING "id"  [["name", "Portland Community College (PCC)"], ["created_at", "2016-06-09 15:53:23.193053"], ["updated_at", "2016-06-09 15:53:23.193053"]]
+  [1m[36m (0.6ms)[0m  [1mCOMMIT[0m
+  [1m[35m (0.2ms)[0m  BEGIN
+  [1m[36mSQL (0.3ms)[0m  [1mINSERT INTO "schools" ("name", "created_at", "updated_at") VALUES ($1, $2, $3) RETURNING "id"[0m  [["name", "Virginia Commonwealth University (VCU)"], ["created_at", "2016-06-09 15:53:23.195614"], ["updated_at", "2016-06-09 15:53:23.195614"]]
+  [1m[35m (0.6ms)[0m  COMMIT
+  [1m[36m (0.2ms)[0m  [1mBEGIN[0m
+  [1m[35mSQL (0.3ms)[0m  INSERT INTO "schools" ("name", "created_at", "updated_at") VALUES ($1, $2, $3) RETURNING "id"  [["name", "University of California - San Diego (UCSD)"], ["created_at", "2016-06-09 15:53:23.198135"], ["updated_at", "2016-06-09 15:53:23.198135"]]
+  [1m[36m (0.6ms)[0m  [1mCOMMIT[0m
+  [1m[35m (0.2ms)[0m  BEGIN
+  [1m[36mSQL (0.3ms)[0m  [1mINSERT INTO "schools" ("name", "created_at", "updated_at") VALUES ($1, $2, $3) RETURNING "id"[0m  [["name", "Indiana University - Purdue University - Indianapolis (IUPUI)"], ["created_at", "2016-06-09 15:53:23.201010"], ["updated_at", "2016-06-09 15:53:23.201010"]]
+  [1m[35m (0.6ms)[0m  COMMIT
+  [1m[36m (0.3ms)[0m  [1mBEGIN[0m
+  [1m[35mSQL (0.3ms)[0m  INSERT INTO "schools" ("name", "created_at", "updated_at") VALUES ($1, $2, $3) RETURNING "id"  [["name", "Brigham Young University (BYU) "], ["created_at", "2016-06-09 15:53:23.203811"], ["updated_at", "2016-06-09 15:53:23.203811"]]
+  [1m[36m (0.6ms)[0m  [1mCOMMIT[0m
+  [1m[35m (0.2ms)[0m  BEGIN
+  [1m[36mSQL (0.4ms)[0m  [1mINSERT INTO "schools" ("name", "created_at", "updated_at") VALUES ($1, $2, $3) RETURNING "id"[0m  [["name", "The University of Tennessee"], ["created_at", "2016-06-09 15:53:23.206585"], ["updated_at", "2016-06-09 15:53:23.206585"]]
+  [1m[35m (0.7ms)[0m  COMMIT
+  [1m[36m (0.2ms)[0m  [1mBEGIN[0m
+  [1m[35mSQL (0.3ms)[0m  INSERT INTO "schools" ("name", "created_at", "updated_at") VALUES ($1, $2, $3) RETURNING "id"  [["name", "Florida Atlantic University (FAU)"], ["created_at", "2016-06-09 15:53:23.209680"], ["updated_at", "2016-06-09 15:53:23.209680"]]
+  [1m[36m (0.6ms)[0m  [1mCOMMIT[0m
+  [1m[35m (0.2ms)[0m  BEGIN
+  [1m[36mSQL (0.3ms)[0m  [1mINSERT INTO "schools" ("name", "created_at", "updated_at") VALUES ($1, $2, $3) RETURNING "id"[0m  [["name", "Salt Lake Community College (SLCC) "], ["created_at", "2016-06-09 15:53:23.212308"], ["updated_at", "2016-06-09 15:53:23.212308"]]
+  [1m[35m (0.5ms)[0m  COMMIT
+  [1m[36m (0.2ms)[0m  [1mBEGIN[0m
+  [1m[35mSQL (0.3ms)[0m  INSERT INTO "schools" ("name", "created_at", "updated_at") VALUES ($1, $2, $3) RETURNING "id"  [["name", "South Texas College"], ["created_at", "2016-06-09 15:53:23.214695"], ["updated_at", "2016-06-09 15:53:23.214695"]]
+  [1m[36m (0.6ms)[0m  [1mCOMMIT[0m
+  [1m[35m (0.2ms)[0m  BEGIN
+  [1m[36mSQL (0.3ms)[0m  [1mINSERT INTO "schools" ("name", "created_at", "updated_at") VALUES ($1, $2, $3) RETURNING "id"[0m  [["name", "Santa Monica College (SMC)"], ["created_at", "2016-06-09 15:53:23.217196"], ["updated_at", "2016-06-09 15:53:23.217196"]]
+  [1m[35m (0.6ms)[0m  COMMIT
+  [1m[36m (0.2ms)[0m  [1mBEGIN[0m
+  [1m[35mSQL (0.3ms)[0m  INSERT INTO "schools" ("name", "created_at", "updated_at") VALUES ($1, $2, $3) RETURNING "id"  [["name", "University of California - Irvine (UCI)"], ["created_at", "2016-06-09 15:53:23.220092"], ["updated_at", "2016-06-09 15:53:23.220092"]]
+  [1m[36m (0.6ms)[0m  [1mCOMMIT[0m
+  [1m[35m (0.2ms)[0m  BEGIN
+  [1m[36mSQL (0.3ms)[0m  [1mINSERT INTO "schools" ("name", "created_at", "updated_at") VALUES ($1, $2, $3) RETURNING "id"[0m  [["name", "University at Buffalo (UB)"], ["created_at", "2016-06-09 15:53:23.222933"], ["updated_at", "2016-06-09 15:53:23.222933"]]
+  [1m[35m (0.6ms)[0m  COMMIT
+  [1m[36m (0.3ms)[0m  [1mBEGIN[0m
+  [1m[35mSQL (0.3ms)[0m  INSERT INTO "schools" ("name", "created_at", "updated_at") VALUES ($1, $2, $3) RETURNING "id"  [["name", "University of Iowa (UI)"], ["created_at", "2016-06-09 15:53:23.225529"], ["updated_at", "2016-06-09 15:53:23.225529"]]
+  [1m[36m (0.6ms)[0m  [1mCOMMIT[0m
+  [1m[35m (0.2ms)[0m  BEGIN
+  [1m[36mSQL (0.3ms)[0m  [1mINSERT INTO "schools" ("name", "created_at", "updated_at") VALUES ($1, $2, $3) RETURNING "id"[0m  [["name", "Santa Ana College (SAC)"], ["created_at", "2016-06-09 15:53:23.228019"], ["updated_at", "2016-06-09 15:53:23.228019"]]
+  [1m[35m (0.6ms)[0m  COMMIT
+  [1m[36m (0.2ms)[0m  [1mBEGIN[0m
+  [1m[35mSQL (0.3ms)[0m  INSERT INTO "schools" ("name", "created_at", "updated_at") VALUES ($1, $2, $3) RETURNING "id"  [["name", "Kent State University - Kent Campus"], ["created_at", "2016-06-09 15:53:23.230388"], ["updated_at", "2016-06-09 15:53:23.230388"]]
+  [1m[36m (0.6ms)[0m  [1mCOMMIT[0m
+  [1m[35m (0.2ms)[0m  BEGIN
+  [1m[36mSQL (0.3ms)[0m  [1mINSERT INTO "schools" ("name", "created_at", "updated_at") VALUES ($1, $2, $3) RETURNING "id"[0m  [["name", "College of DuPage (C.O.D.)"], ["created_at", "2016-06-09 15:53:23.232716"], ["updated_at", "2016-06-09 15:53:23.232716"]]
+  [1m[35m (0.6ms)[0m  COMMIT
+  [1m[36m (0.2ms)[0m  [1mBEGIN[0m
+  [1m[35mSQL (0.3ms)[0m  INSERT INTO "schools" ("name", "created_at", "updated_at") VALUES ($1, $2, $3) RETURNING "id"  [["name", "San Francisco State University (SFSU)"], ["created_at", "2016-06-09 15:53:23.235275"], ["updated_at", "2016-06-09 15:53:23.235275"]]
+  [1m[36m (0.5ms)[0m  [1mCOMMIT[0m
+  [1m[35m (0.2ms)[0m  BEGIN
+  [1m[36mSQL (0.6ms)[0m  [1mINSERT INTO "schools" ("name", "created_at", "updated_at") VALUES ($1, $2, $3) RETURNING "id"[0m  [["name", "California State University - Sacramento (Sacramento State)"], ["created_at", "2016-06-09 15:53:23.237726"], ["updated_at", "2016-06-09 15:53:23.237726"]]
+  [1m[35m (0.6ms)[0m  COMMIT
+  [1m[36m (0.3ms)[0m  [1mBEGIN[0m
+  [1m[35mSQL (0.3ms)[0m  INSERT INTO "schools" ("name", "created_at", "updated_at") VALUES ($1, $2, $3) RETURNING "id"  [["name", "Ohio University"], ["created_at", "2016-06-09 15:53:23.240834"], ["updated_at", "2016-06-09 15:53:23.240834"]]
+  [1m[36m (0.6ms)[0m  [1mCOMMIT[0m
+  [1m[35m (0.3ms)[0m  BEGIN
+  [1m[36mSQL (0.3ms)[0m  [1mINSERT INTO "schools" ("name", "created_at", "updated_at") VALUES ($1, $2, $3) RETURNING "id"[0m  [["name", "University of Kentucky (UK)"], ["created_at", "2016-06-09 15:53:23.243457"], ["updated_at", "2016-06-09 15:53:23.243457"]]
+  [1m[35m (0.6ms)[0m  COMMIT
+  [1m[36m (0.2ms)[0m  [1mBEGIN[0m
+  [1m[35mSQL (0.3ms)[0m  INSERT INTO "schools" ("name", "created_at", "updated_at") VALUES ($1, $2, $3) RETURNING "id"  [["name", "West Virginia University (WVU)"], ["created_at", "2016-06-09 15:53:23.246031"], ["updated_at", "2016-06-09 15:53:23.246031"]]
+  [1m[36m (0.5ms)[0m  [1mCOMMIT[0m
+  [1m[35m (0.2ms)[0m  BEGIN
+  [1m[36mSQL (0.4ms)[0m  [1mINSERT INTO "schools" ("name", "created_at", "updated_at") VALUES ($1, $2, $3) RETURNING "id"[0m  [["name", "University of North Carolina at Chapel Hill (UNC)"], ["created_at", "2016-06-09 15:53:23.248416"], ["updated_at", "2016-06-09 15:53:23.248416"]]
+  [1m[35m (0.5ms)[0m  COMMIT
+  [1m[36m (0.2ms)[0m  [1mBEGIN[0m
+  [1m[35mSQL (0.3ms)[0m  INSERT INTO "schools" ("name", "created_at", "updated_at") VALUES ($1, $2, $3) RETURNING "id"  [["name", "American River College (ARC)"], ["created_at", "2016-06-09 15:53:23.251212"], ["updated_at", "2016-06-09 15:53:23.251212"]]
+  [1m[36m (0.6ms)[0m  [1mCOMMIT[0m
+  [1m[35m (0.3ms)[0m  BEGIN
+  [1m[36mSQL (0.4ms)[0m  [1mINSERT INTO "users" ("username", "email", "password_digest", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5) RETURNING "id"[0m  [["username", "aimee.roob"], ["email", "afton@stracke.io"], ["password_digest", "$2a$10$U2.zCd4lWB6xeSCs1klXauh6dWGQVLw9BD.CMkf2kcFd1vSM11n22"], ["created_at", "2016-06-09 15:53:23.728928"], ["updated_at", "2016-06-09 15:53:23.728928"]]
+  [1m[35m (0.6ms)[0m  COMMIT
+  [1m[36m (0.3ms)[0m  [1mBEGIN[0m
+  [1m[35mSQL (0.3ms)[0m  INSERT INTO "users" ("username", "email", "password_digest", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5) RETURNING "id"  [["username", "angeline_jaskolski"], ["email", "sydni@pollichmckenzie.biz"], ["password_digest", "$2a$10$LtZBHZkbP/4nSNIBmAOXoOOjMP.4tH/p3tLd4p5wBzOMVyjaPWcs6"], ["created_at", "2016-06-09 15:53:23.817956"], ["updated_at", "2016-06-09 15:53:23.817956"]]
+  [1m[36m (0.5ms)[0m  [1mCOMMIT[0m
+  [1m[35m (0.3ms)[0m  BEGIN
+  [1m[36mSQL (0.4ms)[0m  [1mINSERT INTO "users" ("username", "email", "password_digest", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5) RETURNING "id"[0m  [["username", "sasha"], ["email", "peyton@hermistonlockman.co"], ["password_digest", "$2a$10$0cOfvdnSuZ1619nGKAUVWOtNKKW4Cw38Da0lWoEBn/Ge2Yvpumbqm"], ["created_at", "2016-06-09 15:53:23.903202"], ["updated_at", "2016-06-09 15:53:23.903202"]]
+  [1m[35m (0.7ms)[0m  COMMIT
+  [1m[36m (0.2ms)[0m  [1mBEGIN[0m
+  [1m[35mSQL (0.4ms)[0m  INSERT INTO "users" ("username", "email", "password_digest", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5) RETURNING "id"  [["username", "maiya"], ["email", "magdalena_hintz@gutmannberge.info"], ["password_digest", "$2a$10$7Zk.n/lmAO191ZhfCm5.K.QHapLcd5v0.zQadyQJJ7G.8kQyT4Jg6"], ["created_at", "2016-06-09 15:53:23.997381"], ["updated_at", "2016-06-09 15:53:23.997381"]]
+  [1m[36m (0.4ms)[0m  [1mCOMMIT[0m
+  [1m[35m (0.3ms)[0m  BEGIN
+  [1m[36mSQL (0.4ms)[0m  [1mINSERT INTO "users" ("username", "email", "password_digest", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5) RETURNING "id"[0m  [["username", "nyasia"], ["email", "junius@block.co"], ["password_digest", "$2a$10$zugpfCFV2.sFTjMK/vHBV.HScTyy80ggjggdw.u97Z1ax1sr7bGoe"], ["created_at", "2016-06-09 15:53:24.084540"], ["updated_at", "2016-06-09 15:53:24.084540"]]
+  [1m[35m (0.6ms)[0m  COMMIT
+  [1m[36m (0.3ms)[0m  [1mBEGIN[0m
+  [1m[35mSQL (0.4ms)[0m  INSERT INTO "users" ("username", "email", "password_digest", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5) RETURNING "id"  [["username", "antoinette"], ["email", "dariana_schowalter@colestreich.com"], ["password_digest", "$2a$10$q7ivf22zj9nl/CJyYrMsou2ap35LfizlZi5mV7auRqI7N9RUosqoy"], ["created_at", "2016-06-09 15:53:24.170339"], ["updated_at", "2016-06-09 15:53:24.170339"]]
+  [1m[36m (0.6ms)[0m  [1mCOMMIT[0m
+  [1m[35m (0.3ms)[0m  BEGIN
+  [1m[36mSQL (0.3ms)[0m  [1mINSERT INTO "users" ("username", "email", "password_digest", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5) RETURNING "id"[0m  [["username", "vena_sporer"], ["email", "garnett@flatley.com"], ["password_digest", "$2a$10$A1DmZBYmQ1Apxa2ZCq2zqe8Bg0hCwzZN5vf1XG8R83tcOYUXCD/1u"], ["created_at", "2016-06-09 15:53:24.260977"], ["updated_at", "2016-06-09 15:53:24.260977"]]
+  [1m[35m (0.6ms)[0m  COMMIT
+  [1m[36m (0.3ms)[0m  [1mBEGIN[0m
+  [1m[35mSQL (0.3ms)[0m  INSERT INTO "users" ("username", "email", "password_digest", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5) RETURNING "id"  [["username", "zella"], ["email", "alba@klinglabadie.info"], ["password_digest", "$2a$10$g2ZtJO1DbZPjCZTuMlpGueI8YBJVsT66jRrNcuUsecosFCFtDvPeq"], ["created_at", "2016-06-09 15:53:24.351200"], ["updated_at", "2016-06-09 15:53:24.351200"]]
+  [1m[36m (0.6ms)[0m  [1mCOMMIT[0m
+  [1m[35m (0.3ms)[0m  BEGIN
+  [1m[36mSQL (0.3ms)[0m  [1mINSERT INTO "users" ("username", "email", "password_digest", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5) RETURNING "id"[0m  [["username", "doug_cartwright"], ["email", "jarrett.moore@lakinsauer.info"], ["password_digest", "$2a$10$FsX6Izh/Ox7ZaVkhbkDydexg2KDeyFqvjQHASilnessFwvgQa4O.2"], ["created_at", "2016-06-09 15:53:24.440654"], ["updated_at", "2016-06-09 15:53:24.440654"]]
+  [1m[35m (0.5ms)[0m  COMMIT
+  [1m[36m (0.3ms)[0m  [1mBEGIN[0m
+  [1m[35mSQL (0.3ms)[0m  INSERT INTO "users" ("username", "email", "password_digest", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5) RETURNING "id"  [["username", "adela"], ["email", "rose@larson.com"], ["password_digest", "$2a$10$Nadf2YKV4WXhunKSmQQh9OLz5UIL.eYP7/qVn2.2PG2va5BjvZ356"], ["created_at", "2016-06-09 15:53:24.535169"], ["updated_at", "2016-06-09 15:53:24.535169"]]
+  [1m[36m (0.6ms)[0m  [1mCOMMIT[0m
+  [1m[35m (0.3ms)[0m  BEGIN
+  [1m[36mSQL (0.4ms)[0m  [1mINSERT INTO "users" ("username", "email", "password_digest", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5) RETURNING "id"[0m  [["username", "elmore"], ["email", "oliver@weber.co"], ["password_digest", "$2a$10$0iBNGXSJTmH7zY.vD.BkzOpZBiRLw7BK6GdXZ/pXHxPukQwMJTGby"], ["created_at", "2016-06-09 15:53:24.627398"], ["updated_at", "2016-06-09 15:53:24.627398"]]
+  [1m[35m (0.6ms)[0m  COMMIT
+  [1m[36m (0.3ms)[0m  [1mBEGIN[0m
+  [1m[35mSQL (0.3ms)[0m  INSERT INTO "users" ("username", "email", "password_digest", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5) RETURNING "id"  [["username", "judah_sauer"], ["email", "madison.kuhlman@waelchidietrich.name"], ["password_digest", "$2a$10$GR8oumypGzeFLemWgzY2xev9iEsy48gffPX2C1AegMZm.I6LMbyZi"], ["created_at", "2016-06-09 15:53:24.718987"], ["updated_at", "2016-06-09 15:53:24.718987"]]
+  [1m[36m (0.6ms)[0m  [1mCOMMIT[0m
+  [1m[35m (0.3ms)[0m  BEGIN
+  [1m[36mSQL (0.4ms)[0m  [1mINSERT INTO "users" ("username", "email", "password_digest", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5) RETURNING "id"[0m  [["username", "ariane"], ["email", "joesph_marquardt@nicolas.info"], ["password_digest", "$2a$10$H42kK85.Bh2omOKMnixYse7RabsflFLIS8bpslY3Sx6bYM0LXCsIu"], ["created_at", "2016-06-09 15:53:24.809316"], ["updated_at", "2016-06-09 15:53:24.809316"]]
+  [1m[35m (0.6ms)[0m  COMMIT
+  [1m[36m (0.4ms)[0m  [1mBEGIN[0m
+  [1m[35mSQL (0.3ms)[0m  INSERT INTO "users" ("username", "email", "password_digest", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5) RETURNING "id"  [["username", "neil"], ["email", "jarvis_cormier@krajcik.org"], ["password_digest", "$2a$10$FbY57QaBtCjqmWh3sirTKOk7rWl6YElTZ.UDVO.OMiwDwIzdhouZS"], ["created_at", "2016-06-09 15:53:24.904138"], ["updated_at", "2016-06-09 15:53:24.904138"]]
+  [1m[36m (0.6ms)[0m  [1mCOMMIT[0m
+  [1m[35m (0.3ms)[0m  BEGIN
+  [1m[36mSQL (0.4ms)[0m  [1mINSERT INTO "users" ("username", "email", "password_digest", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5) RETURNING "id"[0m  [["username", "stephon"], ["email", "lisandro@kshlerincummerata.co"], ["password_digest", "$2a$10$FNu4qHBn.3JLzQ5v.GBZSOt7K./OjYaVawjmK3FTJ17G1/413Ai4."], ["created_at", "2016-06-09 15:53:25.005368"], ["updated_at", "2016-06-09 15:53:25.005368"]]
+  [1m[35m (0.6ms)[0m  COMMIT
+  [1m[36m (0.3ms)[0m  [1mBEGIN[0m
+  [1m[35mSQL (0.4ms)[0m  INSERT INTO "users" ("username", "email", "password_digest", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5) RETURNING "id"  [["username", "trenton.hackett"], ["email", "obie_walsh@feeneybeatty.info"], ["password_digest", "$2a$10$Wr2qdQ8R0S0GM3BV9n/V2u694B5.fqWBkhKcfavjSx1fjw1P5llZ2"], ["created_at", "2016-06-09 15:53:25.099174"], ["updated_at", "2016-06-09 15:53:25.099174"]]
+  [1m[36m (0.6ms)[0m  [1mCOMMIT[0m
+  [1m[35m (0.3ms)[0m  BEGIN
+  [1m[36mSQL (0.4ms)[0m  [1mINSERT INTO "users" ("username", "email", "password_digest", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5) RETURNING "id"[0m  [["username", "rita"], ["email", "tracy@rodriguez.co"], ["password_digest", "$2a$10$PxHJtaacMNzGEaEuC03zvutprh/Az27eVeBQiAGdbwmcUOPVfcfqS"], ["created_at", "2016-06-09 15:53:25.186928"], ["updated_at", "2016-06-09 15:53:25.186928"]]
+  [1m[35m (0.6ms)[0m  COMMIT
+  [1m[36m (0.3ms)[0m  [1mBEGIN[0m
+  [1m[35mSQL (0.3ms)[0m  INSERT INTO "users" ("username", "email", "password_digest", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5) RETURNING "id"  [["username", "mario.cummerata"], ["email", "sallie@bernhardmetz.io"], ["password_digest", "$2a$10$WxwAXkXLZSJs2Pncc587q.2f/gbK3nqqYbjXo0rZ6Eqdv171qvHKK"], ["created_at", "2016-06-09 15:53:25.277301"], ["updated_at", "2016-06-09 15:53:25.277301"]]
+  [1m[36m (0.6ms)[0m  [1mCOMMIT[0m
+  [1m[35m (0.3ms)[0m  BEGIN
+  [1m[36mSQL (0.3ms)[0m  [1mINSERT INTO "users" ("username", "email", "password_digest", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5) RETURNING "id"[0m  [["username", "braden_adams"], ["email", "michael@shieldteuber.biz"], ["password_digest", "$2a$10$n0/f9JLraxzoUaBBH2Gd5.drNkyYBarF3zwS4RHckkYFqyjCmFoVm"], ["created_at", "2016-06-09 15:53:25.368099"], ["updated_at", "2016-06-09 15:53:25.368099"]]
+  [1m[35m (0.6ms)[0m  COMMIT
+  [1m[36m (0.3ms)[0m  [1mBEGIN[0m
+  [1m[35mSQL (0.3ms)[0m  INSERT INTO "users" ("username", "email", "password_digest", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5) RETURNING "id"  [["username", "albin"], ["email", "alberta@hudsontillman.io"], ["password_digest", "$2a$10$ic8XlokQTxmeGXKu49b/EO/F0mhm2SHpzKl1jgaWd2fKMTMfWNyCu"], ["created_at", "2016-06-09 15:53:25.456854"], ["updated_at", "2016-06-09 15:53:25.456854"]]
+  [1m[36m (0.6ms)[0m  [1mCOMMIT[0m
+  [1m[35m (0.2ms)[0m  BEGIN
+  [1m[36mSQL (1.0ms)[0m  [1mINSERT INTO "posts" ("title", "body", "user_id", "school_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5, $6) RETURNING "id"[0m  [["title", "Hashtag shoreditch post-ironic tousled neutra pug before they sold out poutine dreamcatcher."], ["body", "Raw denim irony butcher cleanse diy franzen synth. Sartorial chia tattooed microdosing. Fingerstache pickled health flannel. Salvia park lomo knausgaard messenger bag biodiesel iphone lumbersexual. Twee tofu migas art party try-hard asymmetrical. Butcher mumblecore shabby chic marfa neutra craft beer. Green juice 8-bit sustainable selfies shoreditch put a bird on it. Knausgaard kinfolk venmo. Forage art party shabby chic."], ["user_id", 15], ["school_id", 47], ["created_at", "2016-06-09 15:53:25.473054"], ["updated_at", "2016-06-09 15:53:25.473054"]]
+  [1m[35m (0.6ms)[0m  COMMIT
+  [1m[36m (0.3ms)[0m  [1mBEGIN[0m
+  [1m[35mSQL (0.5ms)[0m  INSERT INTO "posts" ("title", "body", "user_id", "school_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5, $6) RETURNING "id"  [["title", "Ennui asymmetrical polaroid tilde paleo cray."], ["body", "Bicycle rights freegan tilde vice butcher. Gastropub locavore intelligentsia. Mumblecore butcher plaid iphone franzen. Irony ramps sartorial cold-pressed. Cray umami plaid. Taxidermy heirloom chia loko fanny pack. Waistcoat pabst bespoke vice wayfarers. Fingerstache helvetica food truck fanny pack chambray meh lo-fi ramps. Trust fund yuccie viral franzen slow-carb."], ["user_id", 5], ["school_id", 35], ["created_at", "2016-06-09 15:53:25.477718"], ["updated_at", "2016-06-09 15:53:25.477718"]]
+  [1m[36m (0.6ms)[0m  [1mCOMMIT[0m
+  [1m[35m (0.2ms)[0m  BEGIN
+  [1m[36mSQL (0.5ms)[0m  [1mINSERT INTO "posts" ("title", "body", "user_id", "school_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5, $6) RETURNING "id"[0m  [["title", "Quinoa cardigan knausgaard mumblecore echo."], ["body", "Keytar echo occupy. Swag cliche fashion axe poutine brooklyn cornhole pop-up 3 wolf moon. Before they sold out diy plaid organic stumptown. Fashion axe bushwick meditation. Truffaut chambray bicycle rights. Fap swag hammock etsy try-hard blog pork belly normcore. Freegan swag cliche cred chartreuse. Heirloom marfa small batch migas art party beard. Jean shorts skateboard salvia. Disrupt whatever vinyl farm-to-table distillery flannel cleanse."], ["user_id", 4], ["school_id", 69], ["created_at", "2016-06-09 15:53:25.481027"], ["updated_at", "2016-06-09 15:53:25.481027"]]
+  [1m[35m (0.6ms)[0m  COMMIT
+  [1m[36m (0.2ms)[0m  [1mBEGIN[0m
+  [1m[35mSQL (0.4ms)[0m  INSERT INTO "posts" ("title", "body", "user_id", "school_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5, $6) RETURNING "id"  [["title", "Normcore banh mi hoodie selvage."], ["body", "Ugh kinfolk tote bag sriracha ethical. Meh tacos neutra. Locavore occupy selfies cardigan. Disrupt blue bottle migas retro occupy banh mi food truck. Yuccie scenester letterpress thundercats farm-to-table hashtag marfa celiac. Quinoa lumbersexual marfa. Tilde hella distillery franzen. Tofu whatever banjo messenger bag taxidermy crucifix."], ["user_id", 15], ["school_id", 6], ["created_at", "2016-06-09 15:53:25.484223"], ["updated_at", "2016-06-09 15:53:25.484223"]]
+  [1m[36m (0.6ms)[0m  [1mCOMMIT[0m
+  [1m[35m (0.2ms)[0m  BEGIN
+  [1m[36mSQL (0.6ms)[0m  [1mINSERT INTO "posts" ("title", "body", "user_id", "school_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5, $6) RETURNING "id"[0m  [["title", "Ethical humblebrag kombucha franzen church-key distillery."], ["body", "8-bit mixtape aesthetic wolf. Meh plaid vinyl health marfa you probably haven't heard of them. Occupy marfa +1 vinegar fingerstache dreamcatcher. Keytar scenester street sriracha. Viral flexitarian lumbersexual tacos meh fingerstache. Vinyl tilde leggings listicle mixtape forage locavore. Crucifix whatever etsy blog diy food truck vhs. Bitters banjo biodiesel. Poutine church-key wes anderson cornhole knausgaard organic before they sold out."], ["user_id", 13], ["school_id", 12], ["created_at", "2016-06-09 15:53:25.487793"], ["updated_at", "2016-06-09 15:53:25.487793"]]
+  [1m[35m (0.6ms)[0m  COMMIT
+  [1m[36m (0.2ms)[0m  [1mBEGIN[0m
+  [1m[35mSQL (0.5ms)[0m  INSERT INTO "posts" ("title", "body", "user_id", "school_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5, $6) RETURNING "id"  [["title", "Kogi ethical +1 hammock waistcoat flexitarian tacos."], ["body", "Bitters vegan readymade. Beard brunch photo booth post-ironic you probably haven't heard of them kombucha slow-carb. Mumblecore drinking gentrify portland kickstarter. Jean shorts chartreuse stumptown. Ethical vinegar cronut offal yr. Bespoke venmo mlkshk single-origin coffee. Portland brooklyn readymade 8-bit mlkshk. Aesthetic cleanse microdosing bespoke wayfarers pbr&b 8-bit. Gentrify lomo freegan. Xoxo godard locavore bushwick bespoke kitsch celiac."], ["user_id", 9], ["school_id", 29], ["created_at", "2016-06-09 15:53:25.491875"], ["updated_at", "2016-06-09 15:53:25.491875"]]
+  [1m[36m (0.6ms)[0m  [1mCOMMIT[0m
+  [1m[35m (0.3ms)[0m  BEGIN
+  [1m[36mSQL (0.4ms)[0m  [1mINSERT INTO "posts" ("title", "body", "user_id", "school_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5, $6) RETURNING "id"[0m  [["title", "Food truck brooklyn freegan helvetica venmo biodiesel messenger bag."], ["body", "Church-key poutine pbr&b occupy twee authentic. Mumblecore vhs gluten-free salvia chicharrones organic pbr&b flexitarian. Tacos bicycle rights irony normcore venmo street. Bicycle rights cred sustainable pour-over wolf hashtag tacos gluten-free. Pug goth celiac banjo heirloom. Jean shorts brunch post-ironic synth blog chia. Actually vegan vhs cleanse poutine humblebrag organic. Tumblr kinfolk roof pug 3 wolf moon."], ["user_id", 20], ["school_id", 59], ["created_at", "2016-06-09 15:53:25.495175"], ["updated_at", "2016-06-09 15:53:25.495175"]]
+  [1m[35m (0.7ms)[0m  COMMIT
+  [1m[36m (0.3ms)[0m  [1mBEGIN[0m
+  [1m[35mSQL (0.5ms)[0m  INSERT INTO "posts" ("title", "body", "user_id", "school_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5, $6) RETURNING "id"  [["title", "Kogi franzen five dollar toast cred flannel kombucha cleanse ugh carry."], ["body", "Poutine listicle keffiyeh pinterest venmo ugh +1. Cornhole chia street literally blog semiotics williamsburg cred. Semiotics squid ugh. Hoodie kogi freegan pop-up before they sold out occupy paleo. Flexitarian cred pickled etsy occupy yr. Forage fingerstache wolf vinegar taxidermy. Master salvia tacos. Diy meditation fingerstache selfies. Dreamcatcher narwhal gluten-free vinyl post-ironic."], ["user_id", 8], ["school_id", 54], ["created_at", "2016-06-09 15:53:25.499073"], ["updated_at", "2016-06-09 15:53:25.499073"]]
+  [1m[36m (0.5ms)[0m  [1mCOMMIT[0m
+  [1m[35m (0.2ms)[0m  BEGIN
+  [1m[36mSQL (0.4ms)[0m  [1mINSERT INTO "posts" ("title", "body", "user_id", "school_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5, $6) RETURNING "id"[0m  [["title", "Ugh schlitz semiotics kickstarter."], ["body", "Microdosing migas intelligentsia retro kickstarter banjo street. Bitters venmo quinoa tattooed farm-to-table. Poutine organic fanny pack. Distillery narwhal gentrify keffiyeh green juice put a bird on it. Kickstarter carry meggings humblebrag chartreuse. Thundercats pickled meggings. Microdosing tattooed schlitz loko 3 wolf moon. Brooklyn thundercats tousled yolo 8-bit mlkshk."], ["user_id", 15], ["school_id", 9], ["created_at", "2016-06-09 15:53:25.502590"], ["updated_at", "2016-06-09 15:53:25.502590"]]
+  [1m[35m (0.6ms)[0m  COMMIT
+  [1m[36m (0.2ms)[0m  [1mBEGIN[0m
+  [1m[35mSQL (0.4ms)[0m  INSERT INTO "posts" ("title", "body", "user_id", "school_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5, $6) RETURNING "id"  [["title", "Synth bitters brooklyn cliche cray food truck."], ["body", "Vhs direct trade offal selfies. Cardigan salvia vinegar single-origin coffee deep v. Mumblecore wolf yuccie food truck blue bottle yolo 3 wolf moon chillwave. Brunch lumbersexual echo street. Wolf cray ethical. Beard cold-pressed squid synth locavore sriracha keffiyeh raw denim. Drinking kinfolk hashtag diy retro hella actually shabby chic. Fap master umami lomo. Heirloom pug meggings green juice."], ["user_id", 17], ["school_id", 66], ["created_at", "2016-06-09 15:53:25.505579"], ["updated_at", "2016-06-09 15:53:25.505579"]]
+  [1m[36m (0.6ms)[0m  [1mCOMMIT[0m
+  [1m[35m (0.2ms)[0m  BEGIN
+  [1m[36mSQL (0.4ms)[0m  [1mINSERT INTO "posts" ("title", "body", "user_id", "school_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5, $6) RETURNING "id"[0m  [["title", "Wayfarers pitchfork photo booth distillery."], ["body", "Slow-carb raw denim farm-to-table. Gentrify taxidermy wayfarers heirloom. Master seitan disrupt marfa. Flannel celiac photo booth gastropub diy lo-fi +1 3 wolf moon. Park fanny pack cred. Small batch mumblecore lumbersexual schlitz swag. Forage +1 next level. Meditation neutra trust fund echo knausgaard ramps kogi."], ["user_id", 5], ["school_id", 17], ["created_at", "2016-06-09 15:53:25.509148"], ["updated_at", "2016-06-09 15:53:25.509148"]]
+  [1m[35m (0.5ms)[0m  COMMIT
+  [1m[36m (0.2ms)[0m  [1mBEGIN[0m
+  [1m[35mSQL (0.4ms)[0m  INSERT INTO "posts" ("title", "body", "user_id", "school_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5, $6) RETURNING "id"  [["title", "Farm-to-table vegan fixie meh vinyl celiac."], ["body", "Waistcoat sriracha jean shorts crucifix meggings actually wes anderson. Pug tousled scenester park. Chartreuse loko butcher. Godard 3 wolf moon knausgaard. Literally chia taxidermy thundercats semiotics keytar. Offal venmo post-ironic forage. Cliche narwhal marfa intelligentsia everyday fap chambray godard. Celiac fixie mustache salvia chambray. Semiotics listicle freegan five dollar toast lo-fi jean shorts vice. Microdosing bicycle rights intelligentsia roof vinyl meditation readymade."], ["user_id", 11], ["school_id", 29], ["created_at", "2016-06-09 15:53:25.513090"], ["updated_at", "2016-06-09 15:53:25.513090"]]
+  [1m[36m (0.5ms)[0m  [1mCOMMIT[0m
+  [1m[35m (0.2ms)[0m  BEGIN
+  [1m[36mSQL (0.4ms)[0m  [1mINSERT INTO "posts" ("title", "body", "user_id", "school_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5, $6) RETURNING "id"[0m  [["title", "Pickled fap bespoke you probably haven't heard of them master art party cred pitchfork intelligentsia."], ["body", "Farm-to-table art party hoodie. Chia sriracha mixtape distillery. Waistcoat sustainable butcher marfa brunch occupy pinterest wayfarers. Chillwave trust fund jean shorts occupy. Kombucha hoodie butcher. Ramps ugh butcher. Pug austin schlitz meggings pbr&b williamsburg health 3 wolf moon. Synth fashion axe blue bottle microdosing. Before they sold out forage small batch schlitz offal. Fanny pack seitan hammock chicharrones celiac locavore kale chips quinoa."], ["user_id", 18], ["school_id", 1], ["created_at", "2016-06-09 15:53:25.518082"], ["updated_at", "2016-06-09 15:53:25.518082"]]
+  [1m[35m (0.6ms)[0m  COMMIT
+  [1m[36m (0.2ms)[0m  [1mBEGIN[0m
+  [1m[35mSQL (0.5ms)[0m  INSERT INTO "posts" ("title", "body", "user_id", "school_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5, $6) RETURNING "id"  [["title", "Salvia kombucha chicharrones wes anderson roof."], ["body", "Offal fap farm-to-table shoreditch. Tattooed neutra quinoa polaroid pickled. Authentic lumbersexual biodiesel fanny pack disrupt iphone actually raw denim. Keffiyeh you probably haven't heard of them pug mixtape twee chillwave carry. Chia migas kitsch pour-over. Selfies swag vinyl chartreuse deep v. Twee retro yolo carry tofu. Drinking health brooklyn. Pbr&b mlkshk taxidermy hella food truck chartreuse tumblr."], ["user_id", 18], ["school_id", 7], ["created_at", "2016-06-09 15:53:25.521199"], ["updated_at", "2016-06-09 15:53:25.521199"]]
+  [1m[36m (0.6ms)[0m  [1mCOMMIT[0m
+  [1m[35m (0.2ms)[0m  BEGIN
+  [1m[36mSQL (0.4ms)[0m  [1mINSERT INTO "posts" ("title", "body", "user_id", "school_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5, $6) RETURNING "id"[0m  [["title", "Forage photo booth typewriter poutine flannel lumbersexual."], ["body", "Letterpress truffaut cardigan migas whatever. Marfa echo meh intelligentsia. Scenester flannel plaid yr neutra gluten-free. Pour-over thundercats chillwave cleanse. 8-bit scenester artisan distillery polaroid vinegar sartorial. Whatever tattooed aesthetic. Plaid +1 you probably haven't heard of them messenger bag shoreditch. Chicharrones readymade lumbersexual single-origin coffee biodiesel vegan hoodie pop-up. Gentrify biodiesel retro vinyl yuccie yolo. Synth gentrify mlkshk."], ["user_id", 20], ["school_id", 41], ["created_at", "2016-06-09 15:53:25.524509"], ["updated_at", "2016-06-09 15:53:25.524509"]]
+  [1m[35m (0.6ms)[0m  COMMIT
+  [1m[36m (0.3ms)[0m  [1mBEGIN[0m
+  [1m[35mSQL (0.7ms)[0m  INSERT INTO "posts" ("title", "body", "user_id", "school_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5, $6) RETURNING "id"  [["title", "Artisan banjo yr selvage authentic thundercats fashion axe keffiyeh."], ["body", "Synth 90's banh mi polaroid fap you probably haven't heard of them lomo. Mixtape wayfarers selfies neutra locavore truffaut meggings. 8-bit leggings scenester pop-up meggings. Plaid crucifix pitchfork viral meh church-key pork belly pickled. Forage chambray pour-over hoodie hashtag. Squid farm-to-table asymmetrical jean shorts marfa church-key green juice. Biodiesel photo booth small batch gentrify godard raw denim organic. Diy chia deep v roof cronut microdosing. Fap listicle bushwick chillwave health asymmetrical try-hard williamsburg. Biodiesel post-ironic kickstarter organic knausgaard."], ["user_id", 5], ["school_id", 57], ["created_at", "2016-06-09 15:53:25.528190"], ["updated_at", "2016-06-09 15:53:25.528190"]]
+  [1m[36m (0.6ms)[0m  [1mCOMMIT[0m
+  [1m[35m (0.2ms)[0m  BEGIN
+  [1m[36mSQL (0.4ms)[0m  [1mINSERT INTO "posts" ("title", "body", "user_id", "school_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5, $6) RETURNING "id"[0m  [["title", "Farm-to-table drinking lumbersexual chicharrones."], ["body", "Tumblr kickstarter cleanse cronut ramps pitchfork. Kogi poutine disrupt slow-carb. Pour-over kitsch loko. Venmo crucifix messenger bag gastropub squid. Ugh truffaut freegan distillery. Next level swag brooklyn migas blue bottle chicharrones yolo pork belly. Messenger bag 90's distillery tumblr pitchfork. Blue bottle distillery squid vhs bushwick swag. Distillery try-hard goth slow-carb shabby chic. You probably haven't heard of them dreamcatcher photo booth."], ["user_id", 13], ["school_id", 63], ["created_at", "2016-06-09 15:53:25.532041"], ["updated_at", "2016-06-09 15:53:25.532041"]]
+  [1m[35m (0.5ms)[0m  COMMIT
+  [1m[36m (0.2ms)[0m  [1mBEGIN[0m
+  [1m[35mSQL (0.3ms)[0m  INSERT INTO "posts" ("title", "body", "user_id", "school_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5, $6) RETURNING "id"  [["title", "Goth bitters gluten-free listicle health quinoa."], ["body", "Vhs typewriter austin carry lomo ennui messenger bag. Letterpress pbr&b authentic echo cold-pressed knausgaard cronut fingerstache. Pour-over heirloom godard lo-fi chartreuse. Salvia vinyl viral scenester sustainable. Truffaut readymade mustache humblebrag. Stumptown authentic yolo flexitarian. Cliche yr venmo. Art party 3 wolf moon pbr&b pinterest fixie trust fund."], ["user_id", 7], ["school_id", 16], ["created_at", "2016-06-09 15:53:25.535445"], ["updated_at", "2016-06-09 15:53:25.535445"]]
+  [1m[36m (0.6ms)[0m  [1mCOMMIT[0m
+  [1m[35m (0.3ms)[0m  BEGIN
+  [1m[36mSQL (0.6ms)[0m  [1mINSERT INTO "posts" ("title", "body", "user_id", "school_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5, $6) RETURNING "id"[0m  [["title", "Thundercats locavore migas chartreuse franzen butcher cleanse gastropub heirloom."], ["body", "Bitters retro thundercats. Truffaut gastropub austin semiotics yolo pop-up kinfolk pbr&b. Knausgaard sartorial vegan gastropub. Locavore kogi jean shorts 8-bit. 8-bit art party deep v master put a bird on it paleo flannel chambray. Meditation neutra marfa. Meggings mumblecore humblebrag marfa pop-up. Offal normcore carry occupy vegan literally. Meditation pinterest art party kitsch try-hard."], ["user_id", 16], ["school_id", 23], ["created_at", "2016-06-09 15:53:25.538774"], ["updated_at", "2016-06-09 15:53:25.538774"]]
+  [1m[35m (0.5ms)[0m  COMMIT
+  [1m[36m (0.2ms)[0m  [1mBEGIN[0m
+  [1m[35mSQL (0.4ms)[0m  INSERT INTO "posts" ("title", "body", "user_id", "school_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5, $6) RETURNING "id"  [["title", "Selfies diy flexitarian loko venmo hashtag schlitz intelligentsia."], ["body", "Chia trust fund knausgaard 90's drinking yuccie bespoke. Bitters keytar chicharrones knausgaard pour-over drinking. Wolf fixie tumblr ramps blog keytar gentrify. Irony butcher pitchfork banjo vinegar selfies. Vinegar direct trade ethical tattooed swag gluten-free. Banh mi chambray banjo. Kombucha offal street franzen 3 wolf moon austin gentrify. Heirloom humblebrag meh skateboard. Leggings pinterest deep v gentrify kombucha roof beard."], ["user_id", 16], ["school_id", 50], ["created_at", "2016-06-09 15:53:25.542806"], ["updated_at", "2016-06-09 15:53:25.542806"]]
+  [1m[36m (0.6ms)[0m  [1mCOMMIT[0m
+  [1m[35m (0.3ms)[0m  BEGIN
+  [1m[36mSQL (0.5ms)[0m  [1mINSERT INTO "posts" ("title", "body", "user_id", "school_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5, $6) RETURNING "id"[0m  [["title", "Distillery intelligentsia vegan biodiesel brooklyn bushwick."], ["body", "Mixtape migas leggings. Helvetica celiac 3 wolf moon cliche kickstarter. Kitsch pbr&b pork belly. Shabby chic fixie blue bottle direct trade. Next level hashtag mlkshk health. Cardigan slow-carb tacos organic. Brooklyn tilde carry ugh crucifix taxidermy distillery beard. Skateboard cleanse blue bottle vhs gentrify."], ["user_id", 12], ["school_id", 18], ["created_at", "2016-06-09 15:53:25.546316"], ["updated_at", "2016-06-09 15:53:25.546316"]]
+  [1m[35m (0.6ms)[0m  COMMIT
+  [1m[36m (0.2ms)[0m  [1mBEGIN[0m
+  [1m[35mSQL (0.4ms)[0m  INSERT INTO "posts" ("title", "body", "user_id", "school_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5, $6) RETURNING "id"  [["title", "Chia craft beer vice letterpress occupy."], ["body", "Vice roof put a bird on it art party yuccie salvia pour-over. Kickstarter pork belly vegan green juice etsy disrupt bitters fashion axe. Irony hoodie craft beer yolo mlkshk vinegar. Etsy tacos farm-to-table street. Tattooed tilde celiac. Fingerstache polaroid chia wolf crucifix trust fund master. Distillery raw denim flexitarian umami. Schlitz park yr occupy umami 8-bit single-origin coffee tousled. Cold-pressed aesthetic bicycle rights. Next level cray yr hashtag intelligentsia pabst distillery."], ["user_id", 17], ["school_id", 63], ["created_at", "2016-06-09 15:53:25.549431"], ["updated_at", "2016-06-09 15:53:25.549431"]]
+  [1m[36m (0.6ms)[0m  [1mCOMMIT[0m
+  [1m[35m (0.3ms)[0m  BEGIN
+  [1m[36mSQL (0.3ms)[0m  [1mINSERT INTO "posts" ("title", "body", "user_id", "school_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5, $6) RETURNING "id"[0m  [["title", "Microdosing 8-bit humblebrag authentic master drinking diy cornhole."], ["body", "Ugh drinking hella twee. Synth kickstarter authentic wolf cronut mustache kinfolk intelligentsia. Gluten-free humblebrag chambray art party vinegar messenger bag fap. Gentrify slow-carb kinfolk craft beer. Chillwave actually hoodie. Try-hard cliche stumptown tumblr. Chillwave tofu bushwick aesthetic chia. Distillery banh mi pabst wolf ramps cred."], ["user_id", 11], ["school_id", 22], ["created_at", "2016-06-09 15:53:25.552551"], ["updated_at", "2016-06-09 15:53:25.552551"]]
+  [1m[35m (0.6ms)[0m  COMMIT
+  [1m[36m (0.3ms)[0m  [1mBEGIN[0m
+  [1m[35mSQL (0.4ms)[0m  INSERT INTO "posts" ("title", "body", "user_id", "school_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5, $6) RETURNING "id"  [["title", "Tote bag mustache trust fund sartorial squid vinegar pop-up shabby chic street."], ["body", "Deep v echo tote bag raw denim poutine diy. Readymade aesthetic celiac echo roof kogi. Quinoa authentic tacos retro locavore knausgaard tilde austin. Chillwave food truck cleanse disrupt austin asymmetrical tattooed migas. Salvia brooklyn mumblecore wayfarers butcher. Portland art party truffaut seitan fashion axe loko tousled. Single-origin coffee hashtag heirloom distillery 8-bit venmo. Chillwave park yr vhs fingerstache fixie kogi biodiesel. Food truck vegan hella. Irony roof pug 90's."], ["user_id", 6], ["school_id", 63], ["created_at", "2016-06-09 15:53:25.555969"], ["updated_at", "2016-06-09 15:53:25.555969"]]
+  [1m[36m (0.6ms)[0m  [1mCOMMIT[0m
+  [1m[35m (0.2ms)[0m  BEGIN
+  [1m[36mSQL (0.5ms)[0m  [1mINSERT INTO "posts" ("title", "body", "user_id", "school_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5, $6) RETURNING "id"[0m  [["title", "You probably haven't heard of them selvage schlitz plaid yr cornhole craft beer ramps."], ["body", "Synth farm-to-table humblebrag bespoke tote bag. Godard goth post-ironic five dollar toast +1 helvetica tousled. Helvetica truffaut 3 wolf moon dreamcatcher pour-over tattooed. Fashion axe 8-bit sriracha vinegar hella cred mixtape try-hard. Post-ironic whatever distillery lo-fi beard schlitz kinfolk vinyl. Typewriter salvia messenger bag. Schlitz direct trade meditation carry photo booth. Wayfarers kinfolk occupy cornhole small batch poutine irony. Schlitz craft beer organic seitan pickled church-key five dollar toast kickstarter. Cleanse butcher asymmetrical kitsch goth biodiesel humblebrag seitan."], ["user_id", 4], ["school_id", 95], ["created_at", "2016-06-09 15:53:25.559402"], ["updated_at", "2016-06-09 15:53:25.559402"]]
+  [1m[35m (0.5ms)[0m  COMMIT
+  [1m[36m (0.2ms)[0m  [1mBEGIN[0m
+  [1m[35mSQL (0.4ms)[0m  INSERT INTO "posts" ("title", "body", "user_id", "school_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5, $6) RETURNING "id"  [["title", "Pinterest cliche echo selfies pitchfork."], ["body", "Gentrify beard vegan fixie godard kickstarter roof. Post-ironic drinking photo booth sartorial goth next level. Helvetica shoreditch waistcoat fingerstache vhs tousled forage brooklyn. Banjo blue bottle gastropub mumblecore narwhal austin hoodie skateboard. Selfies kale chips disrupt yolo semiotics humblebrag. 8-bit selfies ugh raw denim kogi. Beard celiac pitchfork poutine pour-over. Butcher synth readymade. Typewriter synth chia direct trade jean shorts gastropub ennui hashtag. Dreamcatcher letterpress salvia pug literally plaid gluten-free offal."], ["user_id", 14], ["school_id", 47], ["created_at", "2016-06-09 15:53:25.562664"], ["updated_at", "2016-06-09 15:53:25.562664"]]
+  [1m[36m (0.6ms)[0m  [1mCOMMIT[0m
+  [1m[35m (0.2ms)[0m  BEGIN
+  [1m[36mSQL (0.4ms)[0m  [1mINSERT INTO "posts" ("title", "body", "user_id", "school_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5, $6) RETURNING "id"[0m  [["title", "Loko bespoke street food truck tilde offal sustainable meditation."], ["body", "Hella flannel butcher. Disrupt waistcoat mustache quinoa blog cornhole. Trust fund yolo squid scenester vice. Tilde fashion axe bicycle rights brooklyn distillery. Craft beer put a bird on it pitchfork vegan goth flannel. Crucifix mustache microdosing trust fund. Iphone narwhal mlkshk authentic. Taxidermy mixtape tote bag. Yuccie literally you probably haven't heard of them jean shorts vhs."], ["user_id", 8], ["school_id", 73], ["created_at", "2016-06-09 15:53:25.566005"], ["updated_at", "2016-06-09 15:53:25.566005"]]
+  [1m[35m (0.6ms)[0m  COMMIT
+  [1m[36m (0.2ms)[0m  [1mBEGIN[0m
+  [1m[35mSQL (0.5ms)[0m  INSERT INTO "posts" ("title", "body", "user_id", "school_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5, $6) RETURNING "id"  [["title", "Pitchfork single-origin coffee hella pbr&b."], ["body", "Skateboard pbr&b occupy. Iphone lo-fi carry. Portland echo selfies. Seitan farm-to-table everyday occupy fanny pack lo-fi. Biodiesel put a bird on it pabst tacos pork belly xoxo master. Williamsburg readymade wes anderson vinegar lomo. Chambray forage cornhole locavore vice hashtag iphone. Aesthetic godard master knausgaard portland food truck keytar wes anderson. Plaid mustache austin pug. Bushwick tumblr narwhal neutra slow-carb swag salvia."], ["user_id", 17], ["school_id", 59], ["created_at", "2016-06-09 15:53:25.569227"], ["updated_at", "2016-06-09 15:53:25.569227"]]
+  [1m[36m (0.6ms)[0m  [1mCOMMIT[0m
+  [1m[35m (0.2ms)[0m  BEGIN
+  [1m[36mSQL (0.5ms)[0m  [1mINSERT INTO "posts" ("title", "body", "user_id", "school_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5, $6) RETURNING "id"[0m  [["title", "Tote bag 8-bit polaroid tousled waistcoat food truck."], ["body", "Locavore asymmetrical drinking raw denim. Direct trade raw denim whatever cornhole thundercats brooklyn tofu letterpress. Authentic beard occupy narwhal neutra cornhole mustache microdosing. Mustache readymade taxidermy fingerstache. Locavore listicle pop-up meggings authentic helvetica street stumptown. Echo pabst yuccie biodiesel stumptown pork belly trust fund try-hard. Taxidermy slow-carb cred hammock flannel fap. Normcore vhs kickstarter banjo scenester kitsch loko ethical."], ["user_id", 11], ["school_id", 66], ["created_at", "2016-06-09 15:53:25.572357"], ["updated_at", "2016-06-09 15:53:25.572357"]]
+  [1m[35m (0.6ms)[0m  COMMIT
+  [1m[36m (0.2ms)[0m  [1mBEGIN[0m
+  [1m[35mSQL (0.4ms)[0m  INSERT INTO "posts" ("title", "body", "user_id", "school_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5, $6) RETURNING "id"  [["title", "Chartreuse cliche goth cronut aesthetic ramps kombucha."], ["body", "Lomo pour-over kale chips. Mixtape meditation tattooed readymade aesthetic. Salvia kickstarter helvetica goth. Franzen jean shorts truffaut vinegar you probably haven't heard of them listicle beard. Park actually loko tofu kombucha pop-up. Lo-fi fixie irony try-hard messenger bag cronut crucifix 90's. Taxidermy photo booth before they sold out wayfarers deep v tofu hammock iphone. Heirloom brooklyn drinking gastropub pickled xoxo distillery."], ["user_id", 7], ["school_id", 32], ["created_at", "2016-06-09 15:53:25.575960"], ["updated_at", "2016-06-09 15:53:25.575960"]]
+  [1m[36m (0.6ms)[0m  [1mCOMMIT[0m
+  [1m[35m (0.3ms)[0m  BEGIN
+  [1m[36mSQL (0.4ms)[0m  [1mINSERT INTO "posts" ("title", "body", "user_id", "school_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5, $6) RETURNING "id"[0m  [["title", "Crucifix marfa wolf 90's godard kale chips fingerstache."], ["body", "Chicharrones keytar fingerstache green juice cliche narwhal mustache heirloom. Deep v helvetica tacos craft beer small batch lomo plaid mlkshk. Typewriter seitan blue bottle brunch pbr&b listicle fanny pack bicycle rights. Schlitz chillwave microdosing helvetica plaid. Cornhole seitan flexitarian sartorial lomo distillery crucifix cray. Squid 8-bit fashion axe yuccie fap sriracha. Bicycle rights sriracha xoxo 8-bit. Retro offal bicycle rights franzen yr."], ["user_id", 1], ["school_id", 47], ["created_at", "2016-06-09 15:53:25.579171"], ["updated_at", "2016-06-09 15:53:25.579171"]]
+  [1m[35m (0.5ms)[0m  COMMIT
+  [1m[36m (0.2ms)[0m  [1mBEGIN[0m
+  [1m[35mSQL (0.5ms)[0m  INSERT INTO "posts" ("title", "body", "user_id", "school_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5, $6) RETURNING "id"  [["title", "Chicharrones offal lumbersexual meggings organic kitsch viral."], ["body", "Bitters tattooed poutine street banh mi. Xoxo cronut listicle. Kombucha gentrify humblebrag yuccie artisan hammock polaroid wayfarers. Echo cleanse helvetica next level knausgaard truffaut. Roof kickstarter poutine fixie chicharrones. Ramps lomo celiac kale chips taxidermy godard disrupt. Wayfarers pug bitters art party. Kale chips pork belly beard knausgaard."], ["user_id", 5], ["school_id", 80], ["created_at", "2016-06-09 15:53:25.582175"], ["updated_at", "2016-06-09 15:53:25.582175"]]
+  [1m[36m (0.6ms)[0m  [1mCOMMIT[0m
+  [1m[35m (0.2ms)[0m  BEGIN
+  [1m[36mSQL (0.4ms)[0m  [1mINSERT INTO "posts" ("title", "body", "user_id", "school_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5, $6) RETURNING "id"[0m  [["title", "Banh mi flannel taxidermy wayfarers bushwick."], ["body", "Slow-carb pbr&b squid. Flexitarian paleo green juice freegan kinfolk farm-to-table venmo. Pop-up blue bottle ramps. Neutra normcore typewriter mixtape ramps. Goth bicycle rights microdosing pour-over next level lumbersexual squid. Bespoke viral irony semiotics 3 wolf moon distillery. Kogi fingerstache neutra. Letterpress selfies messenger bag. Lomo swag beard."], ["user_id", 17], ["school_id", 49], ["created_at", "2016-06-09 15:53:25.585616"], ["updated_at", "2016-06-09 15:53:25.585616"]]
+  [1m[35m (0.6ms)[0m  COMMIT
+  [1m[36m (0.2ms)[0m  [1mBEGIN[0m
+  [1m[35mSQL (0.4ms)[0m  INSERT INTO "posts" ("title", "body", "user_id", "school_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5, $6) RETURNING "id"  [["title", "Green juice diy ugh authentic 90's yuccie craft beer."], ["body", "Listicle hoodie art party skateboard. Post-ironic ethical wes anderson slow-carb blog. Mumblecore pabst offal semiotics wes anderson cronut umami kitsch. Godard vegan beard chillwave try-hard leggings vhs. Austin paleo +1. Wolf vinegar pbr&b before they sold out selvage pug blog. Meggings scenester vice lo-fi. Paleo literally small batch craft beer locavore vinegar bushwick. Tousled jean shorts food truck gluten-free migas mustache."], ["user_id", 5], ["school_id", 15], ["created_at", "2016-06-09 15:53:25.588713"], ["updated_at", "2016-06-09 15:53:25.588713"]]
+  [1m[36m (0.6ms)[0m  [1mCOMMIT[0m
+  [1m[35m (0.3ms)[0m  BEGIN
+  [1m[36mSQL (0.3ms)[0m  [1mINSERT INTO "posts" ("title", "body", "user_id", "school_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5, $6) RETURNING "id"[0m  [["title", "Meditation helvetica cred biodiesel whatever pitchfork flannel tofu."], ["body", "Microdosing schlitz banjo flexitarian seitan stumptown meh. Deep v selfies cred single-origin coffee taxidermy. Chartreuse forage sartorial church-key cold-pressed. Post-ironic pinterest aesthetic kitsch distillery scenester skateboard lomo. Yolo vinyl vegan cold-pressed. Brooklyn stumptown neutra try-hard chartreuse. Migas brooklyn meggings hoodie brunch seitan. Drinking street meditation pickled letterpress."], ["user_id", 10], ["school_id", 66], ["created_at", "2016-06-09 15:53:25.591943"], ["updated_at", "2016-06-09 15:53:25.591943"]]
+  [1m[35m (0.6ms)[0m  COMMIT
+  [1m[36m (0.2ms)[0m  [1mBEGIN[0m
+  [1m[35mSQL (0.4ms)[0m  INSERT INTO "posts" ("title", "body", "user_id", "school_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5, $6) RETURNING "id"  [["title", "Crucifix salvia everyday cardigan typewriter distillery mixtape shoreditch raw denim."], ["body", "Meggings stumptown vice. Echo butcher try-hard goth authentic paleo literally. Distillery +1 etsy literally trust fund. Leggings actually mustache banjo paleo blog next level brunch. Tacos fixie tattooed trust fund salvia chartreuse mumblecore. Meggings narwhal sriracha distillery offal tousled. Craft beer polaroid tousled. Godard flannel wolf before they sold out vhs viral. Brunch asymmetrical small batch. Kogi lumbersexual pickled tumblr echo crucifix."], ["user_id", 7], ["school_id", 1], ["created_at", "2016-06-09 15:53:25.594985"], ["updated_at", "2016-06-09 15:53:25.594985"]]
+  [1m[36m (0.6ms)[0m  [1mCOMMIT[0m
+  [1m[35m (0.3ms)[0m  BEGIN
+  [1m[36mSQL (0.4ms)[0m  [1mINSERT INTO "posts" ("title", "body", "user_id", "school_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5, $6) RETURNING "id"[0m  [["title", "Mustache gluten-free beard banjo."], ["body", "Venmo truffaut mumblecore knausgaard. Xoxo wolf celiac trust fund ennui echo messenger bag stumptown. Salvia kombucha franzen food truck banh mi literally vinyl. Lo-fi 90's vice. Kogi authentic aesthetic lo-fi 90's literally kickstarter everyday. Yolo mixtape salvia helvetica pitchfork everyday pabst. Williamsburg wolf humblebrag cliche ramps five dollar toast taxidermy food truck. Cleanse everyday marfa flexitarian fingerstache kogi selfies forage."], ["user_id", 9], ["school_id", 79], ["created_at", "2016-06-09 15:53:25.598087"], ["updated_at", "2016-06-09 15:53:25.598087"]]
+  [1m[35m (0.5ms)[0m  COMMIT
+  [1m[36m (0.2ms)[0m  [1mBEGIN[0m
+  [1m[35mSQL (0.4ms)[0m  INSERT INTO "posts" ("title", "body", "user_id", "school_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5, $6) RETURNING "id"  [["title", "3 wolf moon chartreuse selfies gastropub +1."], ["body", "Quinoa hashtag messenger bag keytar kickstarter. Crucifix synth umami vice lumbersexual. Paleo salvia pickled dreamcatcher 8-bit jean shorts humblebrag. Taxidermy ethical cold-pressed helvetica photo booth readymade mustache chicharrones. Williamsburg mustache irony pop-up cleanse banh mi +1 flannel. Hella viral asymmetrical carry humblebrag flexitarian cred locavore. Hammock artisan you probably haven't heard of them messenger bag cleanse. Single-origin coffee pug gluten-free. Before they sold out fanny pack helvetica sriracha intelligentsia dreamcatcher cred. Fanny pack tote bag bitters."], ["user_id", 11], ["school_id", 33], ["created_at", "2016-06-09 15:53:25.601008"], ["updated_at", "2016-06-09 15:53:25.601008"]]
+  [1m[36m (0.6ms)[0m  [1mCOMMIT[0m
+  [1m[35m (0.2ms)[0m  BEGIN
+  [1m[36mSQL (0.4ms)[0m  [1mINSERT INTO "posts" ("title", "body", "user_id", "school_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5, $6) RETURNING "id"[0m  [["title", "Knausgaard disrupt plaid flexitarian tacos roof pour-over selfies flannel."], ["body", "Meggings asymmetrical seitan. Everyday pickled letterpress paleo try-hard meh banh mi leggings. Skateboard cardigan mlkshk gluten-free. Park butcher pour-over hoodie squid street. Pop-up scenester +1. Vegan paleo austin 90's aesthetic chambray. Keytar blue bottle tofu scenester next level ramps celiac stumptown. Quinoa artisan lo-fi. Truffaut gastropub typewriter quinoa brooklyn."], ["user_id", 11], ["school_id", 9], ["created_at", "2016-06-09 15:53:25.604198"], ["updated_at", "2016-06-09 15:53:25.604198"]]
+  [1m[35m (0.5ms)[0m  COMMIT
+  [1m[36m (0.2ms)[0m  [1mBEGIN[0m
+  [1m[35mSQL (0.4ms)[0m  INSERT INTO "posts" ("title", "body", "user_id", "school_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5, $6) RETURNING "id"  [["title", "Single-origin coffee cronut mixtape church-key blue bottle ethical."], ["body", "Umami microdosing single-origin coffee keytar craft beer. Microdosing plaid freegan. Pork belly chillwave polaroid. Typewriter bespoke church-key chillwave wayfarers pop-up meggings. Gentrify green juice kale chips disrupt bicycle rights viral vegan. Viral kogi vegan microdosing bitters tumblr small batch. Migas five dollar toast chicharrones single-origin coffee vinyl freegan fap quinoa. Yolo beard thundercats mumblecore master. Ethical williamsburg seitan leggings 3 wolf moon vhs pug cleanse."], ["user_id", 3], ["school_id", 65], ["created_at", "2016-06-09 15:53:25.607233"], ["updated_at", "2016-06-09 15:53:25.607233"]]
+  [1m[36m (0.6ms)[0m  [1mCOMMIT[0m
+  [1m[35m (0.3ms)[0m  BEGIN
+  [1m[36mSQL (0.9ms)[0m  [1mINSERT INTO "comments" ("body", "user_id", "post_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5) RETURNING "id"[0m  [["body", "Asymmetrical everyday paleo. Twee blue bottle cliche gastropub squid tacos kogi. Offal whatever salvia portland ramps."], ["user_id", 4], ["post_id", 28], ["created_at", "2016-06-09 15:53:25.620123"], ["updated_at", "2016-06-09 15:53:25.620123"]]
+  [1m[35m (0.6ms)[0m  COMMIT
+  [1m[36m (0.2ms)[0m  [1mBEGIN[0m
+  [1m[35mSQL (0.5ms)[0m  INSERT INTO "comments" ("body", "user_id", "post_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5) RETURNING "id"  [["body", "Pickled celiac godard 8-bit truffaut leggings. Kitsch cold-pressed poutine pbr&b. Salvia fixie gastropub organic lumbersexual shabby chic ramps."], ["user_id", 6], ["post_id", 17], ["created_at", "2016-06-09 15:53:25.624357"], ["updated_at", "2016-06-09 15:53:25.624357"]]
+  [1m[36m (0.6ms)[0m  [1mCOMMIT[0m
+  [1m[35m (0.2ms)[0m  BEGIN
+  [1m[36mSQL (0.6ms)[0m  [1mINSERT INTO "comments" ("body", "user_id", "post_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5) RETURNING "id"[0m  [["body", "Yuccie try-hard messenger bag ethical craft beer skateboard pickled. Next level everyday helvetica. Schlitz vhs typewriter kinfolk offal blue bottle."], ["user_id", 8], ["post_id", 18], ["created_at", "2016-06-09 15:53:25.627733"], ["updated_at", "2016-06-09 15:53:25.627733"]]
+  [1m[35m (0.6ms)[0m  COMMIT
+  [1m[36m (0.2ms)[0m  [1mBEGIN[0m
+  [1m[35mSQL (0.5ms)[0m  INSERT INTO "comments" ("body", "user_id", "post_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5) RETURNING "id"  [["body", "Semiotics fixie kitsch taxidermy squid lomo hashtag. Yolo street seitan."], ["user_id", 2], ["post_id", 8], ["created_at", "2016-06-09 15:53:25.631238"], ["updated_at", "2016-06-09 15:53:25.631238"]]
+  [1m[36m (0.5ms)[0m  [1mCOMMIT[0m
+  [1m[35m (0.3ms)[0m  BEGIN
+  [1m[36mSQL (0.5ms)[0m  [1mINSERT INTO "comments" ("body", "user_id", "post_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5) RETURNING "id"[0m  [["body", "Ramps migas cray street. Chartreuse loko kale chips keffiyeh small batch mustache tacos."], ["user_id", 12], ["post_id", 40], ["created_at", "2016-06-09 15:53:25.634222"], ["updated_at", "2016-06-09 15:53:25.634222"]]
+  [1m[35m (0.6ms)[0m  COMMIT
+  [1m[36m (0.2ms)[0m  [1mBEGIN[0m
+  [1m[35mSQL (0.5ms)[0m  INSERT INTO "comments" ("body", "user_id", "post_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5) RETURNING "id"  [["body", "Kinfolk celiac chambray cold-pressed. Church-key vegan crucifix authentic forage. Before they sold out normcore aesthetic whatever wolf cold-pressed. Swag kinfolk portland."], ["user_id", 13], ["post_id", 40], ["created_at", "2016-06-09 15:53:25.637284"], ["updated_at", "2016-06-09 15:53:25.637284"]]
+  [1m[36m (0.6ms)[0m  [1mCOMMIT[0m
+  [1m[35m (0.2ms)[0m  BEGIN
+  [1m[36mSQL (0.4ms)[0m  [1mINSERT INTO "comments" ("body", "user_id", "post_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5) RETURNING "id"[0m  [["body", "90's hashtag taxidermy schlitz deep v. Church-key direct trade readymade slow-carb kombucha."], ["user_id", 6], ["post_id", 9], ["created_at", "2016-06-09 15:53:25.640258"], ["updated_at", "2016-06-09 15:53:25.640258"]]
+  [1m[35m (0.6ms)[0m  COMMIT
+  [1m[36m (0.2ms)[0m  [1mBEGIN[0m
+  [1m[35mSQL (0.4ms)[0m  INSERT INTO "comments" ("body", "user_id", "post_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5) RETURNING "id"  [["body", "Occupy kinfolk polaroid pbr&b farm-to-table sartorial cray whatever. Chia scenester paleo cardigan. Single-origin coffee swag salvia. Cred freegan artisan try-hard xoxo chartreuse."], ["user_id", 11], ["post_id", 39], ["created_at", "2016-06-09 15:53:25.643188"], ["updated_at", "2016-06-09 15:53:25.643188"]]
+  [1m[36m (0.5ms)[0m  [1mCOMMIT[0m
+  [1m[35m (0.2ms)[0m  BEGIN
+  [1m[36mSQL (0.4ms)[0m  [1mINSERT INTO "comments" ("body", "user_id", "post_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5) RETURNING "id"[0m  [["body", "Godard pitchfork skateboard health chillwave bitters flannel. Umami semiotics selfies fingerstache deep v post-ironic raw denim. Vinegar chia before they sold out you probably haven't heard of them banh mi."], ["user_id", 15], ["post_id", 27], ["created_at", "2016-06-09 15:53:25.645944"], ["updated_at", "2016-06-09 15:53:25.645944"]]
+  [1m[35m (0.6ms)[0m  COMMIT
+  [1m[36m (0.2ms)[0m  [1mBEGIN[0m
+  [1m[35mSQL (0.4ms)[0m  INSERT INTO "comments" ("body", "user_id", "post_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5) RETURNING "id"  [["body", "Hammock twee tumblr. Jean shorts vinegar artisan celiac cornhole heirloom. Listicle thundercats post-ironic kinfolk knausgaard."], ["user_id", 16], ["post_id", 24], ["created_at", "2016-06-09 15:53:25.648843"], ["updated_at", "2016-06-09 15:53:25.648843"]]
+  [1m[36m (0.6ms)[0m  [1mCOMMIT[0m
+  [1m[35m (0.2ms)[0m  BEGIN
+  [1m[36mSQL (0.4ms)[0m  [1mINSERT INTO "comments" ("body", "user_id", "post_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5) RETURNING "id"[0m  [["body", "Vegan chia yr hashtag narwhal tacos. Fashion axe truffaut lomo vegan seitan diy."], ["user_id", 4], ["post_id", 3], ["created_at", "2016-06-09 15:53:25.651642"], ["updated_at", "2016-06-09 15:53:25.651642"]]
+  [1m[35m (0.6ms)[0m  COMMIT
+  [1m[36m (0.2ms)[0m  [1mBEGIN[0m
+  [1m[35mSQL (0.4ms)[0m  INSERT INTO "comments" ("body", "user_id", "post_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5) RETURNING "id"  [["body", "Scenester cronut knausgaard cornhole. Franzen cronut vinyl pickled heirloom listicle church-key."], ["user_id", 11], ["post_id", 25], ["created_at", "2016-06-09 15:53:25.654499"], ["updated_at", "2016-06-09 15:53:25.654499"]]
+  [1m[36m (0.6ms)[0m  [1mCOMMIT[0m
+  [1m[35m (0.3ms)[0m  BEGIN
+  [1m[36mSQL (0.3ms)[0m  [1mINSERT INTO "comments" ("body", "user_id", "post_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5) RETURNING "id"[0m  [["body", "Tousled kombucha cleanse heirloom carry. Xoxo etsy iphone carry. Meditation flannel freegan."], ["user_id", 10], ["post_id", 12], ["created_at", "2016-06-09 15:53:25.657446"], ["updated_at", "2016-06-09 15:53:25.657446"]]
+  [1m[35m (0.6ms)[0m  COMMIT
+  [1m[36m (0.2ms)[0m  [1mBEGIN[0m
+  [1m[35mSQL (0.4ms)[0m  INSERT INTO "comments" ("body", "user_id", "post_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5) RETURNING "id"  [["body", "Before they sold out yuccie artisan portland messenger bag chicharrones tacos. Distillery shoreditch cornhole neutra cray umami bitters cold-pressed. Tumblr flannel 8-bit yolo wolf. Mumblecore poutine cronut."], ["user_id", 6], ["post_id", 10], ["created_at", "2016-06-09 15:53:25.660359"], ["updated_at", "2016-06-09 15:53:25.660359"]]
+  [1m[36m (0.6ms)[0m  [1mCOMMIT[0m
+  [1m[35m (0.2ms)[0m  BEGIN
+  [1m[36mSQL (0.4ms)[0m  [1mINSERT INTO "comments" ("body", "user_id", "post_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5) RETURNING "id"[0m  [["body", "Vice squid etsy selfies craft beer normcore retro. Street schlitz chartreuse slow-carb before they sold out pitchfork cliche. Biodiesel trust fund post-ironic hella humblebrag flexitarian cornhole. Freegan carry messenger bag portland fingerstache austin."], ["user_id", 19], ["post_id", 17], ["created_at", "2016-06-09 15:53:25.663264"], ["updated_at", "2016-06-09 15:53:25.663264"]]
+  [1m[35m (0.6ms)[0m  COMMIT
+  [1m[36m (0.3ms)[0m  [1mBEGIN[0m
+  [1m[35mSQL (0.4ms)[0m  INSERT INTO "comments" ("body", "user_id", "post_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5) RETURNING "id"  [["body", "Neutra crucifix roof. Echo leggings retro slow-carb humblebrag master bushwick meggings. Kinfolk polaroid actually fanny pack. Leggings bicycle rights pbr&b microdosing meggings pug +1."], ["user_id", 4], ["post_id", 37], ["created_at", "2016-06-09 15:53:25.666163"], ["updated_at", "2016-06-09 15:53:25.666163"]]
+  [1m[36m (0.6ms)[0m  [1mCOMMIT[0m
+  [1m[35m (0.2ms)[0m  BEGIN
+  [1m[36mSQL (0.4ms)[0m  [1mINSERT INTO "comments" ("body", "user_id", "post_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5) RETURNING "id"[0m  [["body", "Skateboard photo booth 8-bit migas diy loko. Tote bag wayfarers organic pabst paleo franzen. Microdosing pitchfork lo-fi."], ["user_id", 8], ["post_id", 29], ["created_at", "2016-06-09 15:53:25.669038"], ["updated_at", "2016-06-09 15:53:25.669038"]]
+  [1m[35m (0.6ms)[0m  COMMIT
+  [1m[36m (0.3ms)[0m  [1mBEGIN[0m
+  [1m[35mSQL (0.4ms)[0m  INSERT INTO "comments" ("body", "user_id", "post_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5) RETURNING "id"  [["body", "Bespoke church-key mumblecore plaid scenester forage. Loko lumbersexual brooklyn meh heirloom pbr&b. Mustache williamsburg tote bag 3 wolf moon brunch shoreditch."], ["user_id", 1], ["post_id", 27], ["created_at", "2016-06-09 15:53:25.672349"], ["updated_at", "2016-06-09 15:53:25.672349"]]
+  [1m[36m (0.6ms)[0m  [1mCOMMIT[0m
+  [1m[35m (0.2ms)[0m  BEGIN
+  [1m[36mSQL (0.3ms)[0m  [1mINSERT INTO "comments" ("body", "user_id", "post_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5) RETURNING "id"[0m  [["body", "Leggings yuccie letterpress cronut. Vice cleanse tote bag drinking actually. Gentrify cold-pressed pabst."], ["user_id", 3], ["post_id", 11], ["created_at", "2016-06-09 15:53:25.675268"], ["updated_at", "2016-06-09 15:53:25.675268"]]
+  [1m[35m (0.6ms)[0m  COMMIT
+  [1m[36m (0.2ms)[0m  [1mBEGIN[0m
+  [1m[35mSQL (0.4ms)[0m  INSERT INTO "comments" ("body", "user_id", "post_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5) RETURNING "id"  [["body", "Photo booth synth chartreuse viral crucifix. Gastropub meditation carry gentrify goth banjo farm-to-table tote bag. Locavore put a bird on it craft beer cred irony narwhal leggings viral. Chambray migas skateboard authentic vhs."], ["user_id", 15], ["post_id", 6], ["created_at", "2016-06-09 15:53:25.678306"], ["updated_at", "2016-06-09 15:53:25.678306"]]
+  [1m[36m (0.5ms)[0m  [1mCOMMIT[0m
+  [1m[35m (0.2ms)[0m  BEGIN
+  [1m[36mSQL (0.4ms)[0m  [1mINSERT INTO "comments" ("body", "user_id", "post_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5) RETURNING "id"[0m  [["body", "Plaid trust fund beard. Asymmetrical health mustache banjo brooklyn tacos knausgaard."], ["user_id", 13], ["post_id", 9], ["created_at", "2016-06-09 15:53:25.680997"], ["updated_at", "2016-06-09 15:53:25.680997"]]
+  [1m[35m (0.6ms)[0m  COMMIT
+  [1m[36m (0.2ms)[0m  [1mBEGIN[0m
+  [1m[35mSQL (0.4ms)[0m  INSERT INTO "comments" ("body", "user_id", "post_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5) RETURNING "id"  [["body", "Chillwave tumblr lumbersexual. Umami flannel tattooed kickstarter cliche cleanse mumblecore. Art party small batch umami cred tousled loko salvia. Single-origin coffee pbr&b dreamcatcher letterpress keffiyeh."], ["user_id", 6], ["post_id", 24], ["created_at", "2016-06-09 15:53:25.683883"], ["updated_at", "2016-06-09 15:53:25.683883"]]
+  [1m[36m (0.6ms)[0m  [1mCOMMIT[0m
+  [1m[35m (0.2ms)[0m  BEGIN
+  [1m[36mSQL (0.4ms)[0m  [1mINSERT INTO "comments" ("body", "user_id", "post_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5) RETURNING "id"[0m  [["body", "Neutra heirloom slow-carb. Single-origin coffee vice viral 90's wolf messenger bag taxidermy cliche. Trust fund everyday health pop-up mumblecore lo-fi post-ironic banjo."], ["user_id", 17], ["post_id", 16], ["created_at", "2016-06-09 15:53:25.686681"], ["updated_at", "2016-06-09 15:53:25.686681"]]
+  [1m[35m (0.6ms)[0m  COMMIT
+  [1m[36m (0.3ms)[0m  [1mBEGIN[0m
+  [1m[35mSQL (0.4ms)[0m  INSERT INTO "comments" ("body", "user_id", "post_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5) RETURNING "id"  [["body", "Plaid sriracha austin. Aesthetic marfa selvage lo-fi cliche. Mlkshk plaid ugh aesthetic chillwave stumptown. Yuccie 3 wolf moon cornhole cronut gentrify mustache hammock farm-to-table."], ["user_id", 14], ["post_id", 31], ["created_at", "2016-06-09 15:53:25.689487"], ["updated_at", "2016-06-09 15:53:25.689487"]]
+  [1m[36m (0.6ms)[0m  [1mCOMMIT[0m
+  [1m[35m (0.3ms)[0m  BEGIN
+  [1m[36mSQL (0.4ms)[0m  [1mINSERT INTO "comments" ("body", "user_id", "post_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5) RETURNING "id"[0m  [["body", "Migas swag direct trade thundercats normcore pickled pinterest. 3 wolf moon photo booth pour-over."], ["user_id", 11], ["post_id", 31], ["created_at", "2016-06-09 15:53:25.692390"], ["updated_at", "2016-06-09 15:53:25.692390"]]
+  [1m[35m (0.6ms)[0m  COMMIT
+  [1m[36m (0.2ms)[0m  [1mBEGIN[0m
+  [1m[35mSQL (0.4ms)[0m  INSERT INTO "comments" ("body", "user_id", "post_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5) RETURNING "id"  [["body", "Loko normcore hoodie offal ethical squid slow-carb. Meditation forage brooklyn pour-over ethical bicycle rights."], ["user_id", 5], ["post_id", 1], ["created_at", "2016-06-09 15:53:25.695170"], ["updated_at", "2016-06-09 15:53:25.695170"]]
+  [1m[36m (0.6ms)[0m  [1mCOMMIT[0m
+  [1m[35m (0.2ms)[0m  BEGIN
+  [1m[36mSQL (0.4ms)[0m  [1mINSERT INTO "comments" ("body", "user_id", "post_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5) RETURNING "id"[0m  [["body", "Beard leggings cardigan etsy chartreuse cronut cornhole. Deep v meditation synth. Retro sartorial truffaut. Ethical hashtag you probably haven't heard of them slow-carb skateboard vegan vinegar."], ["user_id", 7], ["post_id", 32], ["created_at", "2016-06-09 15:53:25.697972"], ["updated_at", "2016-06-09 15:53:25.697972"]]
+  [1m[35m (0.6ms)[0m  COMMIT
+  [1m[36m (0.2ms)[0m  [1mBEGIN[0m
+  [1m[35mSQL (0.4ms)[0m  INSERT INTO "comments" ("body", "user_id", "post_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5) RETURNING "id"  [["body", "Mlkshk pbr&b jean shorts roof twee next level. Wolf pabst butcher helvetica shabby chic trust fund. Selvage echo celiac lumbersexual tumblr migas hammock keytar."], ["user_id", 16], ["post_id", 35], ["created_at", "2016-06-09 15:53:25.700706"], ["updated_at", "2016-06-09 15:53:25.700706"]]
+  [1m[36m (0.6ms)[0m  [1mCOMMIT[0m
+  [1m[35m (0.2ms)[0m  BEGIN
+  [1m[36mSQL (0.4ms)[0m  [1mINSERT INTO "comments" ("body", "user_id", "post_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5) RETURNING "id"[0m  [["body", "Pbr&b squid celiac craft beer kickstarter. Messenger bag paleo stumptown banjo truffaut sustainable lumbersexual."], ["user_id", 9], ["post_id", 3], ["created_at", "2016-06-09 15:53:25.703497"], ["updated_at", "2016-06-09 15:53:25.703497"]]
+  [1m[35m (0.5ms)[0m  COMMIT
+  [1m[36m (0.3ms)[0m  [1mBEGIN[0m
+  [1m[35mSQL (0.4ms)[0m  INSERT INTO "comments" ("body", "user_id", "post_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5) RETURNING "id"  [["body", "Jean shorts celiac synth wayfarers photo booth. Chia flexitarian cronut. Pour-over next level locavore typewriter deep v try-hard tattooed cornhole."], ["user_id", 11], ["post_id", 25], ["created_at", "2016-06-09 15:53:25.707194"], ["updated_at", "2016-06-09 15:53:25.707194"]]
+  [1m[36m (0.6ms)[0m  [1mCOMMIT[0m
+  [1m[35m (0.3ms)[0m  BEGIN
+  [1m[36mSQL (0.4ms)[0m  [1mINSERT INTO "comments" ("body", "user_id", "post_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5) RETURNING "id"[0m  [["body", "Hella meh twee keffiyeh. Pinterest pug letterpress cliche sartorial yuccie gluten-free."], ["user_id", 3], ["post_id", 18], ["created_at", "2016-06-09 15:53:25.710411"], ["updated_at", "2016-06-09 15:53:25.710411"]]
+  [1m[35m (0.6ms)[0m  COMMIT
+  [1m[36m (0.2ms)[0m  [1mBEGIN[0m
+  [1m[35mSQL (0.4ms)[0m  INSERT INTO "comments" ("body", "user_id", "post_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5) RETURNING "id"  [["body", "Sriracha you probably haven't heard of them cold-pressed viral. Chambray disrupt schlitz seitan green juice street."], ["user_id", 11], ["post_id", 27], ["created_at", "2016-06-09 15:53:25.713414"], ["updated_at", "2016-06-09 15:53:25.713414"]]
+  [1m[36m (0.6ms)[0m  [1mCOMMIT[0m
+  [1m[35m (0.2ms)[0m  BEGIN
+  [1m[36mSQL (0.4ms)[0m  [1mINSERT INTO "comments" ("body", "user_id", "post_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5) RETURNING "id"[0m  [["body", "Pork belly swag normcore austin photo booth cronut messenger bag kickstarter. Deep v pour-over beard truffaut five dollar toast listicle readymade."], ["user_id", 12], ["post_id", 28], ["created_at", "2016-06-09 15:53:25.716156"], ["updated_at", "2016-06-09 15:53:25.716156"]]
+  [1m[35m (0.5ms)[0m  COMMIT
+  [1m[36m (0.2ms)[0m  [1mBEGIN[0m
+  [1m[35mSQL (0.4ms)[0m  INSERT INTO "comments" ("body", "user_id", "post_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5) RETURNING "id"  [["body", "Pickled letterpress pbr&b lomo selvage chartreuse pitchfork. Food truck vhs helvetica pinterest neutra chillwave health."], ["user_id", 3], ["post_id", 28], ["created_at", "2016-06-09 15:53:25.718858"], ["updated_at", "2016-06-09 15:53:25.718858"]]
+  [1m[36m (0.6ms)[0m  [1mCOMMIT[0m
+  [1m[35m (0.2ms)[0m  BEGIN
+  [1m[36mSQL (0.4ms)[0m  [1mINSERT INTO "comments" ("body", "user_id", "post_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5) RETURNING "id"[0m  [["body", "Forage bicycle rights lomo mumblecore. Beard try-hard goth narwhal migas. Put a bird on it knausgaard polaroid scenester messenger bag bespoke trust fund tote bag. Listicle crucifix humblebrag pinterest try-hard pop-up normcore vinyl."], ["user_id", 16], ["post_id", 26], ["created_at", "2016-06-09 15:53:25.722022"], ["updated_at", "2016-06-09 15:53:25.722022"]]
+  [1m[35m (0.6ms)[0m  COMMIT
+  [1m[36m (0.2ms)[0m  [1mBEGIN[0m
+  [1m[35mSQL (0.4ms)[0m  INSERT INTO "comments" ("body", "user_id", "post_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5) RETURNING "id"  [["body", "Occupy seitan scenester loko blog literally polaroid pour-over. Lomo gluten-free art party authentic pitchfork. Vhs retro heirloom everyday narwhal fashion axe asymmetrical."], ["user_id", 18], ["post_id", 40], ["created_at", "2016-06-09 15:53:25.724874"], ["updated_at", "2016-06-09 15:53:25.724874"]]
+  [1m[36m (0.6ms)[0m  [1mCOMMIT[0m
+  [1m[35m (0.2ms)[0m  BEGIN
+  [1m[36mSQL (0.4ms)[0m  [1mINSERT INTO "comments" ("body", "user_id", "post_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5) RETURNING "id"[0m  [["body", "Vinyl cliche food truck gluten-free chillwave tumblr. Blog yuccie twee seitan irony cronut butcher."], ["user_id", 12], ["post_id", 34], ["created_at", "2016-06-09 15:53:25.727692"], ["updated_at", "2016-06-09 15:53:25.727692"]]
+  [1m[35m (0.6ms)[0m  COMMIT
+  [1m[36m (0.3ms)[0m  [1mBEGIN[0m
+  [1m[35mSQL (0.4ms)[0m  INSERT INTO "comments" ("body", "user_id", "post_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5) RETURNING "id"  [["body", "Actually chartreuse aesthetic. Slow-carb hammock cronut fanny pack drinking bicycle rights chartreuse. Hella cornhole offal flannel. Fap pbr&b pitchfork put a bird on it."], ["user_id", 17], ["post_id", 36], ["created_at", "2016-06-09 15:53:25.730733"], ["updated_at", "2016-06-09 15:53:25.730733"]]
+  [1m[36m (0.6ms)[0m  [1mCOMMIT[0m
+  [1m[35m (0.3ms)[0m  BEGIN
+  [1m[36mSQL (0.4ms)[0m  [1mINSERT INTO "comments" ("body", "user_id", "post_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5) RETURNING "id"[0m  [["body", "Master 8-bit five dollar toast mixtape. Ugh heirloom chicharrones polaroid pinterest fingerstache. Street neutra kale chips raw denim skateboard cray."], ["user_id", 8], ["post_id", 32], ["created_at", "2016-06-09 15:53:25.733843"], ["updated_at", "2016-06-09 15:53:25.733843"]]
+  [1m[35m (0.6ms)[0m  COMMIT
+  [1m[36m (0.2ms)[0m  [1mBEGIN[0m
+  [1m[35mSQL (0.8ms)[0m  INSERT INTO "comments" ("body", "user_id", "post_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5) RETURNING "id"  [["body", "Intelligentsia waistcoat selfies pbr&b 8-bit. Stumptown five dollar toast kogi venmo tilde authentic hella."], ["user_id", 19], ["post_id", 38], ["created_at", "2016-06-09 15:53:25.736728"], ["updated_at", "2016-06-09 15:53:25.736728"]]
+  [1m[36m (0.5ms)[0m  [1mCOMMIT[0m
+  [1m[35m (0.2ms)[0m  BEGIN
+  [1m[36mSQL (0.3ms)[0m  [1mINSERT INTO "comments" ("body", "user_id", "post_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5) RETURNING "id"[0m  [["body", "Biodiesel locavore meggings fashion axe. Hammock slow-carb mixtape portland readymade occupy waistcoat etsy. Cred banh mi pickled. Squid try-hard selvage cray hoodie."], ["user_id", 1], ["post_id", 17], ["created_at", "2016-06-09 15:53:25.740280"], ["updated_at", "2016-06-09 15:53:25.740280"]]
+  [1m[35m (0.6ms)[0m  COMMIT
+  [1m[36m (0.2ms)[0m  [1mBEGIN[0m
+  [1m[35mSQL (0.4ms)[0m  INSERT INTO "comments" ("body", "user_id", "post_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5) RETURNING "id"  [["body", "Sriracha skateboard vinegar irony. Tilde plaid jean shorts authentic beard. Xoxo sartorial synth venmo skateboard locavore."], ["user_id", 7], ["post_id", 12], ["created_at", "2016-06-09 15:53:25.743171"], ["updated_at", "2016-06-09 15:53:25.743171"]]
+  [1m[36m (0.6ms)[0m  [1mCOMMIT[0m
+  [1m[35m (0.2ms)[0m  BEGIN
+  [1m[36mSQL (0.4ms)[0m  [1mINSERT INTO "comments" ("body", "user_id", "post_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5) RETURNING "id"[0m  [["body", "Loko semiotics beard wes anderson health aesthetic. Williamsburg hammock wes anderson meditation."], ["user_id", 8], ["post_id", 29], ["created_at", "2016-06-09 15:53:25.746302"], ["updated_at", "2016-06-09 15:53:25.746302"]]
+  [1m[35m (0.7ms)[0m  COMMIT
+  [1m[36m (0.2ms)[0m  [1mBEGIN[0m
+  [1m[35mSQL (0.4ms)[0m  INSERT INTO "comments" ("body", "user_id", "post_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5) RETURNING "id"  [["body", "Echo hammock cardigan health everyday. Keffiyeh ramps shabby chic etsy viral ennui pabst. Typewriter mumblecore kogi sartorial offal whatever fashion axe."], ["user_id", 19], ["post_id", 32], ["created_at", "2016-06-09 15:53:25.749217"], ["updated_at", "2016-06-09 15:53:25.749217"]]
+  [1m[36m (0.6ms)[0m  [1mCOMMIT[0m
+  [1m[35m (0.2ms)[0m  BEGIN
+  [1m[36mSQL (0.4ms)[0m  [1mINSERT INTO "comments" ("body", "user_id", "post_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5) RETURNING "id"[0m  [["body", "Disrupt pabst green juice. Artisan poutine chambray try-hard sustainable microdosing 90's. Next level everyday pickled."], ["user_id", 1], ["post_id", 11], ["created_at", "2016-06-09 15:53:25.752691"], ["updated_at", "2016-06-09 15:53:25.752691"]]
+  [1m[35m (0.6ms)[0m  COMMIT
+  [1m[36m (0.2ms)[0m  [1mBEGIN[0m
+  [1m[35mSQL (0.4ms)[0m  INSERT INTO "comments" ("body", "user_id", "post_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5) RETURNING "id"  [["body", "Bushwick listicle disrupt brunch blog venmo. Neutra pour-over bicycle rights austin."], ["user_id", 5], ["post_id", 27], ["created_at", "2016-06-09 15:53:25.755557"], ["updated_at", "2016-06-09 15:53:25.755557"]]
+  [1m[36m (0.6ms)[0m  [1mCOMMIT[0m
+  [1m[35m (0.3ms)[0m  BEGIN
+  [1m[36mSQL (0.3ms)[0m  [1mINSERT INTO "comments" ("body", "user_id", "post_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5) RETURNING "id"[0m  [["body", "Before they sold out forage intelligentsia cleanse. Ennui photo booth drinking art party knausgaard yuccie. Keytar yr bushwick."], ["user_id", 4], ["post_id", 10], ["created_at", "2016-06-09 15:53:25.758791"], ["updated_at", "2016-06-09 15:53:25.758791"]]
+  [1m[35m (0.6ms)[0m  COMMIT
+  [1m[36m (0.2ms)[0m  [1mBEGIN[0m
+  [1m[35mSQL (0.4ms)[0m  INSERT INTO "comments" ("body", "user_id", "post_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5) RETURNING "id"  [["body", "Truffaut fixie park literally. Helvetica selfies kombucha food truck organic mixtape."], ["user_id", 14], ["post_id", 24], ["created_at", "2016-06-09 15:53:25.761742"], ["updated_at", "2016-06-09 15:53:25.761742"]]
+  [1m[36m (0.6ms)[0m  [1mCOMMIT[0m
+  [1m[35m (0.2ms)[0m  BEGIN
+  [1m[36mSQL (0.4ms)[0m  [1mINSERT INTO "comments" ("body", "user_id", "post_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5) RETURNING "id"[0m  [["body", "You probably haven't heard of them banjo put a bird on it butcher 3 wolf moon sartorial selfies. Locavore yr distillery schlitz."], ["user_id", 13], ["post_id", 20], ["created_at", "2016-06-09 15:53:25.764365"], ["updated_at", "2016-06-09 15:53:25.764365"]]
+  [1m[35m (0.6ms)[0m  COMMIT
+  [1m[36m (0.3ms)[0m  [1mBEGIN[0m
+  [1m[35mSQL (0.4ms)[0m  INSERT INTO "comments" ("body", "user_id", "post_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5) RETURNING "id"  [["body", "Meh hammock etsy small batch austin banh mi schlitz. Seitan poutine chicharrones pabst. Gastropub selfies listicle."], ["user_id", 11], ["post_id", 35], ["created_at", "2016-06-09 15:53:25.767257"], ["updated_at", "2016-06-09 15:53:25.767257"]]
+  [1m[36m (0.6ms)[0m  [1mCOMMIT[0m
+  [1m[35m (0.2ms)[0m  BEGIN
+  [1m[36mSQL (0.4ms)[0m  [1mINSERT INTO "comments" ("body", "user_id", "post_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5) RETURNING "id"[0m  [["body", "Meditation literally pinterest raw denim freegan. Knausgaard asymmetrical drinking slow-carb."], ["user_id", 11], ["post_id", 10], ["created_at", "2016-06-09 15:53:25.769958"], ["updated_at", "2016-06-09 15:53:25.769958"]]
+  [1m[35m (0.5ms)[0m  COMMIT
+  [1m[36m (0.2ms)[0m  [1mBEGIN[0m
+  [1m[35mSQL (0.4ms)[0m  INSERT INTO "comments" ("body", "user_id", "post_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5) RETURNING "id"  [["body", "Letterpress organic fashion axe tousled raw denim franzen selvage. Farm-to-table hoodie trust fund sriracha franzen. Health direct trade deep v twee. Skateboard brunch fixie brooklyn pbr&b wayfarers keytar."], ["user_id", 18], ["post_id", 9], ["created_at", "2016-06-09 15:53:25.772670"], ["updated_at", "2016-06-09 15:53:25.772670"]]
+  [1m[36m (0.6ms)[0m  [1mCOMMIT[0m
+  [1m[35m (0.2ms)[0m  BEGIN
+  [1m[36mSQL (0.4ms)[0m  [1mINSERT INTO "comments" ("body", "user_id", "post_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5) RETURNING "id"[0m  [["body", "Drinking shabby chic before they sold out chicharrones viral meditation pitchfork slow-carb. Vinyl yuccie blog bicycle rights. Wolf normcore pinterest locavore biodiesel 8-bit chartreuse. Carry kogi austin messenger bag sriracha chambray wes anderson."], ["user_id", 17], ["post_id", 5], ["created_at", "2016-06-09 15:53:25.775734"], ["updated_at", "2016-06-09 15:53:25.775734"]]
+  [1m[35m (0.5ms)[0m  COMMIT
+  [1m[36m (0.2ms)[0m  [1mBEGIN[0m
+  [1m[35mSQL (0.4ms)[0m  INSERT INTO "comments" ("body", "user_id", "post_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5) RETURNING "id"  [["body", "Cardigan tacos thundercats xoxo ramps brooklyn knausgaard taxidermy. Echo kinfolk lo-fi vegan. Brooklyn letterpress lo-fi leggings cronut cornhole waistcoat. Forage seitan skateboard lumbersexual retro goth."], ["user_id", 4], ["post_id", 28], ["created_at", "2016-06-09 15:53:25.779014"], ["updated_at", "2016-06-09 15:53:25.779014"]]
+  [1m[36m (0.5ms)[0m  [1mCOMMIT[0m
+  [1m[35m (0.2ms)[0m  BEGIN
+  [1m[36mSQL (0.5ms)[0m  [1mINSERT INTO "comments" ("body", "user_id", "post_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5) RETURNING "id"[0m  [["body", "Tofu migas pitchfork health. Mlkshk cold-pressed austin asymmetrical brooklyn bitters. Letterpress seitan roof pork belly mustache offal pour-over waistcoat."], ["user_id", 6], ["post_id", 17], ["created_at", "2016-06-09 15:53:25.783463"], ["updated_at", "2016-06-09 15:53:25.783463"]]
+  [1m[35m (0.6ms)[0m  COMMIT
+  [1m[36m (0.3ms)[0m  [1mBEGIN[0m
+  [1m[35mSQL (0.4ms)[0m  INSERT INTO "comments" ("body", "user_id", "post_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5) RETURNING "id"  [["body", "Goth beard selvage. Scenester sartorial art party migas cray sustainable celiac. Blue bottle cardigan master kale chips."], ["user_id", 2], ["post_id", 31], ["created_at", "2016-06-09 15:53:25.787495"], ["updated_at", "2016-06-09 15:53:25.787495"]]
+  [1m[36m (0.6ms)[0m  [1mCOMMIT[0m
+  [1m[35m (0.2ms)[0m  BEGIN
+  [1m[36mSQL (0.4ms)[0m  [1mINSERT INTO "comments" ("body", "user_id", "post_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5) RETURNING "id"[0m  [["body", "Deep v lumbersexual bushwick retro narwhal loko cliche. 90's ethical thundercats etsy."], ["user_id", 20], ["post_id", 32], ["created_at", "2016-06-09 15:53:25.790180"], ["updated_at", "2016-06-09 15:53:25.790180"]]
+  [1m[35m (0.6ms)[0m  COMMIT
+  [1m[36m (0.2ms)[0m  [1mBEGIN[0m
+  [1m[35mSQL (0.4ms)[0m  INSERT INTO "comments" ("body", "user_id", "post_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5) RETURNING "id"  [["body", "Ennui echo retro cliche tacos migas keffiyeh farm-to-table. Cronut heirloom slow-carb."], ["user_id", 2], ["post_id", 3], ["created_at", "2016-06-09 15:53:25.793000"], ["updated_at", "2016-06-09 15:53:25.793000"]]
+  [1m[36m (0.6ms)[0m  [1mCOMMIT[0m
+  [1m[35m (0.2ms)[0m  BEGIN
+  [1m[36mSQL (0.4ms)[0m  [1mINSERT INTO "comments" ("body", "user_id", "post_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5) RETURNING "id"[0m  [["body", "Pug ramps banjo raw denim kogi seitan. Next level chicharrones farm-to-table selvage banjo cred gastropub street."], ["user_id", 10], ["post_id", 30], ["created_at", "2016-06-09 15:53:25.795815"], ["updated_at", "2016-06-09 15:53:25.795815"]]
+  [1m[35m (0.6ms)[0m  COMMIT
+  [1m[36m (0.3ms)[0m  [1mBEGIN[0m
+  [1m[35mSQL (0.5ms)[0m  INSERT INTO "comments" ("body", "user_id", "post_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5) RETURNING "id"  [["body", "Deep v shabby chic lomo leggings post-ironic irony brooklyn. Squid aesthetic williamsburg kitsch."], ["user_id", 17], ["post_id", 28], ["created_at", "2016-06-09 15:53:25.798787"], ["updated_at", "2016-06-09 15:53:25.798787"]]
+  [1m[36m (0.6ms)[0m  [1mCOMMIT[0m
+  [1m[35m (0.3ms)[0m  BEGIN
+  [1m[36mSQL (0.8ms)[0m  [1mINSERT INTO "flags" ("user_id", "flaggable_id", "flaggable_type", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5) RETURNING "id"[0m  [["user_id", 1], ["flaggable_id", 29], ["flaggable_type", "Post"], ["created_at", "2016-06-09 15:53:25.809295"], ["updated_at", "2016-06-09 15:53:25.809295"]]
+  [1m[35m (0.6ms)[0m  COMMIT
+  [1m[36m (0.2ms)[0m  [1mBEGIN[0m
+  [1m[35mSQL (0.4ms)[0m  INSERT INTO "flags" ("user_id", "flaggable_id", "flaggable_type", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5) RETURNING "id"  [["user_id", 9], ["flaggable_id", 12], ["flaggable_type", "Comment"], ["created_at", "2016-06-09 15:53:25.813067"], ["updated_at", "2016-06-09 15:53:25.813067"]]
+  [1m[36m (0.6ms)[0m  [1mCOMMIT[0m
+  [1m[35m (0.2ms)[0m  BEGIN
+  [1m[36mSQL (0.5ms)[0m  [1mINSERT INTO "flags" ("user_id", "flaggable_id", "flaggable_type", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5) RETURNING "id"[0m  [["user_id", 10], ["flaggable_id", 21], ["flaggable_type", "Post"], ["created_at", "2016-06-09 15:53:25.815767"], ["updated_at", "2016-06-09 15:53:25.815767"]]
+  [1m[35m (0.5ms)[0m  COMMIT
+  [1m[36m (0.2ms)[0m  [1mBEGIN[0m
+  [1m[35mSQL (0.4ms)[0m  INSERT INTO "flags" ("user_id", "flaggable_id", "flaggable_type", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5) RETURNING "id"  [["user_id", 19], ["flaggable_id", 26], ["flaggable_type", "Comment"], ["created_at", "2016-06-09 15:53:25.818437"], ["updated_at", "2016-06-09 15:53:25.818437"]]
+  [1m[36m (0.5ms)[0m  [1mCOMMIT[0m
+  [1m[35m (0.2ms)[0m  BEGIN
+  [1m[36mSQL (0.5ms)[0m  [1mINSERT INTO "flags" ("user_id", "flaggable_id", "flaggable_type", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5) RETURNING "id"[0m  [["user_id", 10], ["flaggable_id", 2], ["flaggable_type", "Comment"], ["created_at", "2016-06-09 15:53:25.821065"], ["updated_at", "2016-06-09 15:53:25.821065"]]
+  [1m[35m (0.5ms)[0m  COMMIT
+  [1m[36m (0.2ms)[0m  [1mBEGIN[0m
+  [1m[35mSQL (0.5ms)[0m  INSERT INTO "flags" ("user_id", "flaggable_id", "flaggable_type", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5) RETURNING "id"  [["user_id", 17], ["flaggable_id", 29], ["flaggable_type", "Post"], ["created_at", "2016-06-09 15:53:25.823792"], ["updated_at", "2016-06-09 15:53:25.823792"]]
+  [1m[36m (0.6ms)[0m  [1mCOMMIT[0m
+  [1m[35m (0.2ms)[0m  BEGIN
+  [1m[36mSQL (0.4ms)[0m  [1mINSERT INTO "flags" ("user_id", "flaggable_id", "flaggable_type", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5) RETURNING "id"[0m  [["user_id", 9], ["flaggable_id", 15], ["flaggable_type", "Post"], ["created_at", "2016-06-09 15:53:25.826651"], ["updated_at", "2016-06-09 15:53:25.826651"]]
+  [1m[35m (0.6ms)[0m  COMMIT
+  [1m[36m (0.2ms)[0m  [1mBEGIN[0m
+  [1m[35mSQL (0.4ms)[0m  INSERT INTO "flags" ("user_id", "flaggable_id", "flaggable_type", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5) RETURNING "id"  [["user_id", 18], ["flaggable_id", 27], ["flaggable_type", "Comment"], ["created_at", "2016-06-09 15:53:25.829276"], ["updated_at", "2016-06-09 15:53:25.829276"]]
+  [1m[36m (0.6ms)[0m  [1mCOMMIT[0m
+  [1m[35m (0.2ms)[0m  BEGIN
+  [1m[36mSQL (0.3ms)[0m  [1mINSERT INTO "flags" ("user_id", "flaggable_id", "flaggable_type", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5) RETURNING "id"[0m  [["user_id", 7], ["flaggable_id", 13], ["flaggable_type", "Post"], ["created_at", "2016-06-09 15:53:25.831874"], ["updated_at", "2016-06-09 15:53:25.831874"]]
+  [1m[35m (0.5ms)[0m  COMMIT
+  [1m[36m (0.3ms)[0m  [1mBEGIN[0m
+  [1m[35mSQL (0.3ms)[0m  INSERT INTO "flags" ("user_id", "flaggable_id", "flaggable_type", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5) RETURNING "id"  [["user_id", 5], ["flaggable_id", 12], ["flaggable_type", "Comment"], ["created_at", "2016-06-09 15:53:25.834764"], ["updated_at", "2016-06-09 15:53:25.834764"]]
+  [1m[36m (0.6ms)[0m  [1mCOMMIT[0m
+  [1m[35m (0.2ms)[0m  BEGIN
+  [1m[36mSQL (0.4ms)[0m  [1mINSERT INTO "flags" ("user_id", "flaggable_id", "flaggable_type", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5) RETURNING "id"[0m  [["user_id", 1], ["flaggable_id", 12], ["flaggable_type", "Comment"], ["created_at", "2016-06-09 15:53:25.837379"], ["updated_at", "2016-06-09 15:53:25.837379"]]
+  [1m[35m (0.6ms)[0m  COMMIT
+  [1m[36m (0.3ms)[0m  [1mBEGIN[0m
+  [1m[35mSQL (0.3ms)[0m  INSERT INTO "flags" ("user_id", "flaggable_id", "flaggable_type", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5) RETURNING "id"  [["user_id", 20], ["flaggable_id", 11], ["flaggable_type", "Comment"], ["created_at", "2016-06-09 15:53:25.840102"], ["updated_at", "2016-06-09 15:53:25.840102"]]
+  [1m[36m (0.6ms)[0m  [1mCOMMIT[0m
+  [1m[36mFlag Load (1.2ms)[0m  [1mSELECT  "flags".* FROM "flags"  ORDER BY "flags"."id" ASC LIMIT 1[0m
+  [1m[35mPost Load (0.6ms)[0m  SELECT  "posts".* FROM "posts" WHERE "posts"."id" = $1 LIMIT 1  [["id", 29]]
+  [1m[36mFlag Load (0.5ms)[0m  [1mSELECT "flags".* FROM "flags" WHERE "flags"."flaggable_id" = $1 AND "flags"."flaggable_type" = $2[0m  [["flaggable_id", 29], ["flaggable_type", "Post"]]
+  [1m[35mPost Load (0.5ms)[0m  SELECT  "posts".* FROM "posts" WHERE "posts"."id" = $1 LIMIT 1  [["id", 29]]
