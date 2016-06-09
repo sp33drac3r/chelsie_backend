@@ -12,10 +12,12 @@ class PostsController < ApplicationController
   def show
     @post = Post.find(params[:id])
     @comments = @post.comments
+    @flags = @post.flags
 
     render :json => {
       :post => @post,
-      :comments => @comments
+      :comments => @comments,
+      :flags => @flags
     }
   end
 
