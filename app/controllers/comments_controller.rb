@@ -10,7 +10,10 @@ class CommentsController < ApplicationController
 
   def show
     @comment = params[:id]
-    render json: @comments
+    @flags = @comment.flags
+
+    render :json => {:comments => @comments,
+                    :flags => @flags}
   end
 
   def update
