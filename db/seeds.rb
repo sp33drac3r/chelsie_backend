@@ -45,12 +45,12 @@ You cannot give me back my sleepless nights. The way I have broken down sobbing 
 When I see my younger sister hurting, when she is unable to keep up in school, when she is deprived of joy, when she is not sleeping, when she is crying so hard on the phone she is barely breathing, telling me over and over again she is sorry for leaving me alone that night, sorry sorry sorry, when she feels more guilt than you, then I do not forgive you. That night I had called her to try and find her, but you found me first. Your attorney’s closing statement began, '[Her sister] said she was fine and who knows her better than her sister.' You tried to use my own sister against me? Your points of attack were so weak, so low, it was almost embarrassing. You do not touch her.
 You should have never done this to me. Secondly, you should have never made me fight so long to tell you, you should have never done this to me. But here we are. The damage is done, no one can undo it. And now we both have a choice. We can let this destroy us, I can remain angry and hurt and you can be in denial, or we can face it head on, I accept the pain, you accept the punishment, and we move on.",
   user_id: 1,
-  school_id: 101
+  school_id: School.find_by(name: 'Kenyon College').id
   )
 
 50.times do
   Comment.create(
-    body: ["You are not alone.", "Sending so much love your way.  You have no idea how empowering it is to read these words.", "Thank you for sharing. I've been struggling to open up similarly.", "You're words are inspiring. I think I want to reach out to more people to offer my support.", "I promise you will only feel stronger as time goes on."].sample
+    body: ["You are not alone.", "Sending so much love your way.  You have no idea how empowering it is to read these words.", "Thank you for sharing. I've been struggling to open up similarly.", "You're words are inspiring. I think I want to reach out to more people to offer my support.", "I promise you will only feel stronger as time goes on."].sample,
     user_id: rand(1..20),
     post_id: rand(5..1500)
     )
