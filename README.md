@@ -15,9 +15,9 @@ returns all crisis centers matching search query. Query string should be formatt
 returns all crisis centers within a given radius based on nearness to a set of latlng coordinates.
 
 ## Coming Soon
-*Additional crisis centers, not only RAINN affiliates.
-*Additiona local community resources, not limited to rape crisis centers
-*POST requests. Resrouce center comments.
+* Additional crisis centers, not only RAINN affiliates.
+* Additiona local community resources, not limited to rape crisis centers
+* POST requests. Resrouce center comments.
 
 ## Who is Chelsie?
 https://mjakobhayes.wordpress.com/2016/04/25/to-kenyon-college-for-failing-my-little-sister/
