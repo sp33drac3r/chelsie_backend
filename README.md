@@ -4,7 +4,7 @@ chelsie.io is a publicly available API that serves location-specific help resour
 ## Routes
 **GET**  
 **chelsie.io/centers/:id**  
-..returns all crisis center information by id  
+.. returns all crisis center information by id  
 **chelsie.io/centers/:id/services**  
 returns just services offered, by id  
 **chelsie.io/centers/:id/populations_served**  
