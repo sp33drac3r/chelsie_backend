@@ -1,28 +1,28 @@
-### chelsie
+# chelsie.io
+chelsie.io is a publicly available API that serves location-specific help resources for survivors of sexual assault. Currently, chelsie.io serves information about local [RAINN](https://www.rainn.org/) affiliate rape crisis centers.
 
-### TEAM CADENCE
-01. Have fun working
-02. Don't let the subject of the project
-03. Stand Ups
-    - 9:15AM
-      * Setting Goals
-    - 6:00PM
-      * Merge code to master branch
-    - 9:00PM
-      * Emotional Check-in
-04. Resolve interpersonal issues with empathy
+## Routes
+**GET**  
+**chelsie.io/centers/:id**  
+returns all crisis center information by id  
+**chelsie.io/centers/:id/services**  
+returns just services offered, by id  
+**chelsie.io/centers/:id/populations_served**  
+returns just populations served, by id  
+**chelsie.io/centers/search/:query**  
+returns all crisis centers matching search query. Query string should be formatted 'chelsie.io/centers/search/[key=value&key=value]'  
+**chelsie.io/centers/geo/:lat/:lng/:radius**  
+returns all crisis centers within a given radius based on nearness to a set of latlng coordinates.  
 
-### MISSION STATEMENT
-An mobile application to provide resources to college students who have been victims of rape.
-An application to shed light on rape issues that occur in colleges and universities across America.
+## Coming Soon
+* Additional crisis centers, not only RAINN affiliates.
+* Additiona local community resources, not limited to rape crisis centers.
+* POST requests. Resrouce center comments.
 
-### MVP USER STORIES
-01. A user can see a list of local resources based on the location of the phone
-02. A user can get immediate help via RAINN hot-line resources, 911, or chat
-03. A user can make a post with a tag of the school the incident occurred
-04. A user can read post of schools in their area
+## Who is Chelsie?
+https://mjakobhayes.wordpress.com/2016/04/25/to-kenyon-college-for-failing-my-little-sister/
 
-
-
-
-
+## Contributing
+Contrbutions welcome! 
+Fork it, clone it, change it and make a pull request with a clear, detailed description of the change or feature.
+We will review and merge it.
