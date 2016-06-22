@@ -23,5 +23,6 @@ returns all crisis centers within a given radius based on nearness to a set of l
 https://mjakobhayes.wordpress.com/2016/04/25/to-kenyon-college-for-failing-my-little-sister/
 
 ## Contributing
-Contrbutions welcome! Fork it, clone it, change it and make a pull request with a clear, detailed description of the change or feature.
+Contrbutions welcome! 
+Fork it, clone it, change it and make a pull request with a clear, detailed description of the change or feature.
 We will review and merge it.
