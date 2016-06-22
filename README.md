@@ -2,9 +2,9 @@
 chelsie.io is a publicly available API that serves location-specific help resources for survivors of sexual assault. Currently, chelsie.io serves information about local [RAINN](https://www.rainn.org/) affiliate rape crisis centers.
 
 ## Routes
-GET  
+**GET**  
 **chelsie.io/centers/:id**  
-returns all crisis center information by id  
+..returns all crisis center information by id  
 **chelsie.io/centers/:id/services**  
 returns just services offered, by id  
 **chelsie.io/centers/:id/populations_served**  
@@ -16,7 +16,7 @@ returns all crisis centers within a given radius based on nearness to a set of l
 
 ## Coming Soon
 * Additional crisis centers, not only RAINN affiliates.
-* Additiona local community resources, not limited to rape crisis centers
+* Additiona local community resources, not limited to rape crisis centers.
 * POST requests. Resrouce center comments.
 
 ## Who is Chelsie?
