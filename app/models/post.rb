@@ -3,6 +3,6 @@ class Post < ActiveRecord::Base
   belongs_to :school
   has_many :comments, dependent: :destroy
   has_many :flags, as: :flaggable
-  valdiates :title, presence: true
-  valdiates :body, presence: true
+  validates :title, presence: true
+  validates :body, presence: true
 end
