@@ -1,9 +1,9 @@
 class UsersController < ApplicationController
-  before_action :authenticate_user!
-  
-  def index
-    render :json => {response: 'You are not alone.'}
-  end
+  skip_before_action :authenticate_user_from_token!, only: [:create]
+
+  # def index
+  #   render :json => {response: 'You are not alone.'}
+  # end
 
   def show
     @user = User.find(params[:id])
@@ -22,16 +22,21 @@ class UsersController < ApplicationController
   end
 
   def create
-    @user = User.new(user_params)
-    @user.email.downcase
-    @user.username.downcase
-    @user.password.downcase
-    if @user.save
-      @user.email = nil
-      @user.password = nil
-      render :json => @user
+    if user_params['is_host']
+      @user = User.new user_params
     else
-      render :json => {response: 'Failed to save User'}
+      host = User.find_by(host_code: user_params['host_code'])
+
+      @user = User.new user_params
+      @user['host'] = host.id
+      host.guest = @user.id
+      host.save
+    end
+
+    if @user.save
+      render json: @user, serializer: V1::SessionSerializer, root: nil
+    else
+      render json: { error: t('user_create_error') }, status: :unprocessable_entity
     end
   end
 

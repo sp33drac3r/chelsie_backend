@@ -1,8 +1,23 @@
 Rails.application.routes.draw do
-  devise_for :users
-  get 'sessions/create'
+  devise_for :users, only: []
 
-  get 'sessions/destroy'
+  resource :login, only: [:create], controller: :sessions
+  resources :users, only: [:create]
+  resources :schools do
+    resources :posts do
+      resources :comments
+    end
+  end
+
+  # root to: "users#index"
+  get '/flags/:user_id', to: 'flags#show'
+
+  post '/flags', to: 'flags#create'
+
+  delete '/flags/:id', to: 'flags#destroy'
+  # get 'sessions/create'
+
+  # get 'sessions/destroy'
 
   # get 'users/create'
 
@@ -16,24 +31,11 @@ Rails.application.routes.draw do
   # Root
   # root '/'
 
-  root to: "users#index"
 
-  resources :users
+  # resources :users
 
-  resources :schools do
-    resources :posts do
-      resources :comments
-    end
-  end
+  # post '/login', to: 'sessions#create'
 
-
-  post '/login', to: 'sessions#create'
-
-  get '/flags/:user_id', to: 'flags#show'
-
-  post '/flags', to: 'flags#create'
-
-  delete '/flags/:id', to: 'flags#destroy'
 
 
   # Example resource route within a namespace:
