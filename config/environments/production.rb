@@ -76,4 +76,7 @@ Rails.application.configure do
 
   # Do not dump schema after migrations.
   config.active_record.dump_schema_after_migration = false
+
+  # Adds defined default url options in your environments files.
+  config.action_mailer.default_url_options = { host: 'https://afternoon-badlands-40242.herokuapp.com/' }
 end
