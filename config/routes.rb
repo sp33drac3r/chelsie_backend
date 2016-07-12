@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  devise_for :users
   get 'sessions/create'
 
   get 'sessions/destroy'
@@ -14,6 +15,8 @@ Rails.application.routes.draw do
 
   # Root
   # root '/'
+
+  root to: "users#index"
 
   resources :users
 
