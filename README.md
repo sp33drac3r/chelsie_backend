@@ -1,5 +1,6 @@
 # chelsie backend
-Rails backend for chelsie app
+Rails backend for [chelsie frontend](https://github.com/sp33drac3r/chelsie)
+
 
 ## Who is Chelsie?
 https://mjakobhayes.wordpress.com/2016/04/25/to-kenyon-college-for-failing-my-little-sister/
