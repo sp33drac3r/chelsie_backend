@@ -4,6 +4,7 @@ class UsersController < ApplicationController
   # def index
   #   render :json => {response: 'You are not alone.'}
   # end
+   before_filter :verity_jwt_token
 
   def show
     @user = User.find(params[:id])
