@@ -1,10 +1,7 @@
 Rails.application.routes.draw do
-  devise_for :users, controllers: {
-    sessions: 'users/sessions'
-  }
 
+  devise_for :users
   resource :login, only: [:create], controller: :sessions
-  resources :users, only: [:create]
   resources :schools do
     resources :posts do
       resources :comments

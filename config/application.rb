@@ -23,6 +23,7 @@ require "google_places"
 require 'csv'
 
 module Chelsie
+  class Application < Rails::Application
   # class Application < Rails::Application
   #   config.api_only = true
   #   config.middleware.insert_before 'Rack::Runtime', 'Rack::Cors' do
