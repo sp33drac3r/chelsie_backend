@@ -1,7 +1,10 @@
 Rails.application.routes.draw do
 
-  devise_for :users
+  devise_for :users, only: []
+  resources :users
+
   resource :login, only: [:create], controller: :sessions
+
   resources :schools do
     resources :posts do
       resources :comments
