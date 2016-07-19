@@ -2,6 +2,7 @@ class Users::SessionsController < Devise::SessionsController
 
   require 'auth_token'
 
+  #Disable CSRF protection
   skip_before_action :authenticate_user_from_token!
 
   respond_to :html, :json
