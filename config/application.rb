@@ -23,16 +23,16 @@ require "google_places"
 require 'csv'
 
 module Chelsie
-  class Application < Rails::Application
-    config.api_only = true
-    config.middleware.insert_before 'Rack::Runtime', 'Rack::Cors' do
-      allow do
-        origins '*' #localhost:9000
-        resource '*',
-                 headers: :any,
-                 methods: [:get, :put, :post, :patch, :delete, :options]
-      end
-  end
+  # class Application < Rails::Application
+  #   config.api_only = true
+  #   config.middleware.insert_before 'Rack::Runtime', 'Rack::Cors' do
+  #     allow do
+  #       origins '*' #localhost:9000
+  #       resource '*',
+  #                headers: :any,
+  #                methods: [:get, :put, :post, :patch, :delete, :options]
+  #     end
+  # end
     # Settings in config/environments/* take precedence over those specified here.
     # Application configuration should go into files in config/initializers
     # -- all .rb files in that directory are automatically loaded.

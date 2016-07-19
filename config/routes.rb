@@ -1,5 +1,7 @@
 Rails.application.routes.draw do
-  devise_for :users, only: []
+  devise_for :users, controllers: {
+    sessions: 'users/sessions'
+  }
 
   resource :login, only: [:create], controller: :sessions
   resources :users, only: [:create]
