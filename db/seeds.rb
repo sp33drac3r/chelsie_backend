@@ -1,4 +1,4 @@
-User.create(username: 'chelsie', email: 'chelsie@chelsie.com', password: '123')
+User.create(email: 'chelsie@chelsie.com', password: '123456')
 
 
 #100 School Names

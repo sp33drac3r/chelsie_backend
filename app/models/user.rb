@@ -44,7 +44,14 @@ class User < ActiveRecord::Base
   # field :host_code, :type => String
 
   # Associations
-  # has_many :items
+  has_many :posts
+  has_many :comments
+  has_many :flags
+
+  validates :username, presence: true
+  validates :email, presence: true, uniqueness: true
+  validates_format_of :email, with: /\A[^@\s]+@([^@\s]+\.)+[^@\s]+\z/
+  validates :password, presence: true
 
   # # Self reference association for Guest/Host
   # has_one :host, :class_name => 'User', :inverse_of => :guest
@@ -53,7 +60,7 @@ class User < ActiveRecord::Base
   # has_one :guest, :class_name => 'User', :inverse_of => :host
   # belongs_to :host, :class_name => 'User', :inverse_of => :guest
 
-  after_create :update_access_token!, :generate_host_code
+  after_create :update_access_token! #, :generate_host_code
 
   private
 
@@ -69,10 +76,10 @@ class User < ActiveRecord::Base
     end
   end
 
-  def generate_host_code
-    if self.is_host
-      self.host_code = (('a'...'z').to_a.sample(4) + (0..9).to_a.sample(3)).shuffle.join
-      save
-    end
-  end
+  # def generate_host_code
+  #   if self.is_host
+  #     self.host_code = (('a'...'z').to_a.sample(4) + (0..9).to_a.sample(3)).shuffle.join
+  #     save
+  #   end
+  # end
 end

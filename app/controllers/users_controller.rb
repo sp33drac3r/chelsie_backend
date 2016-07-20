@@ -1,10 +1,12 @@
 class UsersController < ApplicationController
-  skip_before_action :authenticate_user_from_token!, only: [:create]
+  skip_before_action :authenticate_user_from_token!, :only => :create
+  # skip_before_filter :verify_authenticity_token, :only => :create
 
   # def index
   #   render :json => {response: 'You are not alone.'}
   # end
-   before_filter :verity_jwt_token
+
+   # before_filter :verity_jwt_token
 
   def show
     @user = User.find(params[:id])
@@ -23,19 +25,21 @@ class UsersController < ApplicationController
   end
 
   def create
-    if user_params['is_host']
-      @user = User.new user_params
-    else
-      host = User.find_by(host_code: user_params['host_code'])
+    puts "W ARE IN USERS CONTROLLER"
 
-      @user = User.new user_params
-      @user['host'] = host.id
-      host.guest = @user.id
-      host.save
-    end
+    # if user_params['is_host']
+    #   @user = User.new user_params
+    # else
+    #   host = User.find_by(host_code: user_params['host_code'])
+
+    #   @user = User.new user_params
+    #   @user['host'] = host.id
+    #   host.guest = @user.id
+    #   host.save
+    # end
 
     if @user.save
-      render json: @user, serializer: V1::SessionSerializer, root: nil
+      render json: @user, serializer: SessionSerializer, root: nil
     else
       render json: { error: t('user_create_error') }, status: :unprocessable_entity
     end
