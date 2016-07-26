@@ -21,8 +21,8 @@ class ApplicationController < ActionController::API
   #   render :json => @centers
   # end
 
-  before_action :authenticate_user_from_token!
-  # protect_from_forgery with: :null_session
+  before_action :authenticate_user_from_token! #, :except => [:new, :create]
+  #protect_from_forgery with: :null_session
 
   respond_to :json
 

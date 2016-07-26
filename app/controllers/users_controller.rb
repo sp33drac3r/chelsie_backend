@@ -13,12 +13,12 @@ class UsersController < ApplicationController
     @posts = @user.posts
     unless @posts.empty?
       render :json => {
-          :username => @user.username,
+          :email => @user.email,
           :posts => @posts,
         }
     else
       render :json => {
-        username: @user.username,
+        email: @user.email,
         response: 'No posts for this user'
       }
     end
@@ -67,6 +67,6 @@ class UsersController < ApplicationController
   private
 
   def user_params
-    params.require(:user).permit(:username, :email, :password)
+    params.require(:user).permit(:email, :password)
   end
 end

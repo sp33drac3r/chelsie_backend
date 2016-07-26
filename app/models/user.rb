@@ -1,7 +1,7 @@
 class User < ActiveRecord::Base
   # Include default devise modules. Others available are:
   # :confirmable, :lockable, :timeoutable and :omniauthable
-  devise :database_authenticatable, :registerable,
+  devise :database_authenticatable, :registerable, :timeoutable,
          :recoverable, :rememberable, :trackable, :validatable
 
   # ## Database authenticatable
@@ -48,7 +48,6 @@ class User < ActiveRecord::Base
   has_many :comments
   has_many :flags
 
-  validates :username, presence: true
   validates :email, presence: true, uniqueness: true
   validates_format_of :email, with: /\A[^@\s]+@([^@\s]+\.)+[^@\s]+\z/
   validates :password, presence: true
