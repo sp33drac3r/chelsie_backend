@@ -21,16 +21,17 @@ class Users::SessionsController < Devise::SessionsController
 
   def create
     params = JSON.parse(request.body.read)["user"]
-    p params
-
-    puts "WE MADE IT HERE!"
 
     @user = User.find_for_database_authentication(email: params["email"])
     return invalid_login_attempt unless @user
 
     if @user.valid_password?(params["password"])
       sign_in :user, @user
-      render json: @user, root: nil
+      # render json: @user, root: nil
+      token = AuthToken.issue_token({user_id: @user.id})
+      respond_with @user, location: after_sign_in_path_for(@user) do | format |
+        format.json {render json: {user: @user.email, token: token} }
+      end
     else
       invalid_login_attempt
     end

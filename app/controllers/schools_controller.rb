@@ -1,4 +1,5 @@
 class SchoolsController < ApplicationController
+  skip_before_action :authenticate_user_from_token!
 
   def index
     @schools = School.all
@@ -11,14 +12,13 @@ class SchoolsController < ApplicationController
     render :json => {school: @school, posts: @posts}
   end
 
-  def create
-    @school = School.new(school_params)
+  # def create
+  #   @school = School.new(school_params)
 
-    if @school.save
-      render :json => @school
-    end
-
-  end
+  #   if @school.save
+  #     render :json => @school
+  #   end
+  # end
 
   private
     def school_params

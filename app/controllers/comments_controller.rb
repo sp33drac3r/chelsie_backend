@@ -1,4 +1,5 @@
 class CommentsController < ApplicationController
+  skip_before_action :authenticate_user_from_token!, only: [:show]
 
   def create
     @new_comment = Comment.new(comment_params)

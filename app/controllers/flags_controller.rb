@@ -1,4 +1,6 @@
 class FlagsController < ApplicationController
+  skip_before_action :authenticate_user_from_token!, only: [:show]
+
   def show
     @user = User.find(params[:user_id])
     @flags = @user.flags

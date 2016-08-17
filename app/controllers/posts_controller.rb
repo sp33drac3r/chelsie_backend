@@ -1,4 +1,7 @@
 class PostsController < ApplicationController
+
+  skip_before_action :authenticate_user_from_token!, only: [:index, :show]
+
   def index
     @school = School.find(params[:school_id])
     @posts = @school.posts.reverse
@@ -10,6 +13,9 @@ class PostsController < ApplicationController
   end
 
   def show
+    p "$&#@" * 50
+    p params
+    p "$&#@" * 50
     @post = Post.find(params[:id])
     @comments = @post.comments
     @flags = @post.flags
@@ -22,7 +28,10 @@ class PostsController < ApplicationController
   end
 
   def create
-    @post = Post.new(post_params)
+    p "$&#@" * 50
+    p params = JSON.parse(request.body.read)
+    p "$&#@" * 50
+    @post = Post.new(params)
     @post.school_id = params[:school_id]
 
     if @post.save
